@@ -71,18 +71,11 @@ function toggleFolder(folder) {
 }
 
 function initGallery() {
-  const items = document.querySelectorAll('.gallery-item');
-  if (!items.length) return;
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const photoItems   = document.querySelectorAll('.initiative-photo-item');
+  if (!galleryItems.length && !photoItems.length) return;
 
-  // Add zoom icon to each item
-  items.forEach(item => {
-    const icon = document.createElement('div');
-    icon.className = 'gallery-zoom-icon';
-    icon.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>';
-    item.appendChild(icon);
-  });
-
-  // Build lightbox DOM
+  // Build shared lightbox DOM
   const lb = document.createElement('div');
   lb.className = 'lightbox';
   lb.innerHTML = `
@@ -100,15 +93,17 @@ function initGallery() {
   `;
   document.body.appendChild(lb);
 
-  const lbImg = lb.querySelector('#lb-img');
+  const lbImg    = lb.querySelector('#lb-img');
   const lbCounter = lb.querySelector('#lb-counter');
-  const srcs = Array.from(items).map(el => el.querySelector('img').src);
+
+  let activeSrcs = [];
   let current = 0;
 
-  function open(index) {
+  function open(srcs, index) {
+    activeSrcs = srcs;
     current = index;
-    lbImg.src = srcs[current];
-    lbCounter.textContent = `${current + 1} / ${srcs.length}`;
+    lbImg.src = activeSrcs[current];
+    lbCounter.textContent = `${current + 1} / ${activeSrcs.length}`;
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
   }
@@ -118,10 +113,24 @@ function initGallery() {
     document.body.style.overflow = '';
   }
 
-  function prev() { open((current - 1 + srcs.length) % srcs.length); }
-  function next() { open((current + 1) % srcs.length); }
+  function prev() { open(activeSrcs, (current - 1 + activeSrcs.length) % activeSrcs.length); }
+  function next() { open(activeSrcs, (current + 1) % activeSrcs.length); }
 
-  items.forEach((item, i) => item.addEventListener('click', () => open(i)));
+  function bindGroup(items) {
+    if (!items.length) return;
+    const srcs = Array.from(items).map(el => el.querySelector('img').src);
+    items.forEach((item, i) => {
+      const icon = document.createElement('div');
+      icon.className = 'gallery-zoom-icon';
+      icon.innerHTML = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>';
+      item.appendChild(icon);
+      item.addEventListener('click', () => open(srcs, i));
+    });
+  }
+
+  bindGroup(galleryItems);
+  bindGroup(photoItems);
+
   lb.querySelector('.lb-prev').addEventListener('click', e => { e.stopPropagation(); prev(); });
   lb.querySelector('.lb-next').addEventListener('click', e => { e.stopPropagation(); next(); });
   lb.querySelector('.lb-close').addEventListener('click', close);
