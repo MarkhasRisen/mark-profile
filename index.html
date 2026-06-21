@@ -278,9 +278,32 @@ img{max-width:100%;display:block}
         <div style="margin-top:20px;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
           <img src="RECOLOR - FINAL POSTER.png" alt="ReColor Research Poster" style="width:100%;height:auto;display:block;">
         </div>
+        <!-- Abstract -->
+        <button class="expand-toggle" data-target="recolor-abstract" aria-expanded="false">
+          Read research abstract
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="expand-body collapsed" id="recolor-abstract" style="max-height:900px;">
+          <div style="margin-top:14px;padding:20px;background:var(--white);border:1px solid var(--border);border-radius:8px;">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">ABSTRACT</div>
+            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">Color vision deficiency (CVD) affects approximately 350 million individuals worldwide, including an estimated 5.17% of Filipino males, predominantly with the deutan subtype. Despite its prevalence, existing mobile assistive tools are often limited to single-function applications that do not integrate screening, correction, and awareness. This study presents <strong style="color:var(--ink);">ReColor</strong>, an Android-based mobile vision assistive application designed to address this gap through a unified set of image processing techniques.</p>
+            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">The system integrates four core components: LMS-based daltonization for color enhancement, CIELAB &Delta;E-based color identification, GPU-accelerated CVD simulation, and HSV-based hue rotation as an alternative enhancement method. A digitized Ishihara screening module is also incorporated to support preliminary detection. Additionally, a U-Net convolutional neural network was developed and evaluated as a research extension, but was not deployed in the final system due to computational constraints.</p>
+            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">A mixed-methods evaluation was conducted with 30 general end users. Results indicate that daltonization and hue rotation provide complementary performance across different CVD types, while the color identification module achieved an accuracy of <strong style="color:var(--ink);">100%</strong>. GPU-based simulation demonstrated high fidelity, with a mean &Delta;E of 0.025 compared to a double-precision CPU reference. System testing achieved a <strong style="color:var(--ink);">100% pass rate</strong> across defined test cases, and user evaluation yielded a grand mean of <strong style="color:var(--ink);">3.60 (Highly Acceptable)</strong> with strong internal consistency (Cronbach&rsquo;s &alpha; = 0.9348).</p>
+            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:14px;">The study was conducted under a Memorandum of Understanding with the <strong style="color:var(--ink);">Philippine Eye Research Institute (PERI)</strong>, ensuring institutional support and alignment with national vision health initiatives under Republic Act No. 11358. By integrating screening, assistive enhancement, and awareness features into a single mobile platform, ReColor provides a practical, accessible, and scalable solution for supporting individuals with color vision deficiency and advancing inclusive technology in the Philippine context.</p>
+            <div style="display:flex;gap:5px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--border);">
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">color vision deficiency</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">daltonization</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">image processing</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">mobile assistive technology</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">Ishihara screening</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">CVD simulation</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">hue rotation</span>
+            </div>
+          </div>
+        </div>
         <div class="v2-proj-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:20px;">
           <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">+6.91</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">delta-E gain</div></div>
-          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">100%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Color accuracy</div></div>
+          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">100%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Color ID accuracy</div></div>
           <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">3.92/4</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Expert rating</div></div>
           <div style="padding:14px 16px;background:var(--white);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">43</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Validators</div></div>
         </div>
@@ -319,14 +342,18 @@ img{max-width:100%;display:block}
           </div>
         </div>
         <button class="expand-toggle" data-target="ql-expand" aria-expanded="false">
-          View screenshots
+          View documentation
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <!-- Screenshots -->
-        <div class="expand-body collapsed" id="ql-expand" style="max-height:220px;">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
-            <div data-photo data-pg="ql"><img src="quadlearning/3b4fd0c5-0b40-4b38-aa1b-d08580f9f9cb.jpg" alt="QuadLearning screenshot 1" loading="lazy"></div>
-            <div data-photo data-pg="ql"><img src="quadlearning/d0022eea-c4c0-4dd5-b113-56b445a25e06.jpg" alt="QuadLearning screenshot 2" loading="lazy"></div>
+        <!-- Documentation -->
+        <div class="expand-body collapsed" id="ql-expand" style="max-height:3000px;">
+          <div data-photo data-pg="ql" style="margin-top:14px;border-radius:6px;overflow:hidden;border:1px solid var(--border);height:320px;cursor:pointer;">
+            <img src="quadlearning/00_full_walkthrough.webp" alt="QuadLearning full walkthrough" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;">
+            <div data-photo data-pg="ql"><img src="quadlearning/3b4fd0c5-0b40-4b38-aa1b-d08580f9f9cb.jpg" alt="QuadLearning documentation 1" loading="lazy"></div>
+            <div data-photo data-pg="ql"><img src="quadlearning/d0022eea-c4c0-4dd5-b113-56b445a25e06.jpg" alt="QuadLearning documentation 2" loading="lazy"></div>
+            <div data-photo data-pg="ql"><img src="quadlearning/500386441_1145573097258820_2631656731928369053_n.png" alt="QuadLearning documentation 3" loading="lazy"></div>
           </div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:16px;">
@@ -336,10 +363,10 @@ img{max-width:100%;display:block}
             <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Figma · UI/UX</span>
             <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Stakeholder Management</span>
           </div>
-          <span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 14px;background:var(--ink);color:rgba(255,255,255,.6);border-radius:4px;letter-spacing:.04em;">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            Private Repo
-          </span>
+          <a href="https://github.com/MarkhasRisen/QuadLearning_repo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 14px;background:var(--ink);color:rgba(255,255,255,.85);border-radius:4px;letter-spacing:.04em;text-decoration:none;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.52 11.52 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
         </div>
       </div>
 
@@ -424,7 +451,8 @@ img{max-width:100%;display:block}
           <img src="LPU/CCS.jpg" alt="CCS" style="width:40px;height:40px;object-fit:contain;border-radius:6px;background:rgba(255,255,255,.08);border:1px solid var(--border);padding:3px;">
         </div>
         <h4 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">BS Computer Science</h4>
-        <p style="font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-bottom:12px;">Lyceum of the Philippines University – Cavite · Dec 2022 – Present</p>
+        <p style="font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-bottom:8px;">Lyceum of the Philippines University – Cavite · Dec 2022 – Aug 2026</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);letter-spacing:.04em;margin-bottom:12px;">🎓 Graduating Aug 19, 2026</p>
         <div style="display:flex;flex-direction:column;gap:4px;">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);">● Best CS Thesis Awardee</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);">● CCS Student Leader of the Year</span>
