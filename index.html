@@ -8,7 +8,7 @@
 <meta property="og:title" content="Mark Risen Caparas — Portfolio">
 <meta property="og:description" content="CS Engineer building AI systems & enterprise tools. Best CS Thesis, ERP internship at Optum, CCS Student Leader of the Year.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="risen.png">
+<meta property="og:image" content="https://markhasrisen.github.io/mark-profile/risen.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mark Risen Caparas — Portfolio">
 <meta name="twitter:description" content="CS Senior at LPU-Cavite. AI · ERP · Leadership. Open for internship and fresher roles.">
@@ -83,6 +83,13 @@ img{max-width:100%;display:block}
 /* Expand/collapse */
 .expand-body{overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
 .expand-body.collapsed{max-height:0!important}
+section:has(> .ghost-portrait){isolation:isolate;}
+.ghost-portrait{position:absolute;bottom:0;width:320px;max-width:34%;opacity:.2;filter:grayscale(1);pointer-events:none;z-index:-1;border-radius:12px 12px 0 0;user-select:none;}
+.ghost-portrait.ghost-right{right:-40px;}
+.ghost-portrait.ghost-left{left:-40px;}
+.creatives-rail{position:absolute;top:0;bottom:0;width:190px;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:14px;opacity:.5;z-index:0;pointer-events:none;overflow:hidden;}
+.creatives-rail img{width:100%;border-radius:8px;display:block;filter:grayscale(.15);}
+@media(max-width:1480px){.creatives-rail{display:none;}}
 .expand-toggle{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:4px;cursor:pointer;padding:5px 12px;margin-top:14px;transition:background .2s,color .2s}
 .expand-toggle:hover{background:var(--accent);color:#fff}
 .expand-toggle svg{transition:transform .3s}
@@ -262,7 +269,8 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section id="projects" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+  <img src="RECOLOR - FINAL POSTER.png" class="ghost-portrait ghost-right" aria-hidden="true">
   <div style="max-width:1100px;margin:0 auto;padding:64px 32px;">
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:32px;">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">02</span>
@@ -286,10 +294,26 @@ img{max-width:100%;display:block}
           <img src="RECOLOR - FINAL POSTER.png" alt="ReColor Research Poster" style="width:100%;height:auto;display:block;">
         </div>
         <!-- Abstract -->
-        <button class="expand-toggle" data-target="recolor-abstract" aria-expanded="false">
-          Read research abstract
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button class="expand-toggle" data-target="recolor-screenshots" aria-expanded="false" style="margin-top:14px;">
+            View app screenshots
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <button class="expand-toggle" data-target="recolor-abstract" aria-expanded="false" style="margin-top:14px;">
+            Read research abstract
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="expand-body collapsed" id="recolor-screenshots" style="max-height:600px;">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px;">
+            <div data-photo data-pg="recolor"><img src="ReColor/photo_2026-06-22_13-46-37.jpg" alt="ReColor screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;"></div>
+            <div data-photo data-pg="recolor"><img src="ReColor/photo_2026-06-22_13-46-44.jpg" alt="ReColor screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;"></div>
+            <div data-photo data-pg="recolor"><img src="ReColor/photo_2026-06-22_13-46-46.jpg" alt="ReColor screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;"></div>
+            <div data-photo data-pg="recolor"><img src="ReColor/photo_2026-06-22_13-46-51.jpg" alt="ReColor screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;"></div>
+            <div data-photo data-pg="recolor"><img src="ReColor/photo_2026-06-22_13-47-04.jpg" alt="ReColor screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;"></div>
+            <div data-photo data-pg="recolor"><img src="ReColor/photo_2026-06-22_13-47-21.jpg" alt="ReColor screenshot" loading="lazy" style="width:100%;height:200px;object-fit:cover;border-radius:6px;display:block;"></div>
+          </div>
+        </div>
         <div class="expand-body collapsed" id="recolor-abstract" style="max-height:900px;">
           <div style="margin-top:14px;padding:20px;background:var(--white);border:1px solid var(--border);border-radius:8px;">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">ABSTRACT</div>
@@ -420,7 +444,8 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" style="max-width:1100px;margin:0 auto;padding:64px 32px;">
+<section id="experience" style="max-width:1100px;margin:0 auto;padding:64px 32px;position:relative;overflow:hidden;">
+  <img src="risen.png" class="ghost-portrait ghost-left" aria-hidden="true">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
     <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">03</span>
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Experience</h2>
@@ -441,7 +466,8 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- CREDENTIALS -->
-<section id="credentials" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section id="credentials" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+  <img src="LPU/LPU_CAVITE (1).png" class="ghost-portrait ghost-right" aria-hidden="true">
   <div style="max-width:1100px;margin:0 auto;padding:64px 32px;">
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:32px;">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">04</span>
@@ -459,7 +485,8 @@ img{max-width:100%;display:block}
         </div>
         <h4 style="font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">BS Computer Science</h4>
         <p style="font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-bottom:8px;">Lyceum of the Philippines University – Cavite · Dec 2022 – Aug 2026</p>
-        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);letter-spacing:.04em;margin-bottom:12px;">🎓 Graduating Aug 19, 2026</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);letter-spacing:.04em;margin-bottom:4px;">🎓 Graduating Aug 19, 2026</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);letter-spacing:.04em;margin-bottom:12px;">✦ Available from July 2026</p>
         <div style="display:flex;flex-direction:column;gap:4px;">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);">● Best CS Thesis Awardee</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);">● CCS Student Leader of the Year</span>
@@ -484,22 +511,28 @@ img{max-width:100%;display:block}
         <a href="https://www.credly.com/users/mark-risen-caparas.b55354f5" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:10px;margin-top:16px;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--ink-2);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8.5 12.5l2.5 2.5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:var(--ink);">Cisco Certifications</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-top:2px;">View verified badges on Credly ↗</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:var(--ink);margin-bottom:4px;">Cisco Certifications</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3);">Engaging Stakeholders · Cisco</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3);margin-top:2px;">English for IT 2 · Cisco</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-top:4px;">View verified badges on Credly ↗</div>
           </div>
         </a>
       </div>
 
       <!-- Training -->
       <div class="fade-up" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">TRAINING · 6 COMPLETIONS</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">TRAINING · 7 COMPLETIONS</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">PM Foundations: Integration</div>
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">ISO 9001:2015 QMS</div>
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">SAP Business One Courseware</div>
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">AWS Business Essentials</div>
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">Engaging Stakeholders · Cisco</div>
-          <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;">English for IT 2</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">English for IT 2</div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
+            <span style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;">CyberSafety Seminar</span>
+            <a href="certs/Certificate for Mark Risen B. Caparas for _CyberSafety - Seminar_.pdf" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:4px;padding:3px 8px;white-space:nowrap;">View cert ↗</a>
+          </div>
         </div>
       </div>
     </div>
@@ -524,6 +557,10 @@ img{max-width:100%;display:block}
     <div style="height:1px;flex:1;background:var(--border);"></div>
     <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.08em;">10 ROLES</span>
   </div>
+  <figure class="fade-up" style="margin:0 0 28px;padding:20px 24px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--sage);border-radius:8px;box-shadow:var(--shadow);">
+    <blockquote style="font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;color:var(--ink-2);line-height:1.75;margin:0 0 12px;">"You are owning up to the name of being a leader. Continue to lead SATA and your fellow IT/CS/LIS kapatid."</blockquote>
+    <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.06em;">— Ms. Alyssa Pocaan, MIS · Organization Adviser, CCS</figcaption>
+  </figure>
   <div class="v2-lead-grid fade-up-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
     <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Public Relations Officer</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LYCESGO — Central Student Government</div></div>
     <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">College Representative</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
@@ -539,7 +576,8 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- AWARDS -->
-<section id="awards" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+<section id="awards" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+  <img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" class="ghost-portrait ghost-right" aria-hidden="true">
   <div style="max-width:1100px;margin:0 auto;padding:64px 32px;">
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">06</span>
@@ -587,8 +625,38 @@ img{max-width:100%;display:block}
           </div>
         </div>
       </div>
-      <div class="fade-up" style="padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-align:center;"><div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">03</div><h4 style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Best Research — Social Sciences &amp; Humanities</h4><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p></div>
-      <div class="fade-up" style="padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-align:center;"><div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">05</div><h4 style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Best CS Thesis Awardee</h4><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">MAY 4, 2026</p></div>
+      <!-- Best Research SSH — full width, photo + link -->
+      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">03</div>
+          <div style="flex:1;">
+            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">Best Research — Social Sciences &amp; Humanities</h4>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <button class="expand-toggle" data-target="ssh-expand" aria-expanded="false" style="font-size:11px;margin-top:0;">
+              View photo
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <a href="https://www.linkedin.com/posts/lyceum-of-the-philippines-university-cavite_researchexcellence-innovationmatters-lpucavite-activity-7463182014305898496-9s2z?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB4dRa8BwJe8eDOedH_ulQv2tR3W4GyhAMQ" target="_blank" rel="noopener" class="expand-toggle" style="margin-top:0;text-decoration:none;">View article ↗</a>
+          </div>
+        </div>
+        <div class="expand-body collapsed" id="ssh-expand" style="max-height:600px;">
+          <div style="margin-top:16px;border-radius:6px;overflow:hidden;">
+            <div data-photo data-pg="ssh"><img src="Best SSH/1779361245264.jpg" alt="Best Research — Social Sciences & Humanities" loading="lazy" style="width:100%;height:auto;display:block;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">05</div>
+          <div style="flex:1;">
+            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">Best CS Thesis Awardee</h4>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">MAY 4, 2026</p>
+          </div>
+          <a href="https://www.facebook.com/photo/?fbid=1529351305647806&set=pcb.1529355698980700" target="_blank" rel="noopener" class="expand-toggle" style="margin-top:0;text-decoration:none;">View post ↗</a>
+        </div>
+      </div>
       <!-- CCS Achiever — full width, media expand -->
       <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
@@ -658,8 +726,18 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- CREATIVES -->
-<section id="creatives" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div style="max-width:1100px;margin:0 auto;padding:64px 32px;">
+<section id="creatives" style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden;">
+  <div class="creatives-rail" style="left:0;" aria-hidden="true">
+    <img src="creatives/0738ec6f-f4d0-49c9-8f7e-80e8dd0c85ec.jpg" loading="lazy" alt="">
+    <img src="creatives/1808fdce-f76d-4682-a5d6-f70c83b7c536.jpg" loading="lazy" alt="">
+    <img src="creatives/2ed2348f-085d-4f5f-875c-0a7758fdb198.jpg" loading="lazy" alt="">
+  </div>
+  <div class="creatives-rail" style="right:0;" aria-hidden="true">
+    <img src="creatives/35143b16-efb1-4da6-9113-273960705f2c.jpg" loading="lazy" alt="">
+    <img src="creatives/3bf43eaf-11e8-4f86-a95c-423dcf4615a8.jpg" loading="lazy" alt="">
+    <img src="creatives/40be06ec-e023-461e-a625-54ab1dd89541.jpg" loading="lazy" alt="">
+  </div>
+  <div style="max-width:1100px;margin:0 auto;padding:64px 32px;position:relative;z-index:1;">
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">08</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Creatives</h2>
@@ -679,7 +757,7 @@ img{max-width:100%;display:block}
         </div>
       </a>
       <div style="padding:24px;background:var(--bg);">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;">VIDEO ENTRY · 2026</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);margin-bottom:10px;">VIDEO ENTRY · 2025</div>
         <h4 style="font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--ink);margin-bottom:10px;line-height:1.3;">Galaxy Student Campus Ambassador Program — Batch 2</h4>
         <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.7;">Personal video entry for Samsung's Galaxy Student Campus Ambassador Program — communication skills, digital presence, and personal branding.</p>
       </div>
@@ -719,7 +797,16 @@ img{max-width:100%;display:block}
 </section>
 
 <!-- CONTACT -->
-<section id="contact" style="max-width:1100px;margin:0 auto;padding:80px 32px;">
+<section id="contact" style="max-width:1100px;margin:0 auto;padding:80px 32px;position:relative;">
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">✦ Moments</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:44px;">
+    <div data-photo data-pg="moments"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Mark Risen Caparas" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="Student Leader of the Year" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever team" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon awarding" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="TechForward/image.png" alt="Tech Forward outreach" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Typhoon Carina relief" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+  </div>
   <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
     <!-- Left: heading + social links -->
     <div>

@@ -1,0 +1,9 @@
+# Local Claude Code config (may contain tokens/secrets)
+.claude/
+
+# OS / editor cruft
+Thumbs.db
+.DS_Store
+
+# Local archives
+*.zip
