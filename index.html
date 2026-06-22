@@ -540,7 +540,27 @@ img{max-width:100%;display:block}
       <div style="height:1px;flex:1;background:var(--border);"></div>
     </div>
     <div class="v2-cards fade-up-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
-      <div class="fade-up" style="padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-align:center;"><div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">01</div><h4 style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">CCS Student Leader of the Year</h4><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p></div>
+      <!-- CCS Student Leader — full width, photo expand -->
+      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">01</div>
+          <div style="flex:1;">
+            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">CCS Student Leader of the Year</h4>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p>
+          </div>
+          <button class="expand-toggle" data-target="ccs-leader-expand" aria-expanded="false" style="font-size:11px;">
+            View photos
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+        </div>
+        <div class="expand-body collapsed" id="ccs-leader-expand" style="max-height:400px;">
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;">
+            <div data-photo data-pg="ccs-leader" style="border-radius:6px;overflow:hidden;"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-leader" style="border-radius:6px;overflow:hidden;"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-leader" style="border-radius:6px;overflow:hidden;"><img src="CCS student leader/e932afb2-02b9-45ca-a025-87368733cd48.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+          </div>
+        </div>
+      </div>
       <div class="fade-up" style="padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-align:center;"><div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">02</div><h4 style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Paragon Student Leader — PRO</h4><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 11, 2026 · LYCESGO</p></div>
       <div class="fade-up" style="padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-align:center;"><div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">03</div><h4 style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Best Research — Social Sciences &amp; Humanities</h4><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p></div>
       <div class="fade-up" style="padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;text-align:center;"><div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">05</div><h4 style="font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px;">Best CS Thesis Awardee</h4><p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">MAY 4, 2026</p></div>
