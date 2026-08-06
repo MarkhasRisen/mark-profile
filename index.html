@@ -161,6 +161,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div class="v2-nav-links" style="display:flex;gap:20px;align-items:center;">
       <a href="#about" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-decoration:none;color:var(--ink-3);text-transform:uppercase;transition:color .18s;" data-nav>About</a>
       <a href="#projects" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-decoration:none;color:var(--ink-3);text-transform:uppercase;transition:color .18s;" data-nav>Projects</a>
+      <a href="#velobuild" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-decoration:none;color:var(--sage);text-transform:uppercase;transition:color .18s;font-weight:500;" data-nav>VeloBuild</a>
       <a href="#experience" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-decoration:none;color:var(--ink-3);text-transform:uppercase;transition:color .18s;" data-nav>Experience</a>
       <a href="#credentials" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-decoration:none;color:var(--ink-3);text-transform:uppercase;transition:color .18s;" data-nav>Credentials</a>
       <a href="#leadership" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;text-decoration:none;color:var(--ink-3);text-transform:uppercase;transition:color .18s;" data-nav>Leadership</a>
@@ -186,6 +187,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 <div id="mobileNav" role="dialog" aria-label="Navigation">
   <a href="#about">About</a>
   <a href="#projects">Projects</a>
+  <a href="#velobuild">VeloBuild</a>
   <a href="#experience">Experience</a>
   <a href="#credentials">Credentials</a>
   <a href="#leadership">Leadership</a>
@@ -527,19 +529,148 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           </span>
         </div>
       </div>
-
     </div>
+  </div>
+</section>
+
+<!-- VELOBUILD -->
+<section id="velobuild" style="background:var(--sage-dim);border-top:2px solid var(--sage);border-bottom:1px solid var(--border);">
+  <div style="max-width:1100px;margin:0 auto;padding:64px 32px;">
+    <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
+      <span class="section-num" data-num="3" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--sage);">03</span>
+      <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">VeloBuild</h2>
+      <div style="height:1px;flex:1;background:var(--border);"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 10px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);">Nonprofit Technology Org · Philippines</span>
+    </div>
+
+    <!-- VeloBuild -->
+    <div class="fade-up" style="background:var(--bg);border:1px solid var(--border);border-left:3px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);overflow:hidden;">
+      <div style="padding:24px;">
+        <!-- Header row -->
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+          <div>
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;">JUL 2026 — PRESENT</div>
+              <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 8px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);font-weight:500;">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--sage);display:inline-block;animation:pulse-dot 2s ease-in-out infinite;" aria-hidden="true"></span>
+                Active · Nonprofit
+              </span>
+            </div>
+            <h3 style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:2px;">Founder &amp; Chief Executive Officer</h3>
+            <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sage);letter-spacing:.04em;">Building Technology That Builds Filipino Communities</p>
+          </div>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:4px 10px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);flex-shrink:0;">Nonprofit Technology Org</span>
+        </div>
+
+        <!-- Mission -->
+        <p style="font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.7;margin-bottom:14px;">Building and donating software solutions that empower underserved communities across the Philippines — bridging the digital divide for nonprofits, public schools, LGUs, and community initiatives.</p>
+
+        <!-- Expand: Focus Areas -->
+        <button class="expand-toggle" data-target="velobuild-expand" aria-expanded="false">
+          Our focus areas
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="expand-body collapsed" id="velobuild-expand" style="max-height:260px;">
+          <div style="display:flex;flex-direction:column;gap:7px;margin-top:14px;">
+            <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;"><span style="flex-shrink:0;">💙</span><span>Donating custom software solutions to qualified nonprofit and community organizations</span></div>
+            <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;"><span style="flex-shrink:0;">💻</span><span>Developing web, mobile, and desktop applications for social impact</span></div>
+            <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;"><span style="flex-shrink:0;">🌱</span><span>Supporting digital transformation initiatives for underserved sectors</span></div>
+            <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;"><span style="flex-shrink:0;">🤝</span><span>Connecting technology professionals with meaningful volunteer opportunities</span></div>
+            <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;"><span style="flex-shrink:0;">📚</span><span>Promoting technology education, collaboration, and innovation for the public good</span></div>
+          </div>
+        </div>
+
+        <!-- Skills -->
+        <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Software Engineering</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Social Impact</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Nonprofit Leadership</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Community Development</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Digital Transformation</span>
+        </div>
+      </div>
+
+      <!-- Donated Projects — separated section -->
+      <div style="border-top:1px solid var(--border);background:var(--bg);padding:16px 24px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:12px;">Donated Projects</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+
+          <!-- AGAILA card -->
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="padding:24px 24px 16px;display:flex;align-items:center;justify-content:center;background:#ffffff;border-bottom:1px solid var(--border);min-height:110px;">
+              <img src="agaila-logo.svg" alt="AGAILA logo" style="max-height:64px;max-width:100%;object-fit:contain;" onerror="this.src='agaila-logo.png'">
+            </div>
+            <div style="padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">AGAILA</div>
+              <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.6;flex:1;">Geospatial AI platform for Philippine environmental hazard detection and disaster risk reduction.</p>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">React</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Leaflet.js</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Geospatial AI</span>
+              </div>
+              <a href="https://agaila-ph.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;padding:7px 14px;background:var(--sage);color:#fff;border-radius:5px;text-decoration:none;transition:background .2s;align-self:flex-start;" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--sage)'">View Live ↗</a>
+            </div>
+          </div>
+
+          <!-- ReColor card -->
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="padding:24px 24px 16px;display:flex;align-items:center;justify-content:center;background:#ffffff;border-bottom:1px solid var(--border);min-height:110px;">
+              <img src="recolor-logo.svg" alt="ReColor logo" style="max-height:72px;max-width:100%;object-fit:contain;" onerror="this.src='recolor-logo.png'">
+            </div>
+            <div style="padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px;">
+              <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">ReColor</div>
+              <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.6;flex:1;">Mobile vision assistive app — real-time color remapping, CVD simulation, and Ishihara screening for color blind users.</p>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Android</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Java</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">OpenCV</span>
+              </div>
+              <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:7px 14px;background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);border-radius:5px;align-self:flex-start;">Google Play · Pending</span>
+            </div>
+          </div>
+
+          <!-- MyCCS card -->
+          <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+            <div style="padding:24px 24px 16px;display:flex;align-items:center;justify-content:center;background:#ffffff;border-bottom:1px solid var(--border);min-height:110px;">
+              <span style="font-family:'Sora',sans-serif;font-size:32px;font-weight:800;color:#1a5fad;letter-spacing:-.03em;">MyCCS</span>
+            </div>
+            <div style="padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+                <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">MyCCS</div>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 7px;background:rgba(245,158,11,.1);border:1px dashed rgba(245,158,11,.5);color:#d97706;border-radius:3px;">In Development</span>
+              </div>
+              <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.6;flex:1;">Centralized, mobile-first platform for LPU-Cavite's CS/IT department — serving as the hub for student orgs, department events, and professional certification programs (CompTIA, Cisco, SAP, Certiport). Built under Agile, with the MVP focused on frictionless event registration and robust content governance.</p>
+              <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Mobile-first</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Agile / Scrum</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">LPU-Cavite</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Proprietary</span>
+              </div>
+              <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:7px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:5px;align-self:flex-start;">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Proprietary · Private
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience" style="max-width:1100px;margin:0 auto;padding:64px 32px;">
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
-    <span class="section-num" data-num="3" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">03</span>
+    <span class="section-num" data-num="4" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">04</span>
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Experience</h2>
     <div style="height:1px;flex:1;background:var(--border);"></div>
   </div>
-  <div class="exp-card" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
+  <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <!-- Optum -->
+    <div class="exp-card" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
     <div data-photo data-pg="optum-exp" style="overflow:hidden;cursor:pointer;"><img class="exp-photo" src="optum/1758283002715.jpg" alt="Presenting the ERP project at Optum Philippines" loading="lazy"></div>
     <div style="padding:24px;border-left:3px solid var(--accent);">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">JUL — AUG 2025</div>
@@ -856,6 +987,21 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="height:1px;flex:1;background:var(--border);"></div>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px;">
+
+    <!-- VeloBuild -->
+    <div style="padding:24px;background:var(--white);border:1px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);">
+      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;display:inline-flex;align-items:center;gap:5px;">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--sage);display:inline-block;animation:pulse-dot 2s ease-in-out infinite;"></span>
+          JUL 2026 — PRESENT
+        </span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">Nonprofit · Philippines</span>
+      </div>
+      <h4 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px;">VeloBuild</h4>
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sage);margin-bottom:10px;letter-spacing:.04em;">Founder &amp; Chief Executive Officer</p>
+      <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:14px;">A nonprofit technology organization dedicated to building and donating software solutions that empower underserved communities across the Philippines. Driven by a network of passionate volunteers — software engineers, designers, project managers, and students — VeloBuild transforms real-world challenges into sustainable digital solutions that improve efficiency, accessibility, and service delivery.</p>
+      <p style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--sage);font-style:italic;border-left:2px solid var(--sage);padding-left:12px;">"Building Technology That Builds Filipino Communities."</p>
+    </div>
 
     <!-- Tech Forward -->
     <div style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
