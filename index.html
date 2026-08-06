@@ -152,10 +152,10 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 <body>
 
 <div id="progress-bar"></div>
-<div id="copy-toast">Email copied!</div>
+<div id="copy-toast" role="status" aria-live="polite">Email copied!</div>
 
 <!-- NAV -->
-<nav style="position:sticky;top:0;z-index:100;background:var(--nav-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);">
+<nav aria-label="Main navigation" style="position:sticky;top:0;z-index:100;background:var(--nav-glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border);">
   <div style="max-width:1100px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:56px;">
     <span style="font-family:'Sora',sans-serif;font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.02em;">MRC<span style="color:var(--accent);">.</span></span>
     <div class="v2-nav-links" style="display:flex;gap:20px;align-items:center;">
@@ -173,7 +173,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <button id="navToggle" aria-label="Menu" aria-expanded="false">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
-      <button id="themeToggle" title="Toggle dark mode" style="width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:all .2s;">
+      <button id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode" style="width:34px;height:34px;border-radius:50%;border:1px solid var(--border);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--ink-3);transition:all .2s;">
         <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
@@ -201,7 +201,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div>
       <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;">ARCHIVE LOG // 2026</div>
       <h1 style="font-family:'Sora',sans-serif;font-size:clamp(44px,7vw,76px);font-weight:800;line-height:.90;letter-spacing:-.045em;color:var(--ink);">MARK<br>RISEN<br>CAPARAS</h1>
-      <div style="font-family:'Source Serif 4',serif;font-style:italic;font-size:17px;color:var(--ink-3);margin-top:14px;min-height:24px;"><span id="hero-typewriter"></span><span class="tw-cursor" id="tw-cursor"></span></div>
+      <div style="font-family:'Source Serif 4',serif;font-style:italic;font-size:17px;color:var(--ink-3);margin-top:14px;min-height:24px;"><span id="hero-typewriter" aria-live="polite" aria-atomic="true"></span><span class="tw-cursor" id="tw-cursor" aria-hidden="true"></span></div>
       <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;padding:4px 12px;font-weight:500;">CAIP</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 12px;font-weight:500;">CLSSYB</span>
@@ -222,10 +222,10 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         <img src="risen.png" alt="Mark Risen Caparas" class="slide-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;">
         <img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Mark Risen Caparas" class="slide-img" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease;">
       </div>
-      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;">
-        <span class="slide-dot active" style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:.9;cursor:pointer;transition:opacity .3s;"></span>
-        <span class="slide-dot" style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:.4;cursor:pointer;transition:opacity .3s;"></span>
-        <span class="slide-dot" style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:.4;cursor:pointer;transition:opacity .3s;"></span>
+      <div style="position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:2;" aria-label="Photo slideshow controls" role="group">
+        <button class="slide-dot active" aria-label="Show photo 1" aria-pressed="true" style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:.9;cursor:pointer;transition:opacity .3s;border:none;padding:0;"></button>
+        <button class="slide-dot" aria-label="Show photo 2" aria-pressed="false" style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:.4;cursor:pointer;transition:opacity .3s;border:none;padding:0;"></button>
+        <button class="slide-dot" aria-label="Show photo 3" aria-pressed="false" style="width:6px;height:6px;border-radius:50%;background:#fff;opacity:.4;cursor:pointer;transition:opacity .3s;border:none;padding:0;"></button>
       </div>
     </div>
   </div>
@@ -667,7 +667,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <!-- Phase 1: Now -->
           <div style="background:var(--white);border:1px solid var(--sage);border-radius:8px;padding:16px;border-top:3px solid var(--sage);">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px var(--sage-dim);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite;"></div>
+              <div aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px var(--sage-dim);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite;"></div>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--sage);text-transform:uppercase;font-weight:500;white-space:nowrap;">Now · 2026</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
@@ -681,7 +681,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <!-- Phase 2: 2027 -->
           <div style="background:var(--white);border:1px solid var(--accent);border-radius:8px;padding:16px;border-top:3px solid var(--accent);">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
+              <div aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;font-weight:500;white-space:nowrap;">Target · 2027</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
@@ -696,7 +696,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <!-- Phase 3: 2028+ -->
           <div style="background:var(--white);border:1px solid var(--border-m);border-radius:8px;padding:16px;border-top:3px solid var(--ink-4);opacity:.85;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
-              <div style="width:10px;height:10px;border-radius:50%;background:var(--ink-4);flex-shrink:0;"></div>
+              <div aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--ink-4);flex-shrink:0;"></div>
               <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;font-weight:500;white-space:nowrap;">Vision · 2028+</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
@@ -1001,7 +1001,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--accent)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
             <div style="min-width:0;"><div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);">Email</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">cmarkrisen@gmail.com</div></div>
           </a>
-          <button id="copyEmail" title="Copy email address" style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--ink-3);box-shadow:var(--shadow);display:flex;align-items:center;">
+          <button id="copyEmail" aria-label="Copy email address" title="Copy email address" style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--ink-3);box-shadow:var(--shadow);display:flex;align-items:center;">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
@@ -1012,16 +1012,16 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:18px;">SEND A MESSAGE</div>
       <form id="contactForm" action="https://formspree.io/f/mojoaroe" method="POST" style="display:flex;flex-direction:column;gap:14px;">
         <div>
-          <label style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">NAME</label>
-          <input type="text" name="name" required placeholder="Your name" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+          <label for="contact-name" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">NAME</label>
+          <input id="contact-name" type="text" name="name" required placeholder="Your name" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
         </div>
         <div>
-          <label style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">EMAIL</label>
-          <input type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+          <label for="contact-email" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">EMAIL</label>
+          <input id="contact-email" type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
         </div>
         <div>
-          <label style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">MESSAGE</label>
-          <textarea name="message" required rows="4" placeholder="What's on your mind?" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;resize:vertical;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+          <label for="contact-message" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">MESSAGE</label>
+          <textarea id="contact-message" name="message" required rows="4" placeholder="What's on your mind?" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;resize:vertical;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
         </div>
         <button type="submit" style="padding:12px 24px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">Send Message →</button>
         <div id="formStatus" style="display:none;font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center;padding:8px;border-radius:4px;"></div>
@@ -1046,7 +1046,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 </button>
 
 <!-- LIGHTBOX -->
-<div id="v2-lb">
+<div id="v2-lb" role="dialog" aria-modal="true" aria-label="Image viewer">
   <button id="lb-close" class="lb2-btn" aria-label="Close">
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
@@ -1175,6 +1175,7 @@ function initLightbox() {
     activeSrcs = srcs;
     current = index;
     lbImg.src = activeSrcs[current];
+    lbImg.alt = activeSrcs[current].split('/').pop().replace(/[-_]/g, ' ').replace(/\.[^.]+$/, '') || 'Gallery image';
     lbCount.textContent = `${current + 1} / ${activeSrcs.length}`;
     lb.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -1190,8 +1191,12 @@ function initLightbox() {
 
   function bindItems(items) {
     if (!items.length) return;
-    const srcs = items.map(el => el.querySelector('img').src);
-    items.forEach((item, i) => item.addEventListener('click', () => open(srcs, i)));
+    const srcs  = items.map(el => el.querySelector('img').src);
+    const alts  = items.map(el => el.querySelector('img').alt || 'Gallery image');
+    items.forEach((item, i) => item.addEventListener('click', () => {
+      open(srcs, i);
+      lbImg.alt = alts[i];
+    }));
   }
 
   // Creatives gallery — all in one group
