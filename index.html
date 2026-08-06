@@ -272,6 +272,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 </div>
 <style>
 @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(90,122,100,.5)}50%{box-shadow:0 0 0 6px rgba(90,122,100,0)}}
+@media(max-width:680px){.roadmap-connector{display:none}}
 </style>
 
 <!-- ABOUT + SKILLS -->
@@ -660,20 +661,20 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <!-- Timeline -->
       <div style="position:relative;">
         <!-- Connecting line -->
-        <div style="position:absolute;top:14px;left:14px;right:14px;height:2px;background:linear-gradient(90deg,var(--sage) 0%,var(--accent) 50%,var(--ink-4) 100%);border-radius:2px;z-index:0;"></div>
-        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;position:relative;z-index:1;">
+        <div class="roadmap-connector" style="position:absolute;top:14px;left:14px;right:14px;height:2px;background:linear-gradient(90deg,var(--sage) 0%,var(--accent) 50%,var(--ink-4) 100%);border-radius:2px;z-index:0;"></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;position:relative;z-index:1;">
 
           <!-- Phase 1: Now -->
           <div style="background:var(--white);border:1px solid var(--sage);border-radius:8px;padding:16px;border-top:3px solid var(--sage);">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <div style="width:10px;height:10px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px var(--sage-dim);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--sage);text-transform:uppercase;font-weight:500;">Now · 2026</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--sage);text-transform:uppercase;font-weight:500;white-space:nowrap;">Now · 2026</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">🎓 BS Computer Science</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">✦ CSSGB (Lean Six Sigma)</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">✦ AWS Cloud Practitioner</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">✦ SAP C_TB1200</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🎓 BS Computer Science</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">✦ CSSGB (Lean Six Sigma)</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">✦ AWS Cloud Practitioner</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">✦ SAP C_TB1200</div>
             </div>
           </div>
 
@@ -681,14 +682,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div style="background:var(--white);border:1px solid var(--accent);border-radius:8px;padding:16px;border-top:3px solid var(--accent);">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <div style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;font-weight:500;">Target · 2027</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;font-weight:500;white-space:nowrap;">Target · 2027</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">💼 Associate Project Manager</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);">Tech / AI / ERP domain</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">💼 Associate Project Manager</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Tech / AI / ERP domain</div>
               <div style="height:1px;background:var(--border);margin:4px 0;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">🏆 PMP Certification</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">🔧 Full-Stack / AI Engineering</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">⚡ PMI-ACP Certification</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🔧 Full-Stack / AI Engineering</div>
             </div>
           </div>
 
@@ -696,12 +697,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div style="background:var(--white);border:1px solid var(--border-m);border-radius:8px;padding:16px;border-top:3px solid var(--ink-4);opacity:.85;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <div style="width:10px;height:10px;border-radius:50%;background:var(--ink-4);flex-shrink:0;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;font-weight:500;">Vision · 2028+</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;font-weight:500;white-space:nowrap;">Vision · 2028+</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);">📚 MBA</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);">Technology &amp; Innovation Mgmt</div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);margin-top:4px;">🚀 Tech Leadership / Founding</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">📚 MBA</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">Technology &amp; Innovation Mgmt</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🚀 Tech Leadership / Founding</div>
             </div>
           </div>
 
