@@ -8,7 +8,7 @@ It contains authoritative conventions for architecture, theming, deployment, and
 ## Critical Constraints (Quick Reference)
 
 1. **Single-file site**: All code lives in `index.html` (inline `<style>` and `<script>`).
-   - `style.css` is a **dead file** — never add styles to it.
+   - Never create a separate stylesheet or script file.
    - There is no build system, no framework, no package.json.
 
 2. **Asset path casing**: Developed on Windows (case-insensitive), served on Linux (case-sensitive).
@@ -16,7 +16,7 @@ It contains authoritative conventions for architecture, theming, deployment, and
    - After editing asset references, verify with the grep/sed pipeline documented in `CLAUDE.md`.
 
 3. **JS pattern**: Add behavior by writing an `initX()` function and calling it from the single
-   `DOMContentLoaded` handler (~line 900 in `index.html`).
+   `DOMContentLoaded` handler (~line 1264 in `index.html`).
 
 4. **Theme tokens**: Use CSS custom properties (`--bg`, `--ink`, `--accent`, `--sage`, `--white`).
    - `--white` is theme-adaptive (dark in dark mode) — use it for cards, not literal `#fff`.

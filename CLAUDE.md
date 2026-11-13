@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A single-page personal portfolio for Mark Risen Caparas. The entire site is **one self-contained file: `index.html`** (~1200 lines). All CSS lives in one inline `<style>` block and all JS in one inline `<script>` block. The only external resources are Google Fonts and the favicon. There is **no build system, no framework, no package.json, no tests, and no linter.**
+A single-page personal portfolio for Mark Risen Caparas. The entire site is **one self-contained file: `index.html`** (~1580 lines). CSS lives in an inline `<style>` block in `<head>` (plus a tiny second `<style>` block ~line 275), and all site JS lives in one inline `<script>` block near the end (~line 1209). There is **no build system, no framework, no package.json, no tests, and no linter.**
 
-`style.css` is tracked in git but **not referenced anywhere** — it is a dead file left over from an earlier version. Do not add styles to it; all styling is inline in `index.html`.
+External resources loaded by the page: Google Fonts, Umami analytics (`cloud.umami.is`, in `<head>`), and the Credly badge embed script (`cdn.credly.com`, last line of `<body>`). Everything else is local.
+
+`.agents/AGENTS.md` is a short rules summary for other agents that points back to this file. If you change a convention here, update it there too.
 
 ## Develop & deploy
 
@@ -22,26 +24,36 @@ A single-page personal portfolio for Mark Risen Caparas. The entire site is **on
 
 ## Critical: case-sensitive asset paths
 
-The repo is developed on **Windows (case-insensitive)** but served by **GitHub Pages on Linux (case-sensitive)**. A path that works locally can 404 in production. Folder casing in git is not always what you'd expect — e.g. git tracks `CCS student leader/` (lowercase) and `Paragon/` (capital P) even though the local folders display differently. **Always match the casing in `git ls-files`, not the local folder.** After editing asset references, verify every one resolves to a tracked file with exact case:
+The repo is developed on **Windows (case-insensitive)** but served by **GitHub Pages on Linux (case-sensitive)**. A path that works locally can 404 in production. Folder casing in git is not always what you'd expect — e.g. git tracks `CCS student leader/` (lowercase) and `Paragon/` (capital P) even though the local folders display differently. **Always match the casing in `git ls-files`, not the local folder.** An untracked file also 404s in production even though it loads locally. After editing asset references, run this in Git Bash (the Bash tool) to verify that every reference resolves to a tracked file with exact case:
 ```
-git ls-files > /tmp/tracked.txt
-grep -oE '(src|href)="[^"]+\.(jpg|jpeg|png|webp|pdf|mp4)"' index.html \
+T="$(git ls-files)"
+grep -oE '(src|href)="[^"]+\.(jpg|jpeg|png|webp|pdf|mp4|svg)"' index.html \
   | sed -E 's/^(src|href)="//; s/"$//' | grep -v '^https' | sort -u \
-  | while read -r r; do grep -qxF "$r" /tmp/tracked.txt || echo "MISSING: $r"; done
+  | while read -r r; do printf '%s\n' "$T" | grep -qxF "$r" || echo "MISSING: $r"; done
 ```
 Any `MISSING:` line is a production 404.
 
 ## Architecture & conventions
 
-- **Theming:** CSS custom properties are defined in `:root{` (~line 22); dark mode overrides live under `:root[data-theme="dark"]`. The toggle persists to `localStorage` key `mrc-v2-theme`. Brand tokens: `--bg`, `--ink`, `--accent` (terracotta `#c4623a`), `--sage`, `--white` (note: `--white` is theme-adaptive — it is dark in dark mode, so use it for cards rather than a literal `#fff`).
+- **Theming:** CSS custom properties are defined in `:root{` (~line 35); dark mode overrides live under `:root[data-theme="dark"]` (~line 45). With no saved choice the page follows the OS `prefers-color-scheme` (live); once the toggle is clicked, the choice persists to `localStorage` key `mrc-v2-theme` and wins. A one-line script in `<head>` applies the theme before first paint (keep its logic in sync with `initTheme`, which syncs the sun/moon icons and `aria-pressed`). Wrap any `localStorage` access in try/catch — an uncaught throw inside one `initX()` aborts every init after it. Brand tokens: `--bg`, `--ink`, `--accent` (terracotta `#c4623a`), `--sage`, `--white` (note: `--white` is theme-adaptive — it is dark in dark mode, so use it for cards rather than a literal `#fff`). Exception: logo panels for AGAILA and ReColor deliberately use a hardcoded `background:#ffffff` so the dark artwork stays visible in dark mode.
+- **Styling style:** most layout is inline `style="..."` attributes on elements rather than classes; follow the surrounding markup's pattern when editing a section.
 - **Type system:** Sora (headings), Source Serif 4 (body), IBM Plex Mono (labels/meta).
-- **JS bootstrap:** a single `DOMContentLoaded` handler (~line 900) calls a series of `initX()` functions (`initTheme`, `initLightbox`, `initSlideshow`, `initExpand`, `initAnimations`, `initCounters`, `initContactForm`, etc.). To add behavior, write an `initX()` function and call it from that handler.
-- **Lightbox:** shared DOM (`#v2-lb`). Photo sets are grouped independently by the `data-pg` attribute on `[data-photo]` wrappers (values like `ql`, `carina`, `recolor`, `moments`); the creatives masonry uses `[data-gal]` as one group. Adding a new `data-pg` value automatically forms a new navigable group — no JS change needed.
-- **Expand/collapse:** a `.expand-toggle[data-target]` button toggles `.expand-body.collapsed` (a `max-height` transition). Reused across project cards and award cards.
+- **JS bootstrap:** a single `DOMContentLoaded` handler (~line 1264) calls a series of `initX()` functions (`initTheme`, `initScrollSpy`, `initLightbox`, `initSlideshow`, `initExpand`, `initAnimations`, `initCounters`, `initContactForm`, `initSectionNums`, etc.). To add behavior, write an `initX()` function and call it from that handler.
+- **Lightbox:** shared DOM (`#v2-lb`). Photo sets are grouped independently by the `data-pg` attribute on `[data-photo]` wrappers (values like `ql`, `carina`, `recolor`, `optum`, `moments`); the creatives masonry uses `[data-gal]` as one group. Adding a new `data-pg` value automatically forms a new navigable group — no JS change needed. `initLightbox` also makes every tile keyboard-focusable (`tabindex`/`role="button"`, Enter/Space opens) and hides prev/next/counter for one-image groups, so give each tile's `<img>` a real `alt` (it becomes the tile's label).
+- **Experience timeline:** Experience is an `<ol class="exp-timeline">`; each role is an `<li class="exp-item">` holding an `.exp-mark` (dot + "YEAR · Company" label) and an `.exp-card`. Newest first; only the newest gets `exp-item--latest` (filled dot). `.exp-card` is a 300px photo column + text; add `exp-card--banner` for wide/group photos to put the photo full-width on top instead.
+- **Lightbox touch:** swipe left/right navigates, swipe down closes; a `.loading` class on `#v2-lb` shows a spinner until the image loads, and neighbours are preloaded.
+- **Expand/collapse:** a `.expand-toggle[data-target]` button toggles `.expand-body.collapsed` (a `max-height` transition) and sets `inert` on the body while collapsed. Reused across project cards and award cards.
+- **Reduced motion:** a `prefers-reduced-motion` CSS block disables transitions and reveals `.fade-up` immediately; JS checks the `REDUCED_MOTION` const to skip slideshow autoplay and the typewriter. Respect it in any new animation.
 - **Scroll UX:** `.fade-up` + IntersectionObserver for reveal-on-scroll; `[data-count]`/`[data-suffix]` for animated stat counters; `[data-nav]` for scroll-spy nav highlighting.
+- **Section numbers:** each section heading has `<span class="section-num" data-num="N">`, which `initSectionNums` animates from 00 up to N. The numbers are set by hand, so when you insert or reorder a section, renumber the `data-num` values (and the fallback text inside the span) that follow it. Currently 01 Hero → 09 Creatives.
 - **Ghost portraits:** faint background `.ghost-portrait` images (`z-index:-1`, `section:has(> .ghost-portrait){isolation:isolate}`). They only render usefully in **full-width sections** (Projects, Credentials, Awards), where centered content leaves side margins; in `max-width:1100` sections the content covers them, so don't add them there.
 - **Contact form:** posts to Formspree (`https://formspree.io/f/mojoaroe`) via async fetch in `initContactForm`.
 
 ## Section structure (in `index.html`)
 
-Hero/about → stats bar → Projects (ReColor, QuadLearning, Optum ERP) → Experience → Credentials (Education / Certifications / Training) → Leadership (+ testimonial) → Awards → Community Initiatives → Creatives (video + masonry) → Contact (socials + Formspree form + "Moments" photo band) → footer. Each major section is a top-level `<section id="...">` matched by the nav anchors.
+Hero/about [01] → stats bar → Projects [02] (ReColor, QuadLearning, Optum ERP) → VeloBuild [03] (founder nonprofit org; donated projects: AGAILA, ReColor, MyCCS) → Experience [04] (Concentrix fraud ops, Optum internship; newest first) → Credentials (Education / Certifications / Training) → Leadership → Awards → Community Initiatives → Creatives (video + masonry) → Contact (socials + Formspree form + "Moments" photo band) → footer. Each major section is a top-level `<section id="...">` matched by the nav `href="#id"` anchors.
+
+## Logo assets
+
+- Use `agaila-logo.svg` and `recolor-logo.svg` (the PNGs are fallbacks). `AGAILA.svg` and `ReColor logo.svg` are older tracked copies; they are not referenced by the page.
+- `myccs-logo.png` is a placeholder. In the page, MyCCS shows a styled text wordmark instead.
