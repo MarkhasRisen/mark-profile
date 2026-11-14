@@ -36,21 +36,25 @@ html{scroll-behavior:smooth;scroll-padding-top:60px}
 body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .35s ease,color .35s ease}
 :root{
   --bg:#faf8f5;--white:#ffffff;
-  --ink:#1a1a1a;--ink-2:#555048;--ink-3:#8a837b;--ink-4:#b5afa8;
+  --ink:#1a1a1a;--ink-2:#555048;--ink-3:#6b645c;--ink-4:#857e75;
   --accent:#c4623a;--accent-dim:rgba(196,98,58,.08);
   --sage:#5a7a64;--sage-dim:rgba(90,122,100,.08);
   --border:rgba(26,26,26,.08);--border-m:rgba(26,26,26,.14);
   --shadow:0 2px 12px rgba(0,0,0,.04);
+  --shadow-lift:0 14px 36px rgba(0,0,0,.09);
+  --hero-glow:rgba(196,98,58,.11);--hero-dot:rgba(26,26,26,.07);
   --nav-glass:rgba(250,248,245,.88);
   --btn-dl-bg:var(--ink);--btn-dl-color:#fff;
 }
 :root[data-theme="dark"]{
   --bg:#0c0e18;--white:#151926;
-  --ink:#e2e6f0;--ink-2:#8b94aa;--ink-3:#555e74;--ink-4:#3a4258;
+  --ink:#e2e6f0;--ink-2:#a1a9bd;--ink-3:#8189a0;--ink-4:#636c84;
   --accent:#e07850;--accent-dim:rgba(224,120,80,.10);
   --sage:#5ec47a;--sage-dim:rgba(94,196,122,.10);
   --border:rgba(255,255,255,.08);--border-m:rgba(255,255,255,.15);
   --shadow:0 2px 12px rgba(0,0,0,.22);
+  --shadow-lift:0 14px 36px rgba(0,0,0,.45);
+  --hero-glow:rgba(224,120,80,.13);--hero-dot:rgba(255,255,255,.06);
   --nav-glass:rgba(12,14,24,.88);
   --btn-dl-bg:#e07850;--btn-dl-color:#fff;
 }
@@ -62,11 +66,67 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-w
 [data-gal]{cursor:zoom-in;overflow:hidden;border-radius:6px;break-inside:avoid;margin-bottom:8px}
 [data-gal] img{transition:transform .35s,filter .35s;display:block;width:100%;height:auto}
 [data-gal]:hover img{transform:scale(1.03);filter:brightness(.92)}
-[data-photo]{cursor:zoom-in;overflow:hidden;border-radius:8px}
-[data-photo] img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .3s}
-[data-photo]:hover img{transform:scale(1.04)}
-::selection{background:var(--accent-dim);color:var(--ink)}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--ink-4);border-radius:2px}
+/* Footer */
+.site-foot{border-top:1px solid var(--border);background:var(--white)}
+.foot-inner{max-width:1100px;margin:0 auto;padding:48px 32px 28px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+.foot-logo{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px}
+.foot-logo span{color:var(--accent)}
+.foot-brand p{font-family:'Source Serif 4',serif;font-size:14px;line-height:1.65;color:var(--ink-2);max-width:340px;margin-bottom:14px}
+.foot-status{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 10px}
+.foot-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.foot-col{display:flex;flex-direction:column;align-items:flex-start;gap:7px}
+.foot-col>a:not(.foot-cv){font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);text-decoration:none;transition:color .15s}
+.foot-col>a:not(.foot-cv):hover{color:var(--accent)}
+.foot-socials{display:flex;gap:8px;margin-bottom:10px}
+.foot-social{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border:1px solid var(--border);border-radius:8px;color:var(--ink-3);transition:color .15s,border-color .15s,translate .15s}
+.foot-social:hover{color:var(--accent);border-color:var(--accent);translate:0 -2px}
+.foot-cv{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:7px 14px;transition:background .15s,color .15s}
+.foot-cv:hover{background:var(--accent);color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-top:36px;padding-top:18px;border-top:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase}
+.foot-meta{display:flex;align-items:center;gap:14px}
+.foot-top{background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink-3);padding:0;transition:color .15s}
+.foot-top:hover{color:var(--accent)}
+@media(max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;gap:28px}.foot-brand{grid-column:1/-1}.foot-bottom{flex-direction:column;align-items:flex-start}}
+/* Photo frames: one radius, one hover treatment (zoom + dim + expand badge) everywhere */
+[data-photo]{cursor:zoom-in;overflow:hidden;border-radius:8px;position:relative}
+[data-photo] img{width:100%;height:180px;object-fit:cover;display:block;border-radius:0!important;transition:transform .35s ease,filter .35s ease}
+[data-photo]:hover img{transform:scale(1.04);filter:brightness(.92)}
+[data-photo]::after{content:'';position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;
+  background:rgba(12,14,24,.62) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7'/%3E%3C/svg%3E") center/13px no-repeat;
+  opacity:0;transform:scale(.8);transition:opacity .2s ease,transform .2s ease;pointer-events:none}
+[data-photo]:hover::after,[data-photo]:focus-visible::after{opacity:1;transform:none}
+[data-pg="recolor"]::after{display:none}
+/* Single feature photos (awards): fixed-height frame instead of full natural height */
+.photo-feature img{height:380px!important}
+@media(max-width:700px){.photo-feature img{height:240px!important}}
+@media (hover:none){[data-photo]::after{opacity:.85;transform:none}}
+/* Brand details: selection, scrollbars, form accents, focus ring, balanced wrapping */
+::selection{background:var(--accent);color:#fff}
+html{scrollbar-color:var(--ink-4) transparent;scrollbar-width:thin}
+::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:var(--ink-4);border-radius:3px}::-webkit-scrollbar-thumb:hover{background:var(--accent)}
+input,textarea,select{accent-color:var(--accent);caret-color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3,h4,blockquote{text-wrap:balance}
+p,li,figcaption{text-wrap:pretty}
+/* Theme switch: circular reveal from the toggle (View Transitions; JS drives the clip-path) */
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+::view-transition-new(root){z-index:2}
+/* Hero: faint glow + dot texture behind the name */
+#about{position:relative;isolation:isolate}
+#about::before{content:'';position:absolute;inset:-56px -32px 0;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse 55% 60% at 22% 38%,var(--hero-glow),transparent 70%),
+             radial-gradient(var(--hero-dot) 1px,transparent 1.3px) 0 0/22px 22px;
+  -webkit-mask-image:radial-gradient(ellipse 70% 75% at 30% 45%,#000 30%,transparent 78%);
+          mask-image:radial-gradient(ellipse 70% 75% at 30% 45%,#000 30%,transparent 78%)}
+/* Hero slideshow: slow zoom while a photo is showing; snap back only after it has faded out */
+#hero-slideshow{overflow:hidden;border-radius:inherit}
+#hero-slideshow .slide-img{transform:scale(1);transform-origin:center 30%;transition:opacity 1s ease,transform 0s linear 1s!important}
+#hero-slideshow .slide-img.active{transform:scale(1.07);transition:opacity 1s ease,transform 6s ease-out!important}
+/* Section heading rules draw in the first time they scroll into view */
+.sec-rule{background:linear-gradient(90deg,var(--accent) 0,var(--border) 140px)!important;transform-origin:left center}
+.js-anim .sec-rule{transform:scaleX(0);transition:transform 1s cubic-bezier(.2,.7,.2,1) .15s}
+.js-anim .sec-rule.drawn{transform:scaleX(1)}
 img{max-width:100%;display:block}
 /* Lightbox */
 #v2-lb{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.92);align-items:center;justify-content:center}
@@ -96,8 +156,12 @@ img{max-width:100%;display:block}
 .fade-up-grid > .fade-up:nth-child(4){transition-delay:.24s}
 .fade-up-grid > .fade-up:nth-child(5){transition-delay:.32s}
 /* Project card hover */
-.proj-card{transition:transform .25s ease,box-shadow .25s ease}
-.proj-card:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.10)}
+/* Shared card hover: one lift + shadow for every card type.
+   Uses the independent `translate` property so it never fights .fade-up's `transform` reveal;
+   !important beats the cards' inline box-shadow / border-color. */
+.card-lift{transition:opacity .55s ease,transform .55s ease,translate .22s ease,box-shadow .22s ease,border-color .22s ease}
+.card-lift:hover{translate:0 -3px;box-shadow:0 0 0 1px var(--border-m),var(--shadow-lift)!important;transition-delay:0s}
+@media (hover:none){.card-lift:hover{translate:none}}
 /* Expand/collapse */
 .expand-body{overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1)}
 .expand-body.collapsed{max-height:0!important}
@@ -111,6 +175,25 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .exp-card{display:grid;grid-template-columns:300px 1fr;align-items:stretch;overflow:hidden;}
 .exp-card .exp-photo{width:100%;height:100%;object-fit:cover;object-position:center;display:block;transition:transform .3s;}
 .exp-card .exp-photo:hover{transform:scale(1.03);}
+/* Clickable skills: chips filter/highlight the places each skill was used */
+.skill-hint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-4);margin:-8px 0 12px;}
+.skill-chip{cursor:pointer;line-height:inherit;transition:transform .15s,box-shadow .15s,background .15s,color .15s;}
+.skill-chip::after{content:'';display:inline-block;width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.55;margin-left:6px;vertical-align:middle;}
+.skill-chip:hover{transform:translateY(-1px);box-shadow:0 2px 6px rgba(0,0,0,.08);}
+.skill-chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+.skill-chip[aria-pressed="true"]{background:var(--ink)!important;color:var(--bg)!important;border-color:var(--ink)!important;}
+.skill-results{margin-top:16px;padding-top:14px;border-top:1px dashed var(--border-m);}
+.skill-results-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
+.skill-results-head strong{color:var(--accent);font-weight:500;}
+.skill-clear{background:none;border:none;cursor:pointer;font:inherit;color:var(--ink-3);text-decoration:underline;text-underline-offset:2px;padding:0;}
+.skill-clear:hover{color:var(--accent);}
+.skill-results ul{list-style:none;display:flex;flex-direction:column;gap:4px;}
+.skill-jump{width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--bg);border:1px solid var(--border);border-radius:5px;padding:7px 10px;cursor:pointer;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);transition:border-color .15s,color .15s;}
+.skill-jump:hover,.skill-jump:focus-visible{border-color:var(--accent);color:var(--ink);outline:none;}
+.skill-jump span:last-child{color:var(--accent);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+.skill-hit{outline:2px solid var(--accent)!important;outline-offset:4px;border-radius:10px;transition:outline-color .2s;}
+.skill-flash{animation:skill-flash 1.4s ease-out;}
+@keyframes skill-flash{0%{box-shadow:0 0 0 0 var(--accent);}30%{box-shadow:0 0 0 10px var(--accent-dim);}100%{box-shadow:0 0 0 0 transparent;}}
 /* Experience timeline: vertical rail on the left, a dot + year marker above each card */
 .exp-timeline{list-style:none;position:relative;display:flex;flex-direction:column;gap:28px;padding-left:34px;}
 .exp-timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--border));border-radius:2px;}
@@ -153,6 +236,11 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 #mobileNav a:hover,#mobileNav a.active{color:var(--accent)}
 #mobileNav.open{display:flex}
 #navToggle{display:none;background:none;border:1px solid var(--border);border-radius:6px;width:36px;height:36px;cursor:pointer;align-items:center;justify-content:center;color:var(--ink-3);flex-shrink:0}
+/* Nav density: tighten between 1100–1240px, switch to the menu button below 1100px
+   (10 links + controls don't fit; they used to collide with the logo and wrap the CV button) */
+.nav-cv{white-space:nowrap}
+@media(max-width:1240px){.v2-nav-links{gap:13px!important}.v2-nav-links a{letter-spacing:.02em!important}}
+@media(max-width:1100px){.v2-nav-links{display:none!important}#navToggle{display:flex!important}}
 /* Gallery responsive */
 .gal-wrap{columns:3;column-gap:8px}
 @media(max-width:700px){.gal-wrap{columns:2}}
@@ -168,7 +256,9 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   nav{position:relative!important;box-shadow:none!important}
   body{background:#fff!important;color:#000!important}
   .fade-up{opacity:1!important;transform:none!important}
-  a[href]::after{content:" (" attr(href) ")";font-size:9px;color:#666}
+  .sec-rule{transform:none!important}
+  #about::before{display:none}
+  a[href]::after{content:" (" attr(href) ")";font-size:10px;color:#666}
   section,header{break-inside:avoid}
   .gal-wrap{columns:4}
   [data-gal] img{height:auto}
@@ -204,7 +294,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         <svg id="iconSun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="display:none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
         <svg id="iconMoon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
       </button>
-      <a href="Mark_Risen_Caparas_Resume_v4_PlainATS.pdf" download style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:7px 16px;background:var(--accent);color:#fff;border-radius:4px;font-weight:500;">CV ↓</a>
+      <a href="Mark_Risen_Caparas_Resume_v4_PlainATS.pdf" download class="nav-cv" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:7px 16px;background:var(--accent);color:#fff;border-radius:4px;font-weight:500;">CV ↓</a>
     </div>
   </div>
 </nav>
@@ -307,7 +397,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
     <span class="section-num" data-num="1" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">01</span>
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">About</h2>
-    <div style="height:1px;flex:1;background:var(--border);"></div>
+    <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
   </div>
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:start;">
     <div>
@@ -321,49 +411,52 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     </div>
     <div style="padding:20px;background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow);">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">SKILLS &amp; TOOLS</div>
+      <p class="skill-hint">Click a skill marked <span aria-hidden="true">•</span> to see where I've used it.</p>
       <div style="display:flex;flex-direction:column;gap:14px;">
         <!-- Languages & Frameworks -->
         <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">Languages &amp; Frameworks</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">Languages &amp; Frameworks</div>
           <div style="display:flex;gap:4px;flex-wrap:wrap;">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Python</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">JS · TS</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">React Native</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">SQL · Firebase</span>
+            <button type="button" class="skill-chip" data-skill="python" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Python</button>
+            <button type="button" class="skill-chip" data-skill="js" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">JS · TS</button>
+            <button type="button" class="skill-chip" data-skill="react-native" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">React Native</button>
+            <button type="button" class="skill-chip" data-skill="sql" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">SQL</button>
+            <button type="button" class="skill-chip" data-skill="firebase" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Firebase</button>
           </div>
         </div>
         <!-- AI & Data -->
         <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">AI &amp; Data</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">AI &amp; Data</div>
           <div style="display:flex;gap:4px;flex-wrap:wrap;">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:3px;color:var(--accent);">Computer Vision</span>
+            <button type="button" class="skill-chip" data-skill="computer-vision" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:3px;color:var(--accent);">Computer Vision</button>
             <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:3px;color:var(--accent);">TensorFlow</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:3px;color:var(--accent);">Image Processing</span>
+            <button type="button" class="skill-chip" data-skill="image-processing" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:3px;color:var(--accent);">Image Processing</button>
           </div>
         </div>
         <!-- Enterprise & Tools -->
         <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">Enterprise &amp; Tools</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">Enterprise &amp; Tools</div>
           <div style="display:flex;gap:4px;flex-wrap:wrap;">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">SharePoint</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Power Automate</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">SAP B1</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Figma</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Jira</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">AWS</span>
+            <button type="button" class="skill-chip" data-skill="sharepoint" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">SharePoint</button>
+            <button type="button" class="skill-chip" data-skill="power-automate" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Power Automate</button>
+            <button type="button" class="skill-chip" data-skill="sap" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">SAP B1</button>
+            <button type="button" class="skill-chip" data-skill="figma" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Figma</button>
+            <button type="button" class="skill-chip" data-skill="jira" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">Jira</button>
+            <button type="button" class="skill-chip" data-skill="aws" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--bg);border:1px solid var(--border);border-radius:3px;color:var(--ink-2);">AWS</button>
           </div>
         </div>
         <!-- Soft Skills -->
         <div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">Methodology &amp; Soft Skills</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">Methodology &amp; Soft Skills</div>
           <div style="display:flex;gap:4px;flex-wrap:wrap;">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">Agile · Scrum</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">Lean Six Sigma</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">Stakeholder Mgmt</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">ISO 9001</span>
+            <button type="button" class="skill-chip" data-skill="agile" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">Agile · Scrum</button>
+            <button type="button" class="skill-chip" data-skill="lean" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">Lean Six Sigma</button>
+            <button type="button" class="skill-chip" data-skill="stakeholder" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">Stakeholder Mgmt</button>
+            <button type="button" class="skill-chip" data-skill="iso" aria-pressed="false" style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:3px;color:var(--sage);">ISO 9001</button>
           </div>
         </div>
       </div>
+      <div id="skill-results" class="skill-results" aria-live="polite" hidden></div>
     </div>
   </div>
 </section>
@@ -375,19 +468,19 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:32px;">
       <span class="section-num" data-num="2" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">02</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Featured Projects</h2>
-      <div style="height:1px;flex:1;background:var(--border);"></div>
+      <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:20px;">
 
       <!-- ReColor -->
-      <div class="proj-card fade-up" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div class="proj-card fade-up card-lift" data-skills="react-native computer-vision image-processing python firebase" data-skill-label="ReColor — thesis app · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">THESIS PROJECT</div>
             <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">ReColor — Mobile Vision Assistive App</h3>
             <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-top:8px;max-width:600px;">Real-time color vision remapping for color blind users. Daltonization algorithms, CIE Lab color space — clinically validated with PERI. Submitted to Google Play Store.</p>
           </div>
-          <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--accent);text-align:right;padding:6px 12px;border:1px solid var(--accent);border-radius:4px;flex-shrink:0;">BEST CS THESIS<br>BEST RESEARCH</div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--accent);text-align:right;padding:6px 12px;border:1px solid var(--accent);border-radius:4px;flex-shrink:0;">BEST CS THESIS<br>BEST RESEARCH</div>
         </div>
         <!-- Poster -->
         <div style="margin-top:20px;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
@@ -422,28 +515,28 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
             <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">A mixed-methods evaluation was conducted with 30 general end users. Results indicate that daltonization and hue rotation provide complementary performance across different CVD types, while the color identification module achieved an accuracy of <strong style="color:var(--ink);">100%</strong>. GPU-based simulation demonstrated high fidelity, with a mean &Delta;E of 0.025 compared to a double-precision CPU reference. System testing achieved a <strong style="color:var(--ink);">100% pass rate</strong> across defined test cases, and user evaluation yielded a grand mean of <strong style="color:var(--ink);">3.60 (Highly Acceptable)</strong> with strong internal consistency (Cronbach&rsquo;s &alpha; = 0.9348).</p>
             <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:14px;">The study was conducted under a Memorandum of Understanding with the <strong style="color:var(--ink);">Philippine Eye Research Institute (PERI)</strong>, ensuring institutional support and alignment with national vision health initiatives under Republic Act No. 11358. By integrating screening, assistive enhancement, and awareness features into a single mobile platform, ReColor provides a practical, accessible, and scalable solution for supporting individuals with color vision deficiency and advancing inclusive technology in the Philippine context.</p>
             <div style="display:flex;gap:5px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--border);">
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">color vision deficiency</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">daltonization</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">image processing</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">mobile assistive technology</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">Ishihara screening</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">CVD simulation</span>
-              <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">hue rotation</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">color vision deficiency</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">daltonization</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">image processing</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">mobile assistive technology</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">Ishihara screening</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">CVD simulation</span>
+              <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">hue rotation</span>
             </div>
           </div>
         </div>
         <div class="v2-proj-stats" style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--border);border-radius:6px;overflow:hidden;margin-top:20px;">
-          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">+6.91</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">delta-E gain</div></div>
-          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">100%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Color ID accuracy</div></div>
-          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">3.92/4</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Expert rating</div></div>
-          <div style="padding:14px 16px;background:var(--white);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">43</div><div style="font-family:'IBM Plex Mono',monospace;font-size:8px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Validators</div></div>
+          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">+6.91</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">delta-E gain</div></div>
+          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">100%</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Color ID accuracy</div></div>
+          <div style="padding:14px 16px;background:var(--white);border-right:1px solid var(--border);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">3.92/4</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Expert rating</div></div>
+          <div style="padding:14px 16px;background:var(--white);"><div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);">43</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;margin-top:3px;">Validators</div></div>
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;margin-top:16px;flex-wrap:wrap;gap:10px;">
           <div style="display:flex;gap:5px;flex-wrap:wrap;">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">React Native</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">CIE Lab</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Daltonization</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Clinical Validation · PERI</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">React Native</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">CIE Lab</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Daltonization</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Clinical Validation · PERI</span>
           </div>
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
             <span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:4px;letter-spacing:.04em;">
@@ -460,7 +553,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       </div>
 
       <!-- QuadLearning -->
-      <div class="proj-card fade-up" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div class="proj-card fade-up card-lift" data-skills="figma agile stakeholder sql" data-skill-label="QuadLearning SIS · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">LEAD PM · 4-DEV TEAM</div>
@@ -469,7 +562,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           </div>
           <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
             <img src="Quadlearning/images.jpg" alt="TVNHS Logo" style="width:48px;height:48px;object-fit:contain;border-radius:6px;background:rgba(255,255,255,.08);border:1px solid var(--border);padding:4px;">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--sage);text-align:right;padding:6px 12px;border:1px solid var(--sage);border-radius:4px;">PRODUCTION<br>100+ USERS</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--sage);text-align:right;padding:6px 12px;border:1px solid var(--sage);border-radius:4px;">PRODUCTION<br>100+ USERS</div>
           </div>
         </div>
         <button class="expand-toggle" data-target="ql-expand" aria-expanded="false">
@@ -478,7 +571,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </button>
         <!-- Documentation -->
         <div class="expand-body collapsed" id="ql-expand" style="max-height:3000px;">
-          <div data-photo data-pg="ql" style="margin-top:14px;border-radius:6px;overflow:hidden;border:1px solid var(--border);height:320px;cursor:pointer;">
+          <div data-photo data-pg="ql" style="margin-top:14px;border:1px solid var(--border);height:320px;">
             <img src="Quadlearning/00_full_walkthrough.webp" alt="QuadLearning full walkthrough" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;">
@@ -489,10 +582,10 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:16px;">
           <div style="display:flex;gap:5px;flex-wrap:wrap;">
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Project Management</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Hybrid Agile-Waterfall</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Figma · UI/UX</span>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Stakeholder Management</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Project Management</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Hybrid Agile-Waterfall</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Figma · UI/UX</span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Stakeholder Management</span>
           </div>
           <a href="https://github.com/MarkhasRisen/QuadLearning_repo" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:4px;letter-spacing:.04em;text-decoration:none;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23A11.52 11.52 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.29-1.552 3.297-1.23 3.297-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -502,7 +595,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       </div>
 
       <!-- Optum ERP -->
-      <div class="proj-card fade-up" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div class="proj-card fade-up card-lift" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="ERP Merchandise System · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px;">INTERNSHIP · OPTUM PHILIPPINES · JUL–AUG 2025</div>
@@ -522,12 +615,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div class="expand-body collapsed" id="optum-photos" style="max-height:560px;">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;">
-            <div data-photo data-pg="optum"><img src="optum/1758283005052.jpg" alt="Optum ERP One-Stop Hub and Rewards Store" loading="lazy" style="width:100%;height:175px;object-fit:cover;border-radius:6px;display:block;"></div>
-            <div data-photo data-pg="optum"><img src="optum/1758283005930.jpg" alt="2025 ERP Rewards Store launch standee" loading="lazy" style="width:100%;height:175px;object-fit:cover;border-radius:6px;display:block;"></div>
-            <div data-photo data-pg="optum"><img src="optum/1758283007174.jpg" alt="ERP Rewards Store preview" loading="lazy" style="width:100%;height:175px;object-fit:cover;border-radius:6px;display:block;"></div>
-            <div data-photo data-pg="optum"><img src="optum/1758283002715.jpg" alt="Presenting the ERP project at Optum" loading="lazy" style="width:100%;height:175px;object-fit:cover;border-radius:6px;display:block;"></div>
-            <div data-photo data-pg="optum"><img src="optum/1755231621611.jpg" alt="Welcome to Optum onboarding" loading="lazy" style="width:100%;height:175px;object-fit:cover;border-radius:6px;display:block;"></div>
-            <div data-photo data-pg="optum"><img src="optum/1755136150591.jpg" alt="Optum intern team" loading="lazy" style="width:100%;height:175px;object-fit:cover;border-radius:6px;display:block;"></div>
+            <div data-photo data-pg="optum"><img src="optum/1758283005052.jpg" alt="Optum ERP One-Stop Hub and Rewards Store" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="optum"><img src="optum/1758283005930.jpg" alt="2025 ERP Rewards Store launch standee" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="optum"><img src="optum/1758283007174.jpg" alt="ERP Rewards Store preview" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="optum"><img src="optum/1758283002715.jpg" alt="Presenting the ERP project at Optum" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="optum"><img src="optum/1755231621611.jpg" alt="Welcome to Optum onboarding" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="optum"><img src="optum/1755136150591.jpg" alt="Optum intern team" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
           </div>
         </div>
         <div class="expand-body collapsed" id="optum-expand" style="max-height:200px;">
@@ -541,12 +634,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:16px;">
           <div style="display:flex;gap:5px;flex-wrap:wrap;">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">SharePoint</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">UI/UX</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Process Automation</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">ERP</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Executive Communication</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Stakeholder Engagement</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">SharePoint</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">UI/UX</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Process Automation</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">ERP</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Executive Communication</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Stakeholder Engagement</span>
           </div>
           <span style="display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:8px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:4px;letter-spacing:.04em;">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -564,8 +657,8 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
       <span class="section-num" data-num="3" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--sage);">03</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">VeloBuild</h2>
-      <div style="height:1px;flex:1;background:var(--border);"></div>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 10px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);">Nonprofit Technology Org · Philippines</span>
+      <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 10px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);">Nonprofit Technology Org · Philippines</span>
     </div>
 
     <!-- VeloBuild -->
@@ -576,7 +669,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div>
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap;">
               <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;">JUL 2026 — PRESENT</div>
-              <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:9px;padding:2px 8px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);font-weight:500;">
+              <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 8px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);font-weight:500;">
                 <span style="width:6px;height:6px;border-radius:50%;background:var(--sage);display:inline-block;animation:pulse-dot 2s ease-in-out infinite;" aria-hidden="true"></span>
                 Active · Nonprofit
               </span>
@@ -584,7 +677,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
             <h3 style="font-family:'Sora',sans-serif;font-size:20px;font-weight:800;color:var(--ink);letter-spacing:-.02em;margin-bottom:2px;">Founder &amp; Chief Executive Officer</h3>
             <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sage);letter-spacing:.04em;">Building Technology That Builds Filipino Communities</p>
           </div>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:4px 10px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);flex-shrink:0;">Nonprofit Technology Org</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 10px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);flex-shrink:0;">Nonprofit Technology Org</span>
         </div>
 
         <!-- Mission -->
@@ -607,21 +700,21 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
         <!-- Skills -->
         <div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:14px;">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Software Engineering</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Social Impact</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Nonprofit Leadership</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Community Development</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:9px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Digital Transformation</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Software Engineering</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Social Impact</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Nonprofit Leadership</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Community Development</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:3px 9px;border:1px solid var(--border);border-radius:3px;color:var(--ink-3);">Digital Transformation</span>
         </div>
       </div>
 
       <!-- Donated Projects — separated section -->
       <div style="border-top:1px solid var(--border);background:var(--bg);padding:16px 24px;">
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:12px;">Donated Projects</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:12px;">Donated Projects</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
 
           <!-- AGAILA card -->
-          <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+          <div class="card-lift" data-skills="js" data-skill-label="AGAILA · VeloBuild" style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
             <div style="padding:24px 24px 16px;display:flex;align-items:center;justify-content:center;background:#ffffff;border-bottom:1px solid var(--border);min-height:110px;">
               <img src="agaila-logo.svg" alt="AGAILA logo" style="max-height:64px;max-width:100%;object-fit:contain;" onerror="this.src='agaila-logo.png'">
             </div>
@@ -629,16 +722,16 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
               <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">AGAILA</div>
               <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.6;flex:1;">Geospatial AI platform for Philippine environmental hazard detection and disaster risk reduction.</p>
               <div style="display:flex;gap:4px;flex-wrap:wrap;">
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">React</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Leaflet.js</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Geospatial AI</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">React</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Leaflet.js</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Geospatial AI</span>
               </div>
               <a href="https://agaila-ph.vercel.app/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;padding:7px 14px;background:var(--sage);color:#fff;border-radius:5px;text-decoration:none;transition:background .2s;align-self:flex-start;" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--sage)'">View Live ↗</a>
             </div>
           </div>
 
           <!-- ReColor card -->
-          <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+          <div class="card-lift" data-skills="computer-vision image-processing" data-skill-label="ReColor (OpenCV) · VeloBuild" style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
             <div style="padding:24px 24px 16px;display:flex;align-items:center;justify-content:center;background:#ffffff;border-bottom:1px solid var(--border);min-height:110px;">
               <img src="recolor-logo.svg" alt="ReColor logo" style="max-height:72px;max-width:100%;object-fit:contain;" onerror="this.src='recolor-logo.png'">
             </div>
@@ -646,30 +739,30 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
               <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">ReColor</div>
               <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.6;flex:1;">Mobile vision assistive app — real-time color remapping, CVD simulation, and Ishihara screening for color blind users.</p>
               <div style="display:flex;gap:4px;flex-wrap:wrap;">
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Android</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Java</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">OpenCV</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Android</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Java</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">OpenCV</span>
               </div>
               <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:7px 14px;background:var(--accent-dim);border:1px solid var(--accent);color:var(--accent);border-radius:5px;align-self:flex-start;">Google Play · Pending</span>
             </div>
           </div>
 
           <!-- MyCCS card -->
-          <div style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
+          <div class="card-lift" data-skills="agile" data-skill-label="MyCCS · VeloBuild" style="background:var(--white);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;">
             <div style="padding:24px 24px 16px;display:flex;align-items:center;justify-content:center;background:#ffffff;border-bottom:1px solid var(--border);min-height:110px;">
               <span style="font-family:'Sora',sans-serif;font-size:32px;font-weight:800;color:#1a5fad;letter-spacing:-.03em;">MyCCS</span>
             </div>
             <div style="padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:8px;">
               <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
                 <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">MyCCS</div>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 7px;background:rgba(245,158,11,.1);border:1px dashed rgba(245,158,11,.5);color:#d97706;border-radius:3px;">In Development</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 7px;background:rgba(245,158,11,.1);border:1px dashed rgba(245,158,11,.5);color:#d97706;border-radius:3px;">In Development</span>
               </div>
               <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.6;flex:1;">Centralized, mobile-first platform for LPU-Cavite's CS/IT department — serving as the hub for student orgs, department events, and professional certification programs (CompTIA, Cisco, SAP, Certiport). Built under Agile, with the MVP focused on frictionless event registration and robust content governance.</p>
               <div style="display:flex;gap:4px;flex-wrap:wrap;">
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Mobile-first</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Agile / Scrum</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">LPU-Cavite</span>
-                <span style="font-family:'IBM Plex Mono',monospace;font-size:8px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Proprietary</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Mobile-first</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Agile / Scrum</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">LPU-Cavite</span>
+                <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Proprietary</span>
               </div>
               <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:7px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:5px;align-self:flex-start;">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -690,14 +783,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
     <span class="section-num" data-num="4" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">04</span>
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Experience</h2>
-    <div style="height:1px;flex:1;background:var(--border);"></div>
+    <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
   </div>
   <ol class="exp-timeline" aria-label="Work experience, most recent first">
 
     <!-- Concentrix -->
     <li class="exp-item exp-item--latest">
     <div class="exp-mark"><span class="exp-dot" aria-hidden="true"></span>2026 · Concentrix</div>
-    <div class="exp-card exp-card--banner" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
+    <div class="exp-card exp-card--banner card-lift" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
     <div data-photo data-pg="concentrix-exp" style="overflow:hidden;cursor:pointer;"><img class="exp-photo" src="concentrix/concentrix-team.jpg" alt="With the Concentrix fraud operations team" loading="lazy"></div>
     <div style="padding:24px;border-left:3px solid var(--accent);">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">SEP — DEC 2026</div>
@@ -715,9 +808,9 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     </li>
 
     <!-- Optum -->
-    <li class="exp-item">
+    <li class="exp-item" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="Optum internship · Experience">
     <div class="exp-mark"><span class="exp-dot" aria-hidden="true"></span>2025 · Optum</div>
-    <div class="exp-card" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
+    <div class="exp-card card-lift" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
     <div data-photo data-pg="optum-exp" style="overflow:hidden;cursor:pointer;"><img class="exp-photo" src="optum/1758283002715.jpg" alt="Presenting the ERP project at Optum Philippines" loading="lazy"></div>
     <div style="padding:24px;border-left:3px solid var(--accent);">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">JUL — AUG 2025</div>
@@ -743,12 +836,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:32px;">
       <span class="section-num" data-num="5" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">05</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Credentials</h2>
-      <div style="height:1px;flex:1;background:var(--border);"></div>
+      <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
     </div>
     <div class="v2-cred-grid fade-up-grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;">
 
       <!-- Education -->
-      <div class="fade-up" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div class="fade-up card-lift" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">EDUCATION</div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
           <img src="LPU/LPU_CAVITE (1).png" alt="LPU-Cavite" style="width:40px;height:40px;object-fit:contain;border-radius:6px;background:rgba(255,255,255,.08);border:1px solid var(--border);padding:3px;">
@@ -766,14 +859,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       </div>
 
       <!-- Certifications -->
-      <div class="fade-up" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div class="fade-up card-lift" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">CERTIFICATIONS</div>
         <div style="margin-bottom:16px;">
           <div style="display:inline-block;padding:4px 14px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;background:var(--accent);color:#fff;margin-bottom:6px;">CAIP</div>
           <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Certified AI Professional</h4>
           <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);margin-top:4px;">✓ Active · Exam-Validated</p>
         </div>
-        <div>
+        <div data-skills="lean" data-skill-label="Lean Six Sigma Yellow Belt · Certifications">
           <div style="display:inline-block;padding:4px 14px;border-radius:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;background:var(--sage);color:#fff;margin-bottom:6px;">CLSSYB</div>
           <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Lean Six Sigma Yellow Belt</h4>
           <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);margin-top:4px;">✓ Active · Exam-Validated</p>
@@ -784,26 +877,26 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8.5 12.5l2.5 2.5 5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;color:var(--ink);margin-bottom:4px;">Cisco Certifications</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3);">Engaging Stakeholders · Cisco</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-3);margin-top:2px;">English for IT 2 · Cisco</div>
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-top:4px;">View verified badges on Credly ↗</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);">Engaging Stakeholders · Cisco</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-3);margin-top:2px;">English for IT 2 · Cisco</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-top:4px;">View verified badges on Credly ↗</div>
           </div>
         </a>
       </div>
 
       <!-- Training -->
-      <div class="fade-up" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div class="fade-up card-lift" style="padding:22px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">TRAINING · 7 COMPLETIONS</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">PM Foundations: Integration</div>
-          <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">ISO 9001:2015 QMS</div>
-          <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">SAP Business One Courseware</div>
-          <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">AWS Business Essentials</div>
-          <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">Engaging Stakeholders · Cisco</div>
+          <div data-skills="iso" data-skill-label="ISO 9001:2015 QMS · Training" style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">ISO 9001:2015 QMS</div>
+          <div data-skills="sap" data-skill-label="SAP Business One · Training" style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">SAP Business One Courseware</div>
+          <div data-skills="aws" data-skill-label="AWS Business Essentials · Training" style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">AWS Business Essentials</div>
+          <div data-skills="stakeholder" data-skill-label="Engaging Stakeholders (Cisco) · Training" style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">Engaging Stakeholders · Cisco</div>
           <div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;padding-bottom:8px;border-bottom:1px solid var(--border);">English for IT 2</div>
           <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
             <span style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.5;">CyberSafety Seminar</span>
-            <a href="certs/Certificate for Mark Risen B. Caparas for _CyberSafety - Seminar_.pdf" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:4px;padding:3px 8px;white-space:nowrap;">View cert ↗</a>
+            <a href="certs/Certificate for Mark Risen B. Caparas for _CyberSafety - Seminar_.pdf" target="_blank" rel="noopener" style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--accent);text-decoration:none;border:1px solid var(--accent);border-radius:4px;padding:3px 8px;white-space:nowrap;">View cert ↗</a>
           </div>
         </div>
       </div>
@@ -814,14 +907,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:16px;">PROJECT MANAGEMENT INSTITUTE</div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
         <!-- Predictive -->
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;">
+        <div data-skills="stakeholder" data-skill-label="PMI Kickoff — Predictive · Credentials" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;">
           <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="fa3da187-6e0a-4f50-8889-15f3ed54d8e2" data-share-badge-host="https://www.credly.com"></div>
           <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">PMI Kickoff — Predictive</h4>
           <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.5;">Fundamentals of Predictive Project Management — scope, schedule, cost, quality & stakeholder engagement via the PMBOK® framework.</p>
           <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);">✓ Verified · Credly</p>
         </div>
         <!-- Agile -->
-        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;">
+        <div data-skills="agile" data-skill-label="PMI Kickoff — Agile · Credentials" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;">
           <div data-iframe-width="150" data-iframe-height="270" data-share-badge-id="9ac0ba5c-dbef-49e6-940d-64356b02e30c" data-share-badge-host="https://www.credly.com"></div>
           <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">PMI Kickoff — Agile</h4>
           <p style="font-family:'Source Serif 4',serif;font-size:12px;color:var(--ink-2);line-height:1.5;">Fundamentals of Agile Project Management — iterative delivery, Scrum, Kanban & adaptive planning within the PMI framework.</p>
@@ -834,8 +927,8 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="margin-top:20px;padding:24px 28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:22px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;">Career Roadmap</div>
-        <div style="height:1px;flex:1;background:var(--border);"></div>
-        <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);letter-spacing:.06em;">SELF-DIRECTED PATH</div>
+        <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.06em;">SELF-DIRECTED PATH</div>
       </div>
       <!-- Timeline -->
       <div style="position:relative;">
@@ -847,7 +940,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div style="background:var(--white);border:1px solid var(--sage);border-radius:8px;padding:16px;border-top:3px solid var(--sage);">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <div aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--sage);box-shadow:0 0 0 3px var(--sage-dim);flex-shrink:0;animation:pulse-dot 2s ease-in-out infinite;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--sage);text-transform:uppercase;font-weight:500;white-space:nowrap;">Now · 2026</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--sage);text-transform:uppercase;font-weight:500;white-space:nowrap;">Now · 2026</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
               <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">🎓 BS Computer Science</div>
@@ -861,7 +954,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div style="background:var(--white);border:1px solid var(--accent);border-radius:8px;padding:16px;border-top:3px solid var(--accent);">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <div aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--accent);flex-shrink:0;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;font-weight:500;white-space:nowrap;">Target · 2027</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;font-weight:500;white-space:nowrap;">Target · 2027</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
               <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">💼 Associate Project Manager</div>
@@ -876,7 +969,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div style="background:var(--white);border:1px solid var(--border-m);border-radius:8px;padding:16px;border-top:3px solid var(--ink-4);opacity:.85;">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
               <div aria-hidden="true" style="width:10px;height:10px;border-radius:50%;background:var(--ink-4);flex-shrink:0;"></div>
-              <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;font-weight:500;white-space:nowrap;">Vision · 2028+</div>
+              <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;font-weight:500;white-space:nowrap;">Vision · 2028+</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:6px;">
               <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">📚 MBA</div>
@@ -897,7 +990,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
     <span class="section-num" data-num="6" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">06</span>
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Leadership</h2>
-    <div style="height:1px;flex:1;background:var(--border);"></div>
+    <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
     <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.08em;">10 ROLES</span>
   </div>
   <figure class="fade-up" style="margin:0 0 28px;padding:20px 24px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--sage);border-radius:8px;box-shadow:var(--shadow);">
@@ -905,16 +998,16 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.06em;">— Ms. Alyssa Pocaan, MIS · Organization Adviser, CCS</figcaption>
   </figure>
   <div class="v2-lead-grid fade-up-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Public Relations Officer</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LYCESGO — Central Student Government</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">College Representative</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">SEP 2025–JAN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Head of Technical Assistance</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LIBRO</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JUL 2025–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Special Advisor</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--sage);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JUN 2024–JUN 2025</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">President</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA · 13-member board · 40% participation increase</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JUL 2023–JUN 2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">VP for External Affairs</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JUL 2023–JUN 2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Creatives Head Unit</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA · 8 designers, 15+ events</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JUL 2022–JUL 2023</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">General Committee</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">JUN 2019–FEB 2020</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Business Manager</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">Saint Augustine School — Student Government</div></div>
-    <div class="fade-up" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);margin-bottom:4px;">2014–2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Marketing Assistant</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">Jewel's Sari-sari Store</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Public Relations Officer</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LYCESGO — Central Student Government</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">College Representative</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">SEP 2025–JAN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Head of Technical Assistance</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LIBRO</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2025–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Special Advisor</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--sage);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUN 2024–JUN 2025</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">President</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA · 13-member board · 40% participation increase</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2023–JUN 2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">VP for External Affairs</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2023–JUN 2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Creatives Head Unit</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA · 8 designers, 15+ events</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2022–JUL 2023</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">General Committee</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUN 2019–FEB 2020</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Business Manager</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">Saint Augustine School — Student Government</div></div>
+    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">2014–2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Marketing Assistant</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">Jewel's Sari-sari Store</div></div>
   </div>
 </section>
 
@@ -925,11 +1018,11 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
       <span class="section-num" data-num="7" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">07</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Awards</h2>
-      <div style="height:1px;flex:1;background:var(--border);"></div>
+      <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
     </div>
     <div class="v2-cards fade-up-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
       <!-- CCS Student Leader — full width, photo expand -->
-      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
           <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">01</div>
           <div style="flex:1;">
@@ -943,14 +1036,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div class="expand-body collapsed" id="ccs-leader-expand" style="max-height:400px;">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;">
-            <div data-photo data-pg="ccs-leader" style="border-radius:6px;overflow:hidden;"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <div data-photo data-pg="ccs-leader" style="border-radius:6px;overflow:hidden;"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <div data-photo data-pg="ccs-leader" style="border-radius:6px;overflow:hidden;"><img src="CCS student leader/e932afb2-02b9-45ca-a025-87368733cd48.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-leader"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-leader"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-leader"><img src="CCS student leader/e932afb2-02b9-45ca-a025-87368733cd48.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
           </div>
         </div>
       </div>
       <!-- Paragon — full width, photo expand -->
-      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
           <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">02</div>
           <div style="flex:1;">
@@ -964,12 +1057,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div class="expand-body collapsed" id="paragon-expand" style="max-height:400px;">
           <div style="margin-top:16px;border-radius:6px;overflow:hidden;">
-            <div data-photo data-pg="paragon"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon Student Leader — PRO" loading="lazy" style="width:100%;height:auto;display:block;"></div>
+            <div data-photo data-pg="paragon" class="photo-feature"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon Student Leader — PRO" loading="lazy" style="width:100%;object-fit:cover;object-position:center 60%;display:block;"></div>
           </div>
         </div>
       </div>
       <!-- Best Research SSH — full width, photo + link -->
-      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
           <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">03</div>
           <div style="flex:1;">
@@ -986,13 +1079,13 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div class="expand-body collapsed" id="ssh-expand" style="max-height:600px;">
           <div style="margin-top:16px;border-radius:6px;overflow:hidden;">
-            <div data-photo data-pg="ssh"><img src="Best SSH/1779361245264.jpg" alt="Best Research — Social Sciences & Humanities" loading="lazy" style="width:100%;height:auto;display:block;"></div>
+            <div data-photo data-pg="ssh" class="photo-feature"><img src="Best SSH/1779361245264.jpg" alt="Best Research — Social Sciences & Humanities" loading="lazy" style="width:100%;object-fit:cover;object-position:center 40%;display:block;"></div>
           </div>
         </div>
       </div>
-      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">05</div>
+          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">04</div>
           <div style="flex:1;">
             <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">Best CS Thesis Awardee</h4>
             <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">MAY 4, 2026</p>
@@ -1001,9 +1094,9 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
       </div>
       <!-- CCS Achiever — full width, media expand -->
-      <div class="fade-up" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
+      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
         <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">04</div>
+          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">05</div>
           <div style="flex:1;">
             <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">CCS Achiever of the Year</h4>
             <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p>
@@ -1015,8 +1108,8 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div class="expand-body collapsed" id="ccs-achiever-expand" style="max-height:500px;">
           <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;align-items:start;">
-            <div data-photo data-pg="ccs-achiever" style="border-radius:6px;overflow:hidden;"><img src="CCS Achiever/6600c403-907b-44c6-afca-c49c8d72b999 (1).jpg" alt="CCS Achiever of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <div data-photo data-pg="ccs-achiever" style="border-radius:6px;overflow:hidden;"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-achiever"><img src="CCS Achiever/6600c403-907b-44c6-afca-c49c8d72b999 (1).jpg" alt="CCS Achiever of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
+            <div data-photo data-pg="ccs-achiever"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
             <video controls style="width:100%;height:180px;border-radius:6px;display:block;object-fit:cover;background:#000;" preload="none">
               <source src="CCS Achiever/3e1ce6b5-93d2-419a-85d8-876f49f6c042.mp4" type="video/mp4">
             </video>
@@ -1032,12 +1125,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
     <span class="section-num" data-num="8" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">08</span>
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Community Initiatives</h2>
-    <div style="height:1px;flex:1;background:var(--border);"></div>
+    <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
   </div>
   <div style="display:flex;flex-direction:column;gap:16px;">
 
     <!-- VeloBuild -->
-    <div style="padding:24px;background:var(--white);border:1px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);">
+    <div class="card-lift" style="padding:24px;background:var(--white);border:1px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);">
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
         <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;display:inline-flex;align-items:center;gap:5px;">
           <span style="width:5px;height:5px;border-radius:50%;background:var(--sage);display:inline-block;animation:pulse-dot 2s ease-in-out infinite;"></span>
@@ -1052,14 +1145,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     </div>
 
     <!-- Tech Forward -->
-    <div style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
+    <div class="card-lift" style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;">OCT 30, 2024</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">LPU-Cavite SATA · Tropical Village National High School</span></div>
       <h4 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;">Tech Forward: Striving for Excellence in Digital Literacy</h4>
       <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:16px;">Community tech outreach delivering hands-on workshops in programming, web design, and digital arts — reaching 150+ high school students at Tropical Village National HS, General Trias, Cavite.</p>
       <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:16px;">
-        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">150+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);text-transform:uppercase;">Students</div></div>
-        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">3</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);text-transform:uppercase;">Workshop tracks</div></div>
-        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">2</div><div style="font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--ink-4);text-transform:uppercase;">SDGs addressed</div></div>
+        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">150+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;">Students</div></div>
+        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">3</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;">Workshop tracks</div></div>
+        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">2</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;">SDGs addressed</div></div>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
         <div data-photo data-pg="tf"><img src="TechForward/image.png" alt="Tech Forward" loading="lazy"></div>
@@ -1069,7 +1162,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     </div>
 
     <!-- Typhoon Carina -->
-    <div style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
+    <div class="card-lift" style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
       <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;">AUG 12, 2024</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">SATA × COSel · Barangay Bacao 2, General Trias, Cavite</span></div>
       <h4 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;">SATA Joins Relief Efforts for Typhoon Carina Victims</h4>
       <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:16px;">Coordinated multi-organization relief operation in partnership with COSel, distributing packages to affected residents of Barangay Bacao 2 and underscoring SATA's commitment to community service beyond the campus.</p>
@@ -1099,7 +1192,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:28px;">
       <span class="section-num" data-num="9" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">09</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Creatives</h2>
-      <div style="height:1px;flex:1;background:var(--border);"></div>
+      <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
       <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">27 PIECES · SATA · LYCESGO</span>
     </div>
     <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:24px;max-width:700px;">Publicity materials produced as Creatives Head at SATA (8-designer committee, 15+ events) and as PRO of the LPU-Cavite Central Student Government (LYCESGO), managing institutional communications for 5,000+ students.</p>
@@ -1158,12 +1251,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 <section id="contact" style="max-width:1100px;margin:0 auto;padding:80px 32px;position:relative;">
   <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">✦ Moments</div>
   <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:44px;">
-    <div data-photo data-pg="moments"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Mark Risen Caparas" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="Student Leader of the Year" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever team" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon awarding" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="TechForward/image.png" alt="Tech Forward outreach" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Typhoon Carina relief" loading="lazy" style="width:100%;height:150px;object-fit:cover;border-radius:8px;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Mark Risen Caparas" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="Student Leader of the Year" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever team" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon awarding" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="TechForward/image.png" alt="Tech Forward outreach" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
+    <div data-photo data-pg="moments"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Typhoon Carina relief" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
   </div>
   <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
     <!-- Left: heading + social links -->
@@ -1225,14 +1318,39 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 </section>
 
 <!-- FOOTER -->
-<footer style="text-align:center;padding:28px 32px 36px;border-top:1px solid var(--border);background:var(--white);">
-  <div style="display:flex;justify-content:center;gap:16px;margin-bottom:18px;">
-    <a href="https://www.linkedin.com/in/mark-risen-caparas-caip-clssyb-353251121/" target="_blank" rel="noopener" aria-label="LinkedIn" style="color:var(--ink-4);transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-4)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
-    <a href="https://github.com/MarkhasRisen" target="_blank" rel="noopener" aria-label="GitHub" style="color:var(--ink-4);transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-4)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg></a>
-    <a href="https://www.facebook.com/mark.risen.caparas" target="_blank" rel="noopener" aria-label="Facebook" style="color:var(--ink-4);transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-4)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
-    <a href="https://www.instagram.com/mark_hasrisen/" target="_blank" rel="noopener" aria-label="Instagram" style="color:var(--ink-4);transition:color .2s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--ink-4)'"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg></a>
+<footer class="site-foot">
+  <div class="foot-inner">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="foot-logo">MRC<span>.</span></div>
+        <p>Mark Risen Caparas — CS graduate building AI systems &amp; enterprise tools, with a background in fraud operations and student leadership.</p>
+        <span class="foot-status">● Open to full-time roles</span>
+      </div>
+      <nav class="foot-col" aria-label="Footer">
+        <div class="foot-label">Explore</div>
+        <a href="#projects">Projects</a>
+        <a href="#velobuild">VeloBuild</a>
+        <a href="#experience">Experience</a>
+        <a href="#credentials">Credentials</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="foot-col">
+        <div class="foot-label">Connect</div>
+        <div class="foot-socials">
+          <a href="https://www.linkedin.com/in/mark-risen-caparas-caip-clssyb-353251121/" target="_blank" rel="noopener" aria-label="LinkedIn" class="foot-social"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
+          <a href="https://github.com/MarkhasRisen" target="_blank" rel="noopener" aria-label="GitHub" class="foot-social"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg></a>
+          <a href="https://www.facebook.com/mark.risen.caparas" target="_blank" rel="noopener" aria-label="Facebook" class="foot-social"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg></a>
+          <a href="https://www.instagram.com/mark_hasrisen/" target="_blank" rel="noopener" aria-label="Instagram" class="foot-social"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg></a>
+        </div>
+        <a href="Mark_Risen_Caparas_Resume_v4_PlainATS.pdf" download class="foot-cv">Download CV ↓</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Mark Risen Caparas, CAIP, CLSSYB</span>
+      <span class="foot-meta">Hand-coded · no frameworks <button type="button" class="foot-top" id="footTop">Back to top ↑</button></span>
+    </div>
   </div>
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);">© 2026 MARK RISEN CAPARAS, CAIP, CLSSYB</div>
 </footer>
 
 <button id="back-top" aria-label="Back to top">
@@ -1296,7 +1414,103 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initContactForm();
   initSectionNums();
+  initSkills();
+  initSectionRules();
 });
+
+// Section heading rules draw in once, the first time each heading scrolls into view.
+// The hidden state is gated on .js-anim so the lines still show if this script never runs.
+function initSectionRules() {
+  const rules = document.querySelectorAll('.sec-rule');
+  if (!rules.length || REDUCED_MOTION || !('IntersectionObserver' in window)) return;
+  document.documentElement.classList.add('js-anim');
+  // Observe each heading row, not the rule: a scaleX(0) rule has zero area and may never report as intersecting
+  const rowToRule = new Map();
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      rowToRule.get(e.target).classList.add('drawn');
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -12% 0px' });
+  rules.forEach(r => { rowToRule.set(r.parentElement, r); io.observe(r.parentElement); });
+}
+
+// Clickable skills: chip[data-skill] -> every [data-skills~=key] on the page
+function initSkills() {
+  const chips = document.querySelectorAll('.skill-chip[data-skill]');
+  const panel = document.getElementById('skill-results');
+  if (!chips.length || !panel) return;
+  let active = null;
+
+  function reveal(el) {
+    // open a collapsed expand section that hides the target
+    const body = el.closest('.expand-body.collapsed');
+    if (body) {
+      const t = document.querySelector('.expand-toggle[data-target="' + body.id + '"]');
+      if (t) t.click();
+    }
+    el.scrollIntoView({ behavior: REDUCED_MOTION ? 'auto' : 'smooth', block: 'center' });
+    el.classList.remove('skill-flash');
+    void el.offsetWidth; // restart the animation
+    el.classList.add('skill-flash');
+  }
+
+  function clear() {
+    active = null;
+    chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+    document.querySelectorAll('.skill-hit').forEach(el => el.classList.remove('skill-hit'));
+    panel.hidden = true;
+    panel.innerHTML = '';
+  }
+
+  function select(chip) {
+    const key = chip.dataset.skill;
+    if (active === key) { clear(); return; }
+    clear();
+    active = key;
+    chip.setAttribute('aria-pressed', 'true');
+    const targets = Array.from(document.querySelectorAll('[data-skills]'))
+      .filter(el => el.dataset.skills.split(/\s+/).includes(key));
+    targets.forEach(el => el.classList.add('skill-hit'));
+
+    const head = document.createElement('div');
+    head.className = 'skill-results-head';
+    const title = document.createElement('span');
+    title.innerHTML = '<strong></strong> · used in ' + targets.length + (targets.length === 1 ? ' place' : ' places');
+    title.querySelector('strong').textContent = chip.textContent.trim();
+    const clr = document.createElement('button');
+    clr.type = 'button';
+    clr.className = 'skill-clear';
+    clr.textContent = 'Clear';
+    clr.addEventListener('click', () => { const c = chip; clear(); c.focus(); });
+    head.append(title, clr);
+
+    const list = document.createElement('ul');
+    targets.forEach(el => {
+      const li = document.createElement('li');
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'skill-jump';
+      const name = document.createElement('span');
+      name.textContent = el.dataset.skillLabel || 'View';
+      const arrow = document.createElement('span');
+      arrow.textContent = '↓';
+      arrow.setAttribute('aria-hidden', 'true');
+      b.append(name, arrow);
+      b.addEventListener('click', () => reveal(el));
+      li.appendChild(b);
+      list.appendChild(li);
+    });
+    panel.replaceChildren(head, list);
+    panel.hidden = false;
+  }
+
+  chips.forEach(c => c.addEventListener('click', () => select(c)));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && active && !document.querySelector('#v2-lb.active')) clear();
+  });
+}
 
 function initTheme() {
   const root = document.documentElement;
@@ -1316,9 +1530,23 @@ function initTheme() {
   const btn = document.getElementById('themeToggle');
   if (btn) btn.addEventListener('click', () => {
     const isDark = root.getAttribute('data-theme') === 'dark';
-    applyDark(!isDark);
-    saved = isDark ? 'light' : 'dark';
-    try { localStorage.setItem('mrc-v2-theme', saved); } catch (e) {}
+    const swap = () => {
+      applyDark(!isDark);
+      saved = isDark ? 'light' : 'dark';
+      try { localStorage.setItem('mrc-v2-theme', saved); } catch (e) {}
+    };
+    // Circular reveal from the toggle where View Transitions are supported; instant swap otherwise
+    if (!document.startViewTransition || REDUCED_MOTION) { swap(); return; }
+    const r = btn.getBoundingClientRect();
+    const x = r.left + r.width / 2, y = r.top + r.height / 2;
+    const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+    const t = document.startViewTransition(swap);
+    t.ready.then(() => {
+      root.animate(
+        { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+        { duration: 550, easing: 'cubic-bezier(.4,0,.2,1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(() => {});
   });
 }
 
@@ -1508,7 +1736,9 @@ function initBackTop() {
   window.addEventListener('scroll', () => {
     btn.classList.toggle('visible', window.scrollY > 400);
   }, { passive: true });
-  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' }));
+  const footTop = document.getElementById('footTop');
+  if (footTop) footTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: REDUCED_MOTION ? 'auto' : 'smooth' }));
 }
 
 function initSlideshow() {
@@ -1517,9 +1747,12 @@ function initSlideshow() {
   if (!imgs.length) return;
   let cur = 0;
   function goTo(n) {
+    if (n === cur) return;
     imgs[cur].style.opacity = '0'; dots[cur].style.opacity = '.4';
+    imgs[cur].classList.remove('active'); dots[cur].setAttribute('aria-pressed', 'false');
     cur = n;
     imgs[cur].style.opacity = '1'; dots[cur].style.opacity = '.9';
+    imgs[cur].classList.add('active'); dots[cur].setAttribute('aria-pressed', 'true');
   }
   dots.forEach((d, i) => d.addEventListener('click', () => goTo(i)));
   if (!REDUCED_MOTION) setInterval(() => goTo((cur + 1) % imgs.length), 4000);
