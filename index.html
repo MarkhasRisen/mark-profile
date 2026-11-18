@@ -49,7 +49,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-w
 }
 :root[data-theme="dark"]{
   --bg:#0c0e18;--white:#151926;
-  --ink:#e2e6f0;--ink-2:#a1a9bd;--ink-3:#8189a0;--ink-4:#636c84;
+  --ink:#e2e6f0;--ink-2:#b8c0d2;--ink-3:#a0a9be;--ink-4:#8a93aa;
   --accent:#e07850;--accent-dim:rgba(224,120,80,.10);
   --cx-blue:#5aa8f0;--cx-blue-dim:rgba(90,168,240,.14);--optum-orange:#ff7a45;--optum-orange-dim:rgba(255,122,69,.14);
   --sage:#5ec47a;--sage-dim:rgba(94,196,122,.10);
@@ -1587,8 +1587,9 @@ function initScrollSpy() {
 
 function initNavHovers() {
   document.querySelectorAll('[data-nav]').forEach(a => {
+    const base = a.style.color; // keep each link's own colour (VeloBuild is green)
     a.addEventListener('mouseenter', () => { if (!a.classList.contains('active')) a.style.color = 'var(--ink)'; });
-    a.addEventListener('mouseleave', () => { a.style.color = ''; });
+    a.addEventListener('mouseleave', () => { a.style.color = base; });
   });
 }
 
