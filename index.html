@@ -38,6 +38,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-w
   --bg:#faf8f5;--white:#ffffff;
   --ink:#1a1a1a;--ink-2:#555048;--ink-3:#6b645c;--ink-4:#857e75;
   --accent:#c4623a;--accent-dim:rgba(196,98,58,.08);
+  --cx-blue:#0a5cad;--cx-blue-dim:rgba(10,92,173,.10);--optum-orange:#d4501c;--optum-orange-dim:rgba(212,80,28,.10);
   --sage:#5a7a64;--sage-dim:rgba(90,122,100,.08);
   --border:rgba(26,26,26,.08);--border-m:rgba(26,26,26,.14);
   --shadow:0 2px 12px rgba(0,0,0,.04);
@@ -50,6 +51,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-w
   --bg:#0c0e18;--white:#151926;
   --ink:#e2e6f0;--ink-2:#a1a9bd;--ink-3:#8189a0;--ink-4:#636c84;
   --accent:#e07850;--accent-dim:rgba(224,120,80,.10);
+  --cx-blue:#5aa8f0;--cx-blue-dim:rgba(90,168,240,.14);--optum-orange:#ff7a45;--optum-orange-dim:rgba(255,122,69,.14);
   --sage:#5ec47a;--sage-dim:rgba(94,196,122,.10);
   --border:rgba(255,255,255,.08);--border-m:rgba(255,255,255,.15);
   --shadow:0 2px 12px rgba(0,0,0,.22);
@@ -196,12 +198,15 @@ section:has(> .ghost-portrait){isolation:isolate;}
 @keyframes skill-flash{0%{box-shadow:0 0 0 0 var(--accent);}30%{box-shadow:0 0 0 10px var(--accent-dim);}100%{box-shadow:0 0 0 0 transparent;}}
 /* Experience timeline: vertical rail on the left, a dot + year marker above each card */
 .exp-timeline{list-style:none;position:relative;display:flex;flex-direction:column;gap:28px;padding-left:34px;}
-.exp-timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--accent),var(--border));border-radius:2px;}
-.exp-item{position:relative;}
+.exp-timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--cx-blue),var(--optum-orange));border-radius:2px;}
+.exp-item{position:relative;--brand:var(--accent);--brand-dim:var(--accent-dim);}
+.exp-item--concentrix{--brand:var(--cx-blue);--brand-dim:var(--cx-blue-dim);}
+.exp-item--optum{--brand:var(--optum-orange);--brand-dim:var(--optum-orange-dim);}
+.exp-item .exp-card{border-top:3px solid var(--brand) !important;}
 .exp-mark{position:relative;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px;line-height:16px;}
-.exp-dot{position:absolute;left:-34px;top:1px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--accent);}
-.exp-item--latest .exp-mark{color:var(--accent);font-weight:500;}
-.exp-item--latest .exp-dot{background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
+.exp-dot{position:absolute;left:-34px;top:1px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:2px solid var(--brand);}
+.exp-item--latest .exp-mark{color:var(--brand);font-weight:500;}
+.exp-item--latest .exp-dot{background:var(--brand);box-shadow:0 0 0 4px var(--brand-dim);}
 @media(max-width:700px){.exp-timeline{padding-left:26px;}.exp-timeline::before{left:5px;}.exp-dot{left:-26px;width:12px;height:12px;top:2px;}}
 /* Banner variant: full-width photo on top, for wide group shots that a 300px column would crop */
 .exp-card--banner{grid-template-columns:1fr;}
@@ -788,40 +793,40 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   <ol class="exp-timeline" aria-label="Work experience, most recent first">
 
     <!-- Concentrix -->
-    <li class="exp-item exp-item--latest">
+    <li class="exp-item exp-item--latest exp-item--concentrix">
     <div class="exp-mark"><span class="exp-dot" aria-hidden="true"></span>2026 · Concentrix</div>
     <div class="exp-card exp-card--banner card-lift" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
     <div data-photo data-pg="concentrix-exp" style="overflow:hidden;cursor:pointer;"><img class="exp-photo" src="concentrix/concentrix-team.jpg" alt="With the Concentrix fraud operations team" loading="lazy"></div>
-    <div style="padding:24px;border-left:3px solid var(--accent);">
+    <div style="padding:24px;border-left:3px solid var(--brand);">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">SEP — NOV 2026</div>
     <h3 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px;">Fraud Operations Representative</h3>
     <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-3);margin-bottom:10px;">Concentrix · Financial Fraud Operations · Philippines</p>
     <p style="font-family:'Source Serif 4',serif;font-size:14.5px;font-style:italic;color:var(--ink-2);line-height:1.6;margin-bottom:16px;">Protecting critical financial accounts through high-volume inbound and outbound communications — identifying, assessing, and neutralizing transactional threats in real time.</p>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Inbound &amp; outbound risk mitigation:</strong> handled high-stakes calls on financial accounts, executing rapid authentication and verification to thwart unauthorized access</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Transactional analysis &amp; investigation:</strong> monitored and analyzed account activity and transaction patterns to detect anomalies, indicators of compromise, and emerging fraud vectors</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Proactive security &amp; incident response:</strong> applied rapid mitigation on compromised accounts — placing restrictions or blocks where necessary and guiding clients through secure recovery protocols</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Digital security education:</strong> advised customers on safe digital practices and prevention of social engineering, phishing, and online fraud</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Inbound &amp; outbound risk mitigation:</strong> handled high-stakes calls on financial accounts, executing rapid authentication and verification to thwart unauthorized access</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Transactional analysis &amp; investigation:</strong> monitored and analyzed account activity and transaction patterns to detect anomalies, indicators of compromise, and emerging fraud vectors</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Proactive security &amp; incident response:</strong> applied rapid mitigation on compromised accounts — placing restrictions or blocks where necessary and guiding clients through secure recovery protocols</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span><strong style="color:var(--ink);">Digital security education:</strong> advised customers on safe digital practices and prevention of social engineering, phishing, and online fraud</span></div>
     </div>
     </div>
     </div>
     </li>
 
     <!-- Optum -->
-    <li class="exp-item" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="Optum internship · Experience">
+    <li class="exp-item exp-item--optum" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="Optum internship · Experience">
     <div class="exp-mark"><span class="exp-dot" aria-hidden="true"></span>2025 · Optum</div>
     <div class="exp-card card-lift" style="background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
     <div data-photo data-pg="optum-exp" style="overflow:hidden;cursor:pointer;"><img class="exp-photo" src="optum/1758283002715.jpg" alt="Presenting the ERP project at Optum Philippines" loading="lazy"></div>
-    <div style="padding:24px;border-left:3px solid var(--accent);">
+    <div style="padding:24px;border-left:3px solid var(--brand);">
     <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin-bottom:6px;">JUL — AUG 2025</div>
     <h3 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px;">ERP Project Coordinator Intern</h3>
     <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-3);margin-bottom:16px;">Optum (UnitedHealth Group) · Executive Administration Division · Makati</p>
     <div style="display:flex;flex-direction:column;gap:8px;">
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span>Contributed to a <strong style="color:var(--ink);">35% improvement in process efficiency</strong> across internal departmental workflows by partnering with Executive Administration leadership</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span>Reduced manual data entry by <strong style="color:var(--ink);">30%</strong> with <strong style="color:var(--ink);">100% inventory accuracy</strong> via SharePoint ERP system</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span>Facilitated cross-functional requirement-gathering sessions with developers, operations, and executive leadership</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span>Worked within Agile (Scrum): sprint planning, Jira tracking, version-controlled documentation</span></div>
-      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--accent);flex-shrink:0;">—</span><span>Assisted Talent Acquisition team in recruitment logistics, candidate experience, and ATS platform usage</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span>Contributed to a <strong style="color:var(--ink);">35% improvement in process efficiency</strong> across internal departmental workflows by partnering with Executive Administration leadership</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span>Reduced manual data entry by <strong style="color:var(--ink);">30%</strong> with <strong style="color:var(--ink);">100% inventory accuracy</strong> via SharePoint ERP system</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span>Facilitated cross-functional requirement-gathering sessions with developers, operations, and executive leadership</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span>Worked within Agile (Scrum): sprint planning, Jira tracking, version-controlled documentation</span></div>
+      <div style="display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;"><span style="color:var(--brand);flex-shrink:0;">—</span><span>Assisted Talent Acquisition team in recruitment logistics, candidate experience, and ATS platform usage</span></div>
     </div>
     </div>
     </div>
