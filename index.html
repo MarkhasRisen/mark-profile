@@ -212,6 +212,54 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .exp-card--banner{grid-template-columns:1fr;}
 .exp-card--banner .exp-photo{height:380px;object-position:center 62%;}
 @media(max-width:700px){.exp-card{grid-template-columns:1fr;}.exp-card .exp-photo{height:240px;}}
+/* Leadership: featured SATA card + campus roles */
+.lead-feature{display:grid;grid-template-columns:320px 1fr;overflow:hidden;}
+.lead-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.lead-stats > div{background:var(--white);padding:14px 12px;text-align:center;}
+.lead-stat-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:var(--sage);line-height:1;}
+.lead-stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;line-height:1.35;}
+.lead-award{display:inline-block;margin-top:18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;padding:5px 10px;text-decoration:none;transition:background .15s;}
+.lead-award:hover{background:var(--accent);color:var(--white);}
+.lead-award--sage{color:var(--sage);background:var(--sage-dim);border-color:var(--sage);}
+.lead-award--sage:hover{background:var(--sage);color:var(--white);}
+.lead-path{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative;}
+.lead-path::before{content:'';position:absolute;top:6px;left:6px;right:calc(33.33% - 6px);height:2px;background:linear-gradient(90deg,var(--border-m),var(--sage));}
+.lead-path li{position:relative;display:flex;flex-direction:column;gap:4px;padding-right:12px;}
+.lead-path-dot{width:14px;height:14px;border-radius:50%;background:var(--white);border:2px solid var(--sage);position:relative;z-index:1;margin-bottom:6px;}
+.lead-path li.is-now .lead-path-dot{background:var(--sage);box-shadow:0 0 0 4px var(--sage-dim);}
+.lead-path-year{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);}
+.lead-path-role{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink-2);line-height:1.35;}
+.lead-path li.is-now .lead-path-role{color:var(--ink);font-weight:700;}
+.lead-path-note{display:block;font-family:'Source Serif 4',serif;font-size:12px;font-weight:400;color:var(--ink-3);margin-top:3px;}
+.lead-role{padding:16px 18px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;}
+.lead-role-date{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-4);margin-bottom:4px;}
+.lead-role-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:600;color:var(--ink);}
+.lead-role-org{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);}
+.lead-role-note{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);margin-top:6px;}
+.lead-gallery{display:grid;grid-template-columns:1fr 1fr;gap:2px;align-content:start;background:var(--border);}
+.lead-gallery [data-photo]{border-radius:0;}
+.lead-gallery-main{grid-column:1/-1;}
+.lead-gallery-main img{height:auto!important;aspect-ratio:1/1;}
+.lead-gallery [data-photo]:not(.lead-gallery-main) img{height:auto;aspect-ratio:4/3;}
+.lead-also{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--ink-2);background:var(--accent-dim);border:1px solid var(--border-m);border-radius:4px;padding:4px 10px;line-height:1.5;}
+.lead-bullet{display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;}
+.lead-bullet > span:first-child{color:var(--accent);flex-shrink:0;}
+.lead-bullet strong{color:var(--ink);}
+.lead-now{display:block;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--sage);}
+.lead-feature--text{grid-template-columns:1fr;}
+.lead-capstone{display:grid;grid-template-columns:1fr 1.15fr;overflow:hidden;margin-bottom:28px;background:linear-gradient(135deg,var(--accent-dim),transparent 60%),var(--white);border:1px solid var(--accent);border-radius:12px;box-shadow:var(--shadow);}
+.lead-capstone [data-photo]{border-radius:0;}
+.lead-capstone-photo{height:420px!important;object-position:center 46%;}
+.lead-capstone-body{padding:30px 32px;align-self:center;}
+.lead-capstone-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.lead-capstone-title{font-family:'Sora',sans-serif;font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.15;margin-bottom:6px;}
+.lead-capstone-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;line-height:1.6;margin-bottom:16px;}
+.lead-capstone-text{font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:10px;}
+@media(max-width:800px){.lead-capstone{grid-template-columns:1fr;}.lead-capstone-photo{height:260px!important;min-height:0;}.lead-capstone-body{padding:22px 20px;}.lead-capstone-title{font-size:23px;}}
+.lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
+.lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
+@media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.lead-path{grid-template-columns:1fr;gap:14px;}.lead-path::before{top:6px;bottom:6px;left:6px;right:auto;width:2px;height:auto;background:linear-gradient(var(--border-m),var(--sage));}.lead-path li{flex-direction:row;flex-wrap:wrap;align-items:baseline;gap:8px;}.lead-path-dot{margin-bottom:0;flex-shrink:0;top:2px;}}
 .expand-toggle{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--accent);background:none;border:1px solid var(--accent);border-radius:4px;cursor:pointer;padding:5px 12px;margin-top:14px;transition:background .2s,color .2s}
 .expand-toggle:hover{background:var(--accent);color:#fff}
 .expand-toggle svg{transition:transform .3s}
@@ -406,7 +454,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   </div>
   <div style="display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:start;">
     <div>
-      <p style="font-family:'Source Serif 4',serif;font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:16px;">Computer Science graduate with a passion for project management, leadership, and tech-driven innovation. Experienced in financial fraud and risk operations at Concentrix, ERP system development, UI/UX design, and recruitment automation at Optum Philippines, and in leading transformative initiatives as President of LPU-Cavite SATA. Skilled in stakeholder engagement, strategic planning, and process automation, with a vision to harness AI and technology to drive organizational growth.</p>
+      <p style="font-family:'Source Serif 4',serif;font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:16px;">Computer Science graduate with a passion for project management, leadership, and tech-driven innovation. Experienced in financial fraud and risk operations at Concentrix, ERP system development, UI/UX design, and recruitment automation at Optum Philippines, and in leading transformative initiatives as President of LPU-Cavite SATA (now the CCS Student Government). Skilled in stakeholder engagement, strategic planning, and process automation, with a vision to harness AI and technology to drive organizational growth.</p>
       <div style="display:flex;flex-direction:column;gap:5px;margin-top:20px;">
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-3);"><span style="color:var(--ink-2);font-weight:500;">LOCATION</span>&nbsp;&nbsp;Cavite, Philippines · Open to Metro Manila &amp; Remote</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-3);"><span style="color:var(--ink-2);font-weight:500;">FIELD</span>&nbsp;&nbsp;BS Computer Science · Class of 2026</div>
@@ -998,22 +1046,83 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
     <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.08em;">10 ROLES</span>
   </div>
-  <figure class="fade-up" style="margin:0 0 28px;padding:20px 24px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--sage);border-radius:8px;box-shadow:var(--shadow);">
-    <blockquote style="font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;color:var(--ink-2);line-height:1.75;margin:0 0 12px;">"You are owning up to the name of being a leader. Continue to lead SATA and your fellow IT/CS/LIS kapatid."</blockquote>
-    <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.06em;">— Ms. Alyssa Pocaan, MIS · Organization Adviser, CCS</figcaption>
-  </figure>
-  <div class="v2-lead-grid fade-up-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Public Relations Officer</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LYCESGO — Central Student Government</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JAN–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">College Representative</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">SEP 2025–JAN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Head of Technical Assistance</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LIBRO</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2025–JUN 2026</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Special Advisor</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">College of IT and Computer Science</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--sage);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUN 2024–JUN 2025</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);">President</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA · 13-member board · 40% participation increase</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2023–JUN 2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">VP for External Affairs</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2023–JUN 2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Creatives Head Unit</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA · 8 designers, 15+ events</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUL 2022–JUL 2023</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">General Committee</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">LPU-Cavite SATA</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">JUN 2019–FEB 2020</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Business Manager</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">Saint Augustine School — Student Government</div></div>
-    <div class="fade-up card-lift" style="padding:16px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;border-left:3px solid var(--accent);"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);margin-bottom:4px;">2014–2024</div><div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);">Marketing Assistant</div><div style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);">Jewel's Sari-sari Store</div></div>
+
+  <!-- Capstone: Student Leader of the Year (recognises all roles below) -->
+  <article class="lead-capstone fade-up card-lift">
+    <div data-photo data-pg="leadership-award" style="overflow:hidden;cursor:pointer;"><img class="lead-capstone-photo" src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="Receiving Student Leader of the Year on stage at the CCS Excellence Awards 2026" loading="lazy"></div>
+    <div class="lead-capstone-body">
+      <div class="lead-capstone-eyebrow">★ The culmination · AY 2025–26</div>
+      <h3 class="lead-capstone-title">Student Leader of the Year</h3>
+      <p class="lead-capstone-sub">College of Information Technology and Computer Science · CCS Excellence Awards 2026 · June 19, 2026</p>
+      <p class="lead-capstone-text">Recognized for exemplary leadership, initiative and service to the university, through involvement in student organizations, projects and community activities, and for inspiring others and making a positive impact on campus life.</p>
+      <p class="lead-capstone-text" style="color:var(--ink-3);font-size:14px;">The roles below are the leadership this award recognized.</p>
+      <a href="#awards" class="lead-award">View award photos →</a>
+    </div>
+  </article>
+
+  <!-- Featured: LYCESGO (highest office) -->
+  <article class="lead-feature fade-up card-lift" data-skills="stakeholder" data-skill-label="LYCESGO PRO · Leadership" style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:10px;box-shadow:var(--shadow);margin-bottom:20px;">
+    <div class="lead-gallery">
+      <div data-photo data-pg="lycesgo" class="lead-gallery-main"><img src="leadership/lycesgo-pubmat.jpg" alt="LYCESGO officer announcement: Mark Risen Caparas, Public Relations Officer and CCS College Representative" loading="lazy"></div>
+      <div data-photo data-pg="lycesgo"><img src="leadership/lycesgo-lpl-cup.jpg" alt="With LYCESGO officers and volunteers at the LPL Cup 2026" loading="lazy"></div>
+      <div data-photo data-pg="lycesgo"><img src="leadership/lycesgo-pro.jpg" alt="With fellow LYCESGO student government officers" loading="lazy"></div>
+    </div>
+    <div style="padding:26px 28px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">Highest office · University-wide · JAN — MAY 2026</div>
+      <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px;">Public Relations Officer</h3>
+      <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-3);margin-bottom:12px;">LYCESGO — LPU-Cavite Central Student Government, the university's highest student governing body</p>
+      <span class="lead-also">Also: College Representative, College of IT &amp; Computer Science · JAN — JUN 2026</span>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:18px;">
+        <div class="lead-bullet"><span aria-hidden="true">—</span><span>Managed communications and stakeholder engagement across university departments for a community of <strong>5,000+ students</strong></span></div>
+        <div class="lead-bullet"><span aria-hidden="true">—</span><span>Coordinated campaigns between university administration, faculty advisers and student representatives</span></div>
+        <div class="lead-bullet"><span aria-hidden="true">—</span><span>Represented the College of IT and Computer Science on the central council</span></div>
+      </div>
+      <figure style="margin:22px 0 0;padding:0 0 0 16px;border-left:2px solid var(--accent);">
+        <blockquote style="font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;color:var(--ink-2);line-height:1.7;margin:0 0 8px;">"I promise nothing more and nothing less than what we all yearn for: connection, clarity, and service driven by transparency and integrity."</blockquote>
+        <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.06em;">— From my LYCESGO officer statement</figcaption>
+      </figure>
+    </div>
+  </article>
+
+  <!-- Featured: SATA presidency -->
+  <article class="lead-feature lead-feature--text fade-up card-lift" data-skills="stakeholder" data-skill-label="SATA presidency · Leadership" style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);margin-bottom:36px;">
+    <div style="padding:26px 28px;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">Organization leadership · JUN 2024 — JUN 2025</div>
+      <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px;">President</h3>
+      <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-3);margin-bottom:12px;">LPU-Cavite Student Association for Technological Advancement (SATA)<span class="lead-now">Now the College of Information Technology and Computer Science Student Government</span></p>
+      <a href="https://www.facebook.com/LPUCCS/posts/pfbid02Xr5Zo7YkhqiZeKEpZVg6jLfHpPVw4QRQKpfjBqxXL6WJXJaCdNT4KGng8jiAg9LBl" target="_blank" rel="noopener" class="lead-award lead-award--sage" style="margin:0 0 20px;">View official officer announcement ↗</a>
+
+      <div class="lead-stats">
+        <div><div data-count="13" class="lead-stat-num">13</div><div class="lead-stat-label">Board members led</div></div>
+        <div><div data-count="10" data-suffix="+" class="lead-stat-num">10+</div><div class="lead-stat-label">Events / semester</div></div>
+        <div><div data-count="40" data-suffix="%" class="lead-stat-num">40%</div><div class="lead-stat-label">Participation increase</div></div>
+        <div><div data-count="25" data-suffix="%" class="lead-stat-num">25%</div><div class="lead-stat-label">Less planning time</div></div>
+      </div>
+
+      <figure style="margin:22px 0 0;padding:0 0 0 16px;border-left:2px solid var(--sage);">
+        <blockquote style="font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;color:var(--ink-2);line-height:1.7;margin:0 0 8px;">"You are owning up to the name of being a leader. Continue to lead SATA and your fellow IT/CS/LIS kapatid."</blockquote>
+        <figcaption style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.06em;">— Ms. Alyssa Pocaan, MIS · Organization Adviser, CCS</figcaption>
+      </figure>
+
+
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-4);text-transform:uppercase;margin:24px 0 12px;">Path to President</div>
+      <ol class="lead-path" aria-label="Roles held in SATA, oldest first">
+        <li><span class="lead-path-dot" aria-hidden="true"></span><span class="lead-path-year">2022–23</span><span class="lead-path-role">General Committee</span></li>
+        <li><span class="lead-path-dot" aria-hidden="true"></span><span class="lead-path-year">2023–24</span><span class="lead-path-role">VP External Affairs<br>&amp; Creatives Head<span class="lead-path-note">8 designers · 15+ events</span></span></li>
+        <li class="is-now"><span class="lead-path-dot" aria-hidden="true"></span><span class="lead-path-year">2024–25</span><span class="lead-path-role">President</span></li>
+      </ol>
+    </div>
+  </article>
+
+  <!-- Other roles -->
+  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-4);text-transform:uppercase;margin-bottom:12px;">Other roles · 2025–26</div>
+  <div class="v2-lead-grid fade-up-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    <div class="fade-up card-lift lead-role"><div class="lead-role-date">SEP 2025 — JAN 2026</div><div class="lead-role-title">Head of Technical Assistance</div><div class="lead-role-org">LIBRO</div></div>
+    <div class="fade-up card-lift lead-role"><div class="lead-role-date">JUL 2025 — JUN 2026</div><div class="lead-role-title">Special Advisor</div><div class="lead-role-org">College of IT and Computer Science</div></div>
   </div>
+
+  <!-- Earlier -->
+  <p class="lead-earlier"><span>Earlier</span> Business Manager, Saint Augustine School Student Government (2019–20) · Marketing Assistant, Jewel's Sari-sari Store (2014–24)</p>
 </section>
 
 <!-- AWARDS -->
