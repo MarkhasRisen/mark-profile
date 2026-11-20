@@ -322,6 +322,19 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .ci-tags span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-3);border:1px solid var(--border-m);border-radius:4px;padding:3px 8px;}
 @media(max-width:800px){.ci-pair{grid-template-columns:1fr;}.ci-gallery-main img{height:220px!important;}}
 @media(max-width:480px){.ci-arc-steps{grid-template-columns:1fr;gap:14px;}.ci-arc-steps::before{top:6px;bottom:6px;left:6px;right:auto;width:2px;height:auto;background:linear-gradient(var(--accent),var(--sage));}.ci-arc-steps li{padding-left:24px;}.ci-arc-dot{position:absolute;left:0;top:0;margin:0;}}
+/* Creatives: filter chips + captions */
+.cr-filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+.cr-chip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-2);background:var(--bg);border:1px solid var(--border-m);border-radius:999px;padding:6px 12px;cursor:pointer;transition:background .15s,color .15s,border-color .15s;}
+.cr-chip span{color:var(--ink-4);margin-left:4px;}
+.cr-chip:hover{border-color:var(--accent);color:var(--accent);}
+.cr-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;}
+.cr-chip[aria-pressed="true"] span{color:rgba(255,255,255,.85);}
+.cr-status{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-4);margin-bottom:14px;}
+[data-gal]{position:relative;}
+[data-gal][hidden]{display:none;}
+.cr-cap{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.03em;line-height:1.4;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78));opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none;}
+[data-gal]:hover .cr-cap,[data-gal]:focus-visible .cr-cap{opacity:1;transform:none;}
+@media(hover:none){.cr-cap{opacity:1;transform:none;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -1348,9 +1361,9 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <span class="section-num" data-num="9" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">09</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Creatives</h2>
       <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">27 PIECES · SATA · LYCESGO</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">25 PIECES · 2023–2026</span>
     </div>
-    <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:24px;max-width:700px;">Publicity materials produced as Creatives Head at SATA (8-designer committee, 15+ events) and as PRO of the LPU-Cavite Central Student Government (LYCESGO), managing institutional communications for 5,000+ students.</p>
+    <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:24px;max-width:700px;">Publicity materials produced as Creatives Head at SATA (8-designer committee, 15+ events) and as PRO of the LPU-Cavite Central Student Government (LYCESGO), managing institutional communications for 5,000+ students, plus brand and cover design for my own projects.</p>
 
     <!-- Featured Video -->
     <div class="video-feat-grid">
@@ -1369,35 +1382,41 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       </div>
     </div>
 
-    <!-- Gallery -->
-    <div class="gal-wrap">
-      <div data-gal><img src="creatives/0738ec6f-f4d0-49c9-8f7e-80e8dd0c85ec.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/1808fdce-f76d-4682-a5d6-f70c83b7c536.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/2ed2348f-085d-4f5f-875c-0a7758fdb198.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/35143b16-efb1-4da6-9113-273960705f2c.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/3bf43eaf-11e8-4f86-a95c-423dcf4615a8.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/40be06ec-e023-461e-a625-54ab1dd89541.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/423e85e5-c50a-4504-b189-9acc16f6b957.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/482245110_1183215930261347_2516964807834409723_n.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/482247593_1184211600161780_7190780995151870358_n.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/5d7ee738-5786-4f1e-844f-4ce49ecbcc65.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/694afb60-4bfc-4ce4-b1fd-e67a283b2f0a.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/6aef68ae-e701-4d87-be6c-aed62a81a86f.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/7433b9dd-533f-4a87-8c31-595116d990d5.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/768ebd4b-3aa4-4b96-95d5-fdb79fc0871b.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/88003c1f-1bfe-4001-8ab2-6df522ec7d50.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/8931cd24-c43e-4c4f-8aa7-25131b3cef52.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/9ca05293-1faa-401d-af27-c043f9a3468c.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/a25f7acb-a8f9-4c01-a8ac-6c0eaf9f3897.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/a5d26153-702e-48a8-8e0e-dd362ac09cd9.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/aec5005a-3c1b-41f3-bf9c-a386e45b22dd.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/afaa89ad-297e-44fd-9b06-abfc90010522.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/b70eea5c-4dde-492b-9d24-be873692a275.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/b80b553e-de0e-47d7-9b1d-1e6f6dc85afa.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/d5c0de7b-7884-4412-8162-31778093ad0a.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/dabd5050-6c10-441c-a422-b5d4bdceeb71.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/e166a42e-aafe-417a-9351-859fe440482f.jpg" loading="lazy" alt="Pubmat"></div>
-      <div data-gal><img src="creatives/e7e78da0-2dfb-419e-8ffa-84f6ff573945 (1).jpg" loading="lazy" alt="Pubmat"></div>
+    <!-- Gallery (filterable) -->
+    <div class="cr-filters" role="group" aria-label="Filter creatives by type">
+      <button type="button" class="cr-chip" data-filter="all" aria-pressed="true">All <span>25</span></button>
+      <button type="button" class="cr-chip" data-filter="events" aria-pressed="false">Events &amp; competitions <span>9</span></button>
+      <button type="button" class="cr-chip" data-filter="org" aria-pressed="false">Org posts <span>9</span></button>
+      <button type="button" class="cr-chip" data-filter="greet" aria-pressed="false">Greetings &amp; observances <span>5</span></button>
+      <button type="button" class="cr-chip" data-filter="design" aria-pressed="false">Design &amp; branding <span>2</span></button>
+    </div>
+    <p class="cr-status" id="cr-status" aria-live="polite">Showing all 25 pieces</p>
+    <div class="gal-wrap" id="cr-gallery">
+      <div data-gal data-cat="events"><img src="creatives/a25f7acb-a8f9-4c01-a8ac-6c0eaf9f3897.jpg" loading="lazy" alt="Game Dev workshop · SATA · Apr 2025"><span class="cr-cap" aria-hidden="true">Game Dev workshop · SATA · Apr 2025</span></div>
+      <div data-gal data-cat="org"><img src="creatives/0738ec6f-f4d0-49c9-8f7e-80e8dd0c85ec.jpg" loading="lazy" alt="The Officers A.Y. 2024–2025 · SATA"><span class="cr-cap" aria-hidden="true">The Officers A.Y. 2024–2025 · SATA</span></div>
+      <div data-gal data-cat="events"><img src="creatives/dabd5050-6c10-441c-a422-b5d4bdceeb71.jpg" loading="lazy" alt="LPU-C Games: Charge Up 2026 · LYCESGO · 2026"><span class="cr-cap" aria-hidden="true">LPU-C Games: Charge Up 2026 · LYCESGO · 2026</span></div>
+      <div data-gal data-cat="design"><img src="creatives/a5d26153-702e-48a8-8e0e-dd362ac09cd9.jpg" loading="lazy" alt="ReColor logo · brand identity"><span class="cr-cap" aria-hidden="true">ReColor logo · brand identity</span></div>
+      <div data-gal data-cat="events"><img src="creatives/8931cd24-c43e-4c4f-8aa7-25131b3cef52.jpg" loading="lazy" alt="The Future Unleashed: AI &amp; IoT seminar · SATA · May 2023"><span class="cr-cap" aria-hidden="true">The Future Unleashed: AI &amp; IoT seminar · SATA · May 2023</span></div>
+      <div data-gal data-cat="greet"><img src="creatives/1808fdce-f76d-4682-a5d6-f70c83b7c536.jpg" loading="lazy" alt="International Women&#x27;s Day · SATA · Mar 2025"><span class="cr-cap" aria-hidden="true">International Women&#x27;s Day · SATA · Mar 2025</span></div>
+      <div data-gal data-cat="org"><img src="creatives/482247593_1184211600161780_7190780995151870358_n.jpg" loading="lazy" alt="Induction of Student Leaders · SATA · Sep 2024"><span class="cr-cap" aria-hidden="true">Induction of Student Leaders · SATA · Sep 2024</span></div>
+      <div data-gal data-cat="events"><img src="creatives/7433b9dd-533f-4a87-8c31-595116d990d5.jpg" loading="lazy" alt="COECSA Quest e-sports tournament · SATA"><span class="cr-cap" aria-hidden="true">COECSA Quest e-sports tournament · SATA</span></div>
+      <div data-gal data-cat="design"><img src="creatives/e166a42e-aafe-417a-9351-859fe440482f.jpg" loading="lazy" alt="Sentinels: CS Elective 4 data science project cover · Dec 2025"><span class="cr-cap" aria-hidden="true">Sentinels: CS Elective 4 data science project cover · Dec 2025</span></div>
+      <div data-gal data-cat="events"><img src="creatives/2ed2348f-085d-4f5f-875c-0a7758fdb198.jpg" loading="lazy" alt="Valentine&#x27;s Avenue · LYCESGO · Feb 2026"><span class="cr-cap" aria-hidden="true">Valentine&#x27;s Avenue · LYCESGO · Feb 2026</span></div>
+      <div data-gal data-cat="org"><img src="creatives/aec5005a-3c1b-41f3-bf9c-a386e45b22dd.jpg" loading="lazy" alt="Membership Drive 2K23 · SATA · 2023"><span class="cr-cap" aria-hidden="true">Membership Drive 2K23 · SATA · 2023</span></div>
+      <div data-gal data-cat="greet"><img src="creatives/35143b16-efb1-4da6-9113-273960705f2c.jpg" loading="lazy" alt="Merry Christmas from the SATA Fam · SATA"><span class="cr-cap" aria-hidden="true">Merry Christmas from the SATA Fam · SATA</span></div>
+      <div data-gal data-cat="events"><img src="creatives/768ebd4b-3aa4-4b96-95d5-fdb79fc0871b.jpg" loading="lazy" alt="Digital Poster Making Contest · SATA · May 2023"><span class="cr-cap" aria-hidden="true">Digital Poster Making Contest · SATA · May 2023</span></div>
+      <div data-gal data-cat="org"><img src="creatives/5d7ee738-5786-4f1e-844f-4ce49ecbcc65.jpg" loading="lazy" alt="Python Cheat Sheet · SATA"><span class="cr-cap" aria-hidden="true">Python Cheat Sheet · SATA</span></div>
+      <div data-gal data-cat="org"><img src="creatives/423e85e5-c50a-4504-b189-9acc16f6b957.jpg" loading="lazy" alt="2nd Semester Starts Now · SATA · Feb 2024"><span class="cr-cap" aria-hidden="true">2nd Semester Starts Now · SATA · Feb 2024</span></div>
+      <div data-gal data-cat="events"><img src="creatives/b70eea5c-4dde-492b-9d24-be873692a275.jpg" loading="lazy" alt="Programming Quiz Bee winners · SATA"><span class="cr-cap" aria-hidden="true">Programming Quiz Bee winners · SATA</span></div>
+      <div data-gal data-cat="greet"><img src="creatives/e7e78da0-2dfb-419e-8ffa-84f6ff573945 (1).jpg" loading="lazy" alt="All Saints&#x27; Day · SATA"><span class="cr-cap" aria-hidden="true">All Saints&#x27; Day · SATA</span></div>
+      <div data-gal data-cat="events"><img src="creatives/3bf43eaf-11e8-4f86-a95c-423dcf4615a8.jpg" loading="lazy" alt="COECSA Day 2023–2024 · SATA"><span class="cr-cap" aria-hidden="true">COECSA Day 2023–2024 · SATA</span></div>
+      <div data-gal data-cat="org"><img src="creatives/88003c1f-1bfe-4001-8ab2-6df522ec7d50.jpg" loading="lazy" alt="Revamping Soon teaser · SATA · Aug 2024"><span class="cr-cap" aria-hidden="true">Revamping Soon teaser · SATA · Aug 2024</span></div>
+      <div data-gal data-cat="org"><img src="creatives/9ca05293-1faa-401d-af27-c043f9a3468c.jpg" loading="lazy" alt="Greetings from the SATA Officers A.Y. 2023–2024 · SATA"><span class="cr-cap" aria-hidden="true">Greetings from the SATA Officers A.Y. 2023–2024 · SATA</span></div>
+      <div data-gal data-cat="greet"><img src="creatives/d5c0de7b-7884-4412-8162-31778093ad0a.jpg" loading="lazy" alt="All Souls&#x27; Day · SATA"><span class="cr-cap" aria-hidden="true">All Souls&#x27; Day · SATA</span></div>
+      <div data-gal data-cat="org"><img src="creatives/40be06ec-e023-461e-a625-54ab1dd89541.jpg" loading="lazy" alt="SATA identity graphic · SATA"><span class="cr-cap" aria-hidden="true">SATA identity graphic · SATA</span></div>
+      <div data-gal data-cat="org"><img src="creatives/b80b553e-de0e-47d7-9b1d-1e6f6dc85afa.jpg" loading="lazy" alt="Congratulations, SATA Officers 2022–2023 · SATA"><span class="cr-cap" aria-hidden="true">Congratulations, SATA Officers 2022–2023 · SATA</span></div>
+      <div data-gal data-cat="greet"><img src="creatives/694afb60-4bfc-4ce4-b1fd-e67a283b2f0a.jpg" loading="lazy" alt="Happy Birthday to our org adviser · SATA"><span class="cr-cap" aria-hidden="true">Happy Birthday to our org adviser · SATA</span></div>
+      <div data-gal data-cat="events"><img src="creatives/afaa89ad-297e-44fd-9b06-abfc90010522.jpg" loading="lazy" alt="SATA members at a college event · SATA"><span class="cr-cap" aria-hidden="true">SATA members at a college event · SATA</span></div>
     </div>
   </div>
 </section>
@@ -1571,7 +1590,23 @@ document.addEventListener('DOMContentLoaded', () => {
   initSectionNums();
   initSkills();
   initSectionRules();
+  initCreativesFilter();
 });
+
+// Creatives filter chips: show one category of pubmats at a time.
+function initCreativesFilter() {
+  const chips = document.querySelectorAll('.cr-chip');
+  const tiles = document.querySelectorAll('#cr-gallery [data-gal]');
+  const status = document.getElementById('cr-status');
+  if (!chips.length || !tiles.length) return;
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    const f = chip.dataset.filter;
+    chips.forEach(c => c.setAttribute('aria-pressed', String(c === chip)));
+    let n = 0;
+    tiles.forEach(t => { const show = f === 'all' || t.dataset.cat === f; t.hidden = !show; if (show) n++; });
+    if (status) status.textContent = f === 'all' ? 'Showing all ' + n + ' pieces' : 'Showing ' + n + ' of ' + tiles.length + ' pieces · ' + chip.firstChild.textContent.trim();
+  }));
+}
 
 // Section heading rules draw in once, the first time each heading scrolls into view.
 // The hidden state is gated on .js-anim so the lines still show if this script never runs.
@@ -1823,7 +1858,19 @@ function initLightbox() {
   }
 
   // Creatives gallery — all in one group
-  bindItems(Array.from(document.querySelectorAll('[data-gal]')));
+  // Creatives gallery: one group that follows the active filter (hidden tiles are skipped)
+  document.querySelectorAll('[data-gal]').forEach(item => {
+    const alt = item.querySelector('img').alt || 'Gallery image';
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    item.setAttribute('aria-label', 'Open image: ' + alt);
+    const go = () => {
+      const vis = Array.from(document.querySelectorAll('[data-gal]:not([hidden])'));
+      open(vis.map(e => e.querySelector('img').src), vis.indexOf(item), vis.map(e => e.querySelector('img').alt || 'Gallery image'));
+    };
+    item.addEventListener('click', go);
+    item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
+  });
 
   // Initiative photos — group independently by data-pg attribute
   const pgMap = {};
