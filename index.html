@@ -335,6 +335,46 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .cr-cap{position:absolute;left:0;right:0;bottom:0;padding:22px 10px 8px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.03em;line-height:1.4;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.78));opacity:0;transform:translateY(4px);transition:opacity .2s,transform .2s;pointer-events:none;}
 [data-gal]:hover .cr-cap,[data-gal]:focus-visible .cr-cap{opacity:1;transform:none;}
 @media(hover:none){.cr-cap{opacity:1;transform:none;}}
+/* Contact: availability, roles, channels, form + Moments strip */
+.ct-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;}
+.ct-avail{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:999px;padding:5px 12px;margin-bottom:24px;}
+.ct-avail-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);animation:pulse-dot 2s ease-in-out infinite;}
+.ct-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:10px;}
+.ct-roles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px;}
+.ct-roles span{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);background:var(--white);border:1px solid var(--border-m);border-radius:6px;padding:7px 12px;}
+.ct-primary{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+.ct-email-row{display:flex;gap:8px;}
+.ct-channel{flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--accent);box-shadow:var(--shadow);transition:border-color .2s,translate .2s;}
+.ct-channel:hover,.ct-channel:focus-visible{border-color:var(--accent);translate:0 -1px;}
+.ct-channel--main{border-color:var(--accent);background:linear-gradient(135deg,var(--accent-dim),transparent 70%),var(--white);}
+.ct-channel svg{flex-shrink:0;}
+.ct-channel-text{display:flex;flex-direction:column;min-width:0;}
+.ct-channel-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:var(--ink);}
+.ct-channel-name em{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:400;letter-spacing:.04em;color:var(--accent);}
+.ct-channel-handle{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-3);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.ct-copy{flex-shrink:0;width:52px;display:flex;align-items:center;justify-content:center;background:var(--white);border:1px solid var(--border);border-radius:8px;color:var(--ink-3);cursor:pointer;box-shadow:var(--shadow);transition:border-color .2s,color .2s;}
+.ct-copy:hover,.ct-copy:focus-visible{border-color:var(--accent);color:var(--accent);}
+.ct-secondary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+.ct-mini{display:inline-flex;align-items:center;gap:7px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-2);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:7px 11px;background:var(--white);transition:border-color .2s,color .2s;}
+.ct-mini:hover,.ct-mini:focus-visible{border-color:var(--accent);color:var(--accent);}
+.ct-cv{display:inline-flex;align-items:center;gap:8px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink-4);padding-bottom:2px;transition:color .2s,border-color .2s;}
+.ct-cv:hover,.ct-cv:focus-visible{color:var(--accent);border-color:var(--accent);}
+.ct-form-card{padding:28px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);}
+.ct-field{margin-bottom:14px;}
+.ct-field label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--ink-3);margin-bottom:6px;}
+.ct-field input,.ct-field select,.ct-field textarea{width:100%;font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--border-m);border-radius:6px;padding:11px 14px;outline:none;transition:border-color .2s;box-sizing:border-box;}
+.ct-field textarea{resize:vertical;min-height:110px;}
+.ct-field select{appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,var(--ink-3) 50%),linear-gradient(135deg,var(--ink-3) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px;background-repeat:no-repeat;padding-right:36px;}
+.ct-field input:focus,.ct-field select:focus,.ct-field textarea:focus{border-color:var(--accent);}
+.ct-submit{width:100%;font-family:'Sora',sans-serif;font-size:14px;font-weight:600;color:#fff;background:var(--accent);border:none;border-radius:6px;padding:13px;cursor:pointer;transition:background .2s;}
+.ct-submit:hover,.ct-submit:focus-visible{background:var(--ink);color:var(--bg);}
+.ct-reply-note{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-4);text-align:center;margin:10px 0 0;}
+.moments-strip{border-top:1px solid var(--border);background:var(--white);}
+.moments-inner{max-width:1100px;margin:0 auto;padding:36px 32px 40px;}
+.moments-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.moments-grid [data-photo] img{height:140px;}
+@media(max-width:900px){.contact-grid{gap:32px!important;}.moments-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:480px){.moments-grid{grid-template-columns:repeat(2,1fr);}.moments-grid [data-photo] img{height:120px;}.ct-form-card{padding:22px 18px;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -1423,73 +1463,95 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
 <!-- CONTACT -->
 <section id="contact" style="max-width:1100px;margin:0 auto;padding:80px 32px;position:relative;">
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">✦ Moments</div>
-  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:44px;">
-    <div data-photo data-pg="moments"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Mark Risen Caparas" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="Student Leader of the Year" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever team" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon awarding" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="TechForward/image.png" alt="Tech Forward outreach" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
-    <div data-photo data-pg="moments"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Typhoon Carina relief" loading="lazy" style="width:100%;height:150px;object-fit:cover;display:block;"></div>
-  </div>
   <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
-    <!-- Left: heading + social links -->
+    <!-- Left: pitch, availability, channels -->
     <div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;">GET IN TOUCH</div>
+      <div class="ct-eyebrow">GET IN TOUCH</div>
       <h2 style="font-family:'Sora',sans-serif;font-size:clamp(28px,4vw,40px);font-weight:800;color:var(--ink);letter-spacing:-.03em;line-height:1.1;margin-bottom:16px;">Let's build<br><em style="font-style:italic;color:var(--ink-3);">something great.</em></h2>
-      <p style="font-family:'Source Serif 4',serif;font-size:16px;color:var(--ink-2);line-height:1.7;margin-bottom:28px;">Open to full-time roles in Metro Manila and remote setups. Reach out through any channel below.</p>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <a href="https://www.linkedin.com/in/mark-risen-caparas-caip-clssyb-353251121/" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--ink-2);box-shadow:var(--shadow);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;color:var(--accent)"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-          <div><div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);">LinkedIn</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">mark-risen-caparas-caip-clssyb</div></div>
-        </a>
-        <a href="https://github.com/MarkhasRisen" target="_blank" style="display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--ink-2);box-shadow:var(--shadow);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>
-          <div><div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);">GitHub</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">MarkhasRisen</div></div>
-        </a>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <a href="https://www.facebook.com/mark.risen.caparas" target="_blank" rel="noopener" style="flex:1;min-width:150px;display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--ink-2);box-shadow:var(--shadow);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;color:var(--accent)"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
-            <div><div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);">Facebook</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">mark.risen.caparas</div></div>
+      <span class="ct-avail"><span class="ct-avail-dot" aria-hidden="true"></span>Available now · Metro Manila or remote</span>
+
+      <div class="ct-label">Looking for full-time roles in</div>
+      <div class="ct-roles">
+        <span>Project Coordinator</span>
+        <span>Product / Project Manager</span>
+        <span>Fraud &amp; Risk Operations</span>
+      </div>
+
+      <div class="ct-primary">
+        <div class="ct-email-row">
+          <a href="mailto:caparasmarkrisen.mrc@gmail.com" class="ct-channel ct-channel--main">
+            <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <span class="ct-channel-text"><span class="ct-channel-name">Email <em>· best way to reach me</em></span><span class="ct-channel-handle">caparasmarkrisen.mrc@gmail.com</span></span>
           </a>
-          <a href="https://www.instagram.com/mark_hasrisen/" target="_blank" rel="noopener" style="flex:1;min-width:150px;display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--ink-2);box-shadow:var(--shadow);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;color:var(--accent)"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>
-            <div><div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);">Instagram</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">mark_hasrisen</div></div>
-          </a>
-        </div>
-        <div style="display:flex;gap:8px;">
-          <a href="mailto:cmarkrisen@gmail.com" style="flex:1;min-width:0;display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:8px;text-decoration:none;color:var(--ink-2);box-shadow:var(--shadow);transition:border-color .2s;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;color:var(--accent)"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <div style="min-width:0;"><div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);">Email</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">cmarkrisen@gmail.com</div></div>
-          </a>
-          <button id="copyEmail" aria-label="Copy email address" title="Copy email address" style="padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:8px;cursor:pointer;color:var(--ink-3);box-shadow:var(--shadow);display:flex;align-items:center;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <button id="copyEmail" class="ct-copy" aria-label="Copy email address" title="Copy email address">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           </button>
         </div>
+        <a href="https://www.linkedin.com/in/mark-risen-caparas-caip-clssyb-353251121/" target="_blank" rel="noopener" class="ct-channel">
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+          <span class="ct-channel-text"><span class="ct-channel-name">LinkedIn</span><span class="ct-channel-handle">mark-risen-caparas-caip-clssyb</span></span>
+        </a>
       </div>
+
+      <div class="ct-secondary" aria-label="Other profiles">
+        <a href="https://github.com/MarkhasRisen" target="_blank" rel="noopener" class="ct-mini"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg>GitHub</a>
+        <a href="https://www.facebook.com/mark.risen.caparas" target="_blank" rel="noopener" class="ct-mini"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>Facebook</a>
+        <a href="https://www.instagram.com/mark_hasrisen/" target="_blank" rel="noopener" class="ct-mini"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"></path></svg>Instagram</a>
+      </div>
+
+      <a href="Mark_Risen_Caparas_Resume_v6_PlainATS.pdf" download class="ct-cv">
+        <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download resume (PDF)
+      </a>
     </div>
+
     <!-- Right: contact form -->
-    <div class="fade-up" style="padding:28px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;color:var(--accent);text-transform:uppercase;margin-bottom:18px;">SEND A MESSAGE</div>
-      <form id="contactForm" action="https://formspree.io/f/mojoaroe" method="POST" style="display:flex;flex-direction:column;gap:14px;">
-        <div>
-          <label for="contact-name" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">NAME</label>
-          <input id="contact-name" type="text" name="name" required placeholder="Your name" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+    <div class="fade-up ct-form-card">
+      <div class="ct-eyebrow" style="margin-bottom:18px;">SEND A MESSAGE</div>
+      <form id="contactForm" action="https://formspree.io/f/mojoaroe" method="POST">
+        <div class="ct-field">
+          <label for="contact-name">NAME</label>
+          <input id="contact-name" type="text" name="name" required autocomplete="name" placeholder="Your name">
         </div>
-        <div>
-          <label for="contact-email" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">EMAIL</label>
-          <input id="contact-email" type="email" name="email" required placeholder="your@email.com" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+        <div class="ct-field">
+          <label for="contact-email">EMAIL</label>
+          <input id="contact-email" type="email" name="email" required autocomplete="email" placeholder="your@email.com">
         </div>
-        <div>
-          <label for="contact-message" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-3);display:block;margin-bottom:6px;">MESSAGE</label>
-          <textarea id="contact-message" name="message" required rows="4" placeholder="What's on your mind?" style="width:100%;padding:10px 14px;background:var(--bg);border:1px solid var(--border);border-radius:6px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink);outline:none;resize:vertical;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"></textarea>
+        <div class="ct-field">
+          <label for="contact-reason">REASON</label>
+          <select id="contact-reason" name="reason">
+            <option>Job opportunity</option>
+            <option>Project or collaboration</option>
+            <option>VeloBuild / nonprofit</option>
+            <option>Just saying hi</option>
+          </select>
         </div>
-        <button type="submit" style="padding:12px 24px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .2s;" onmouseover="this.style.background='var(--ink)'" onmouseout="this.style.background='var(--accent)'">Send Message →</button>
+        <div class="ct-field">
+          <label for="contact-message">MESSAGE</label>
+          <textarea id="contact-message" name="message" required rows="4" placeholder="What's on your mind?"></textarea>
+        </div>
+        <button type="submit" class="ct-submit">Send Message →</button>
+        <p class="ct-reply-note">I usually reply within 1–2 days.</p>
         <div id="formStatus" style="display:none;font-family:'IBM Plex Mono',monospace;font-size:11px;text-align:center;padding:8px;border-radius:4px;"></div>
       </form>
     </div>
   </div>
 </section>
+
+<!-- Moments: closing photo strip -->
+<div class="moments-strip" aria-label="Moments">
+  <div class="moments-inner">
+    <div class="ct-eyebrow">✦ Moments</div>
+    <div class="moments-grid">
+    <div data-photo data-pg="moments"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Holding the Student Leader of the Year medal and certificate" loading="lazy"></div>
+    <div data-photo data-pg="moments"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="On stage receiving Student Leader of the Year" loading="lazy"></div>
+    <div data-photo data-pg="moments"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="The ReColor team with their certificates" loading="lazy"></div>
+    <div data-photo data-pg="moments"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon Student Leader awardees on stage" loading="lazy"></div>
+    <div data-photo data-pg="moments"><img src="TechForward/image.png" alt="SATA team at the Tech Forward community outreach" loading="lazy"></div>
+    <div data-photo data-pg="moments"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Volunteers at the Typhoon Carina relief operation" loading="lazy"></div>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="site-foot">
@@ -2090,7 +2152,7 @@ function initCopyEmail() {
   const btn = document.getElementById('copyEmail');
   const toast = document.getElementById('copy-toast');
   if (!btn || !toast) return;
-  const EMAIL = 'cmarkrisen@gmail.com';
+  const EMAIL = 'caparasmarkrisen.mrc@gmail.com';
   function showToast() {
     toast.classList.add('show');
     setTimeout(() => toast.classList.remove('show'), 2200);
