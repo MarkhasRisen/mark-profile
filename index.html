@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mark Risen Caparas — Portfolio</title>
-<meta name="description" content="Mark Risen Caparas — BS Computer Science graduate (LPU-Cavite) building AI & enterprise tools, with financial fraud operations experience at Concentrix and an ERP internship at Optum. Best CS Thesis awardee. Open to full-time roles.">
+<meta name="description" content="Mark Risen Caparas — Computer Science graduate (LPU-Cavite) and project lead. Shipped a Best CS Thesis app to Google Play, led a 4-developer SIS team, automated ERP workflows at Optum, and worked banking fraud operations at Concentrix. Available for full-time roles.">
 <meta name="author" content="Mark Risen Caparas">
 <meta property="og:site_name" content="Mark Risen Caparas">
 <meta property="article:author" content="Mark Risen Caparas">
 <meta property="article:published_time" content="2026-06-23T09:00:00+08:00">
 <meta property="og:title" content="Mark Risen Caparas — CS Engineer & Portfolio">
-<meta property="og:description" content="Building AI systems & enterprise tools. Best CS Thesis awardee, fraud operations at Concentrix, ERP intern at Optum, CCS Student Leader of the Year.">
+<meta property="og:description" content="Computer Science graduate and project lead. Best CS Thesis awardee, ERP intern at Optum, fraud operations at Concentrix, CCS Student Leader of the Year.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://markhasrisen.github.io/mark-profile/">
 <meta property="og:image" content="https://markhasrisen.github.io/mark-profile/og-image.jpg">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Mark Risen Caparas — CS Engineer portfolio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mark Risen Caparas — Portfolio">
-<meta name="twitter:description" content="CS graduate, LPU-Cavite. AI · ERP · Fraud Ops · Leadership. Open to full-time roles.">
+<meta name="twitter:description" content="CS graduate and project lead, LPU-Cavite. Product delivery · ERP · Fraud &amp; Risk Ops · Leadership. Available now.">
 <meta name="twitter:image" content="https://markhasrisen.github.io/mark-profile/og-image.jpg">
 <link rel="icon" type="image/png" href="risen.png">
 <link rel="apple-touch-icon" href="risen.png">
@@ -71,7 +71,7 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-w
 /* Footer */
 .site-foot{border-top:1px solid var(--border);background:var(--white)}
 .foot-inner{max-width:1100px;margin:0 auto;padding:48px 32px 28px}
-.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:40px}
+.foot-grid{display:grid;grid-template-columns:1.5fr .75fr .75fr 1.3fr;gap:36px}
 .foot-logo{font-family:'Sora',sans-serif;font-size:20px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:10px}
 .foot-logo span{color:var(--accent)}
 .foot-brand p{font-family:'Source Serif 4',serif;font-size:14px;line-height:1.65;color:var(--ink-2);max-width:340px;margin-bottom:14px}
@@ -89,7 +89,15 @@ body{background:var(--bg);color:var(--ink);font-family:'Source Serif 4',serif;-w
 .foot-meta{display:flex;align-items:center;gap:14px}
 .foot-top{background:none;border:none;cursor:pointer;font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--ink-3);padding:0;transition:color .15s}
 .foot-top:hover{color:var(--accent)}
-@media(max-width:700px){.foot-grid{grid-template-columns:1fr 1fr;gap:28px}.foot-brand{grid-column:1/-1}.foot-bottom{flex-direction:column;align-items:flex-start}}
+.foot-status{display:inline-flex!important;align-items:center;gap:7px}
+.foot-status-dot{width:6px;height:6px;border-radius:50%;background:var(--sage);animation:pulse-dot 2s ease-in-out infinite}
+.foot-email{display:flex;align-items:center;gap:8px;margin-bottom:12px;max-width:100%}
+.foot-email a{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--border-m);padding-bottom:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0;transition:color .15s,border-color .15s}
+.foot-email a:hover{color:var(--accent);border-color:var(--accent)}
+.foot-copy{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:28px;height:28px;background:none;border:1px solid var(--border);border-radius:6px;color:var(--ink-3);cursor:pointer;transition:color .15s,border-color .15s}
+.foot-copy:hover,.foot-copy:focus-visible{color:var(--accent);border-color:var(--accent)}
+@media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr;gap:28px}.foot-brand,.foot-connect{grid-column:1/-1}}
+@media(max-width:700px){.foot-bottom{flex-direction:column;align-items:flex-start}.foot-meta{flex-wrap:wrap}}
 /* Photo frames: one radius, one hover treatment (zoom + dim + expand badge) everywhere */
 [data-photo]{cursor:zoom-in;overflow:hidden;border-radius:8px;position:relative}
 [data-photo] img{width:100%;height:180px;object-fit:cover;display:block;border-radius:0!important;transition:transform .35s ease,filter .35s ease}
@@ -495,9 +503,9 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <div style="display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;">
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;padding:4px 12px;font-weight:500;">CAIP</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 12px;font-weight:500;">CLSSYB</span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 12px;font-weight:500;">● OPEN TO FULL-TIME ROLES</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 12px;font-weight:500;">● AVAILABLE NOW · FULL-TIME</span>
       </div>
-      <p style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--ink-2);line-height:1.7;margin-top:22px;max-width:500px;">CS Engineer building AI systems &amp; enterprise tools. Experienced in ERP development, financial fraud operations, UI/UX design, and process automation — with a passion for leadership and tech-driven innovation.</p>
+      <p style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--ink-2);line-height:1.7;margin-top:22px;max-width:500px;">Computer Science graduate and project lead who turns stakeholder needs into shipped products: a Google Play app that won Best CS Thesis, a student information system used by 100+ people, and ERP automation at Optum, backed by banking fraud operations experience.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
         <a href="Mark_Risen_Caparas_Resume_v6_PlainATS.pdf" download style="display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;background:var(--btn-dl-bg);color:var(--btn-dl-color);border-radius:6px;text-decoration:none;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
@@ -555,7 +563,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 12px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;color:var(--accent);font-weight:500;">CLSSYB → CSSGB</span>
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 12px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;color:var(--accent);font-weight:500;">AWS CCP</span>
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 12px;background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;color:var(--accent);font-weight:500;">SAP C_TB1200</span>
-      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 12px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);font-weight:500;">● Open to Full-Time Roles</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;padding:4px 12px;background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;color:var(--sage);font-weight:500;">● Available now · Full-time roles</span>
     </div>
   </div>
 </div>
@@ -1559,20 +1567,31 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div class="foot-grid">
       <div class="foot-brand">
         <div class="foot-logo">MRC<span>.</span></div>
-        <p>Mark Risen Caparas — CS graduate building AI systems &amp; enterprise tools, with a background in fraud operations and student leadership.</p>
-        <span class="foot-status">● Open to full-time roles</span>
+        <p>Mark Risen Caparas, a Computer Science graduate and project lead who ships products, leads teams, and brings banking fraud operations experience.</p>
+        <span class="foot-status"><span class="foot-status-dot" aria-hidden="true"></span>Available now · Cavite, PH</span>
       </div>
-      <nav class="foot-col" aria-label="Footer">
+      <nav class="foot-col" aria-label="Footer: sections">
         <div class="foot-label">Explore</div>
+        <a href="#about">About</a>
         <a href="#projects">Projects</a>
         <a href="#velobuild">VeloBuild</a>
         <a href="#experience">Experience</a>
         <a href="#credentials">Credentials</a>
+      </nav>
+      <nav class="foot-col" aria-label="Footer: more sections">
+        <div class="foot-label">More</div>
+        <a href="#leadership">Leadership</a>
         <a href="#awards">Awards</a>
+        <a href="#initiatives">Initiatives</a>
+        <a href="#creatives">Creatives</a>
         <a href="#contact">Contact</a>
       </nav>
-      <div class="foot-col">
+      <div class="foot-col foot-connect">
         <div class="foot-label">Connect</div>
+        <div class="foot-email">
+          <a href="mailto:caparasmarkrisen.mrc@gmail.com">caparasmarkrisen.mrc@gmail.com</a>
+          <button type="button" class="foot-copy" data-copy-email aria-label="Copy email address" title="Copy email address"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button>
+        </div>
         <div class="foot-socials">
           <a href="https://www.linkedin.com/in/mark-risen-caparas-caip-clssyb-353251121/" target="_blank" rel="noopener" aria-label="LinkedIn" class="foot-social"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg></a>
           <a href="https://github.com/MarkhasRisen" target="_blank" rel="noopener" aria-label="GitHub" class="foot-social"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"></path></svg></a>
@@ -1584,7 +1603,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     </div>
     <div class="foot-bottom">
       <span>© 2026 Mark Risen Caparas, CAIP, CLSSYB</span>
-      <span class="foot-meta">Hand-coded · no frameworks <button type="button" class="foot-top" id="footTop">Back to top ↑</button></span>
+      <span class="foot-meta"><span id="footUpdated" hidden></span>Hand-coded · no frameworks <button type="button" class="foot-top" id="footTop">Back to top ↑</button></span>
     </div>
   </div>
 </footer>
@@ -1653,6 +1672,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkills();
   initSectionRules();
   initCreativesFilter();
+  initFooterUpdated();
 });
 
 // Creatives filter chips: show one category of pubmats at a time.
@@ -2149,9 +2169,9 @@ function initContactForm() {
 }
 
 function initCopyEmail() {
-  const btn = document.getElementById('copyEmail');
+  const btns = document.querySelectorAll('#copyEmail, [data-copy-email]');
   const toast = document.getElementById('copy-toast');
-  if (!btn || !toast) return;
+  if (!btns.length || !toast) return;
   const EMAIL = 'caparasmarkrisen.mrc@gmail.com';
   function showToast() {
     toast.classList.add('show');
@@ -2171,13 +2191,23 @@ function initCopyEmail() {
     if (ok) showToast();
     else window.location.href = 'mailto:' + EMAIL;
   }
-  btn.addEventListener('click', () => {
+  btns.forEach(btn => btn.addEventListener('click', () => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(EMAIL).then(showToast, legacyCopy);
     } else {
       legacyCopy();
     }
-  });
+  }));
+}
+
+// Footer "Last updated" stamp from the page's last-modified date (deploy time on GitHub Pages).
+function initFooterUpdated() {
+  const el = document.getElementById('footUpdated');
+  if (!el) return;
+  const d = new Date(document.lastModified);
+  if (isNaN(d)) return;
+  el.textContent = 'Last updated ' + d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  el.hidden = false;
 }
 
 function initMobileNav() {
