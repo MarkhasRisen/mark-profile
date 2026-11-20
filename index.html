@@ -256,6 +256,39 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .lead-capstone-sub{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-3);text-transform:uppercase;line-height:1.6;margin-bottom:16px;}
 .lead-capstone-text{font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:10px;}
 @media(max-width:800px){.lead-capstone{grid-template-columns:1fr;}.lead-capstone-photo{height:260px!important;min-height:0;}.lead-capstone-body{padding:22px 20px;}.lead-capstone-title{font-size:23px;}}
+/* Awards: ReColor feature (3 honors) + leadership pair */
+.aw-group-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin:0 0 12px;}
+.aw-feature{display:grid;grid-template-columns:300px 1fr;overflow:hidden;background:var(--bg);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:10px;box-shadow:var(--shadow);}
+.aw-gallery{display:grid;grid-template-columns:1fr 1fr;gap:2px;align-content:start;background:var(--border);}
+.aw-gallery [data-photo]{border-radius:0;}
+.aw-gallery-main{grid-column:1/-1;}
+.aw-gallery-main img{height:auto!important;aspect-ratio:4/5;object-position:center top;}
+.aw-gallery [data-photo]:not(.aw-gallery-main) img{height:auto;aspect-ratio:1/1;}
+.aw-body{padding:26px 28px;}
+.aw-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.aw-title{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--ink);margin-bottom:4px;}
+.aw-sub{font-family:'Source Serif 4',serif;font-size:14px;font-style:italic;color:var(--ink-3);line-height:1.6;margin-bottom:20px;}
+.aw-list{list-style:none;margin:0;padding:0 0 0 22px;position:relative;display:flex;flex-direction:column;gap:18px;}
+.aw-list::before{content:'';position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--border-m),var(--accent));border-radius:2px;}
+.aw-list li{position:relative;display:flex;flex-direction:column;gap:2px;}
+.aw-list li::before{content:'★';position:absolute;left:-22px;top:-1px;width:12px;text-align:center;font-size:12px;line-height:16px;color:var(--accent);background:var(--bg);}
+.aw-date{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);}
+.aw-name{font-family:'Sora',sans-serif;font-size:15px;font-weight:700;color:var(--ink);line-height:1.35;}
+.aw-note{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.5;}
+.aw-link{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;margin-top:2px;}
+.aw-link:hover{border-bottom-color:var(--accent);}
+.aw-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px;}
+.aw-btn{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;padding:5px 10px;text-decoration:none;transition:background .15s,color .15s;}
+.aw-btn:hover{background:var(--accent);color:var(--white);}
+.aw-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.aw-card{display:flex;flex-direction:column;overflow:hidden;background:var(--bg);border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);}
+.aw-card [data-photo]{border-radius:0;}
+.aw-card .aw-card-photo{height:240px;}
+.aw-card-body{padding:20px 22px;display:flex;flex-direction:column;gap:6px;flex:1;}
+.aw-card-title{font-family:'Sora',sans-serif;font-size:17px;font-weight:700;color:var(--ink);}
+.aw-card-text{font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:8px;flex:1;}
+.aw-card-body .aw-btn{align-self:flex-start;}
+@media(max-width:800px){.aw-feature{grid-template-columns:1fr;}.aw-gallery-main img{aspect-ratio:1/1;}.aw-body{padding:22px 20px;}.aw-pair{grid-template-columns:1fr;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -526,7 +559,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div style="display:flex;flex-direction:column;gap:20px;">
 
       <!-- ReColor -->
-      <div class="proj-card fade-up card-lift" data-skills="react-native computer-vision image-processing python firebase" data-skill-label="ReColor — thesis app · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div id="recolor" class="proj-card fade-up card-lift" data-skills="react-native computer-vision image-processing python firebase" data-skill-label="ReColor — thesis app · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">THESIS PROJECT</div>
@@ -1133,103 +1166,77 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <span class="section-num" data-num="7" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">07</span>
       <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Awards</h2>
       <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.08em;">5 AWARDS · 2026</span>
     </div>
-    <div class="v2-cards fade-up-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
-      <!-- CCS Student Leader — full width, photo expand -->
-      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">01</div>
-          <div style="flex:1;">
-            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">CCS Student Leader of the Year</h4>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p>
-          </div>
-          <button class="expand-toggle" data-target="ccs-leader-expand" aria-expanded="false" style="font-size:11px;">
-            View photos
+
+    <!-- Research & academic: ReColor -->
+    <div class="aw-group-label">Research &amp; Academic</div>
+    <article class="aw-feature fade-up card-lift">
+      <div class="aw-gallery">
+        <div data-photo data-pg="recolor-awards" class="aw-gallery-main"><img src="Best SSH/1779361245264.jpg" alt="LPU-Cavite announcement: ReColor wins Best Research for Social Sciences and Humanities at the University Research Colloquium 2026" loading="lazy"></div>
+        <div data-photo data-pg="recolor-awards"><img src="CCS Achiever/6600c403-907b-44c6-afca-c49c8d72b999 (1).jpg" alt="CCS Excellence Awards 2026 screen: ReColor, Best Social Science and Humanities Project (Champion)" loading="lazy"></div>
+        <div data-photo data-pg="recolor-awards"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="The ReColor team holding their certificates" loading="lazy"></div>
+      </div>
+      <div class="aw-body">
+        <div class="aw-eyebrow">One thesis · three honors</div>
+        <h3 class="aw-title">ReColor</h3>
+        <p class="aw-sub">A Mobile Vision Assistive Tool for Color Vision Deficiency Using Adaptive Daltonization and Clustering Algorithms</p>
+        <ol class="aw-list">
+          <li>
+            <span class="aw-date">MAY 4, 2026</span>
+            <span class="aw-name">Best CS Thesis Awardee</span>
+            <a class="aw-link" href="https://www.facebook.com/photo/?fbid=1529351305647806&amp;set=pcb.1529355698980700" target="_blank" rel="noopener">View post ↗</a>
+          </li>
+          <li>
+            <span class="aw-date">MAY 14, 2026</span>
+            <span class="aw-name">Best Research — Social Sciences &amp; Humanities (Champion)</span>
+            <span class="aw-note">University Research Colloquium 2026 · judged by experts from LPU Batangas, Laguna and Manila</span>
+            <a class="aw-link" href="https://www.linkedin.com/posts/lyceum-of-the-philippines-university-cavite_researchexcellence-innovationmatters-lpucavite-activity-7463182014305898496-9s2z?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAB4dRa8BwJe8eDOedH_ulQv2tR3W4GyhAMQ" target="_blank" rel="noopener">View post ↗</a>
+          </li>
+          <li>
+            <span class="aw-date">JUN 19, 2026</span>
+            <span class="aw-name">CCS Achiever of the Year</span>
+            <span class="aw-note">CCS Excellence Awards 2026 · recognizing the Research Colloquium win</span>
+          </li>
+        </ol>
+        <div class="aw-actions">
+          <a href="#recolor" class="aw-btn">See the ReColor project →</a>
+          <button class="expand-toggle" data-target="aw-video-expand" aria-expanded="false" style="font-size:11px;margin:0;">
+            ▶ Awarding video
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
         </div>
-        <div class="expand-body collapsed" id="ccs-leader-expand" style="max-height:400px;">
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;">
-            <div data-photo data-pg="ccs-leader"><img src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <div data-photo data-pg="ccs-leader"><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <div data-photo data-pg="ccs-leader"><img src="CCS student leader/e932afb2-02b9-45ca-a025-87368733cd48.jpg" alt="CCS Student Leader of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-          </div>
+        <div class="expand-body collapsed" id="aw-video-expand" style="max-height:560px;">
+          <video controls preload="none" style="width:100%;max-height:520px;margin-top:14px;border-radius:8px;background:#000;display:block;">
+            <source src="CCS Achiever/3e1ce6b5-93d2-419a-85d8-876f49f6c042.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
-      <!-- Paragon — full width, photo expand -->
-      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">02</div>
-          <div style="flex:1;">
-            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">Paragon Student Leader — PRO</h4>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 11, 2026 · LYCESGO</p>
-          </div>
-          <button class="expand-toggle" data-target="paragon-expand" aria-expanded="false" style="font-size:11px;">
-            View photo
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
+    </article>
+
+    <!-- Leadership -->
+    <div class="aw-group-label" style="margin-top:36px;">Leadership</div>
+    <div class="aw-pair fade-up-grid">
+      <article class="aw-card fade-up card-lift">
+        <div data-photo data-pg="ccs-leader"><img class="aw-card-photo" src="CCS student leader/0586e5d2-345c-4663-9dbf-f1d9743374ec.jpg" alt="Holding the Student Leader of the Year medal and certificate" loading="lazy" style="object-position:center 58%;"></div>
+        <div data-photo data-pg="ccs-leader" hidden><img src="CCS student leader/0d9962e7-b91c-4d98-8e98-8b6396798ca3.jpg" alt="Receiving Student Leader of the Year on stage at the CCS Excellence Awards 2026" loading="lazy"></div>
+        <div data-photo data-pg="ccs-leader" hidden><img src="CCS student leader/e932afb2-02b9-45ca-a025-87368733cd48.jpg" alt="Student Leader of the Year certificate and medal" loading="lazy"></div>
+        <div class="aw-card-body">
+          <div class="aw-date">JUN 19, 2026 · CCS EXCELLENCE AWARDS · 3 PHOTOS</div>
+          <h4 class="aw-card-title">Student Leader of the Year</h4>
+          <p class="aw-card-text">Recognized for leadership, initiative and service across student organizations, projects and community activities in AY 2025–26.</p>
+          <a href="#leadership" class="aw-btn">See Leadership →</a>
         </div>
-        <div class="expand-body collapsed" id="paragon-expand" style="max-height:400px;">
-          <div style="margin-top:16px;border-radius:6px;overflow:hidden;">
-            <div data-photo data-pg="paragon" class="photo-feature"><img src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon Student Leader — PRO" loading="lazy" style="width:100%;object-fit:cover;object-position:center 60%;display:block;"></div>
-          </div>
+      </article>
+      <article class="aw-card fade-up card-lift">
+        <div data-photo data-pg="paragon"><img class="aw-card-photo" src="Paragon/d65d2148-2673-42f0-a210-755750df498c.jpg" alt="Paragon Student Leader awardees on stage with their trophies" loading="lazy" style="object-position:center 55%;"></div>
+        <div class="aw-card-body">
+          <div class="aw-date">JUN 11, 2026 · LYCESGO</div>
+          <h4 class="aw-card-title">Paragon Student Leader — PRO</h4>
+          <p class="aw-card-text">Recognized for service as Public Relations Officer of LYCESGO, LPU-Cavite's Central Student Government.</p>
+          <a href="#leadership" class="aw-btn">See the LYCESGO role →</a>
         </div>
-      </div>
-      <!-- Best Research SSH — full width, photo + link -->
-      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">03</div>
-          <div style="flex:1;">
-            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">Best Research — Social Sciences &amp; Humanities</h4>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p>
-          </div>
-          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-            <button class="expand-toggle" data-target="ssh-expand" aria-expanded="false" style="font-size:11px;margin-top:0;">
-              View photo
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-            <a href="https://www.linkedin.com/posts/lyceum-of-the-philippines-university-cavite_researchexcellence-innovationmatters-lpucavite-activity-7463182014305898496-9s2z?utm_source=share&utm_medium=member_desktop&rcm=ACoAAB4dRa8BwJe8eDOedH_ulQv2tR3W4GyhAMQ" target="_blank" rel="noopener" class="expand-toggle" style="margin-top:0;text-decoration:none;">View article ↗</a>
-          </div>
-        </div>
-        <div class="expand-body collapsed" id="ssh-expand" style="max-height:600px;">
-          <div style="margin-top:16px;border-radius:6px;overflow:hidden;">
-            <div data-photo data-pg="ssh" class="photo-feature"><img src="Best SSH/1779361245264.jpg" alt="Best Research — Social Sciences & Humanities" loading="lazy" style="width:100%;object-fit:cover;object-position:center 40%;display:block;"></div>
-          </div>
-        </div>
-      </div>
-      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">04</div>
-          <div style="flex:1;">
-            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">Best CS Thesis Awardee</h4>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">MAY 4, 2026</p>
-          </div>
-          <a href="https://www.facebook.com/photo/?fbid=1529351305647806&set=pcb.1529355698980700" target="_blank" rel="noopener" class="expand-toggle" style="margin-top:0;text-decoration:none;">View post ↗</a>
-        </div>
-      </div>
-      <!-- CCS Achiever — full width, media expand -->
-      <div class="fade-up card-lift" style="grid-column:1/-1;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;">
-        <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-          <div style="width:40px;height:40px;background:var(--accent-dim);border:1.5px solid var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;color:var(--accent);">05</div>
-          <div style="flex:1;">
-            <h4 style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;">CCS Achiever of the Year</h4>
-            <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">JUN 19, 2026</p>
-          </div>
-          <button class="expand-toggle" data-target="ccs-achiever-expand" aria-expanded="false" style="font-size:11px;">
-            View photos &amp; video
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-          </button>
-        </div>
-        <div class="expand-body collapsed" id="ccs-achiever-expand" style="max-height:500px;">
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:16px;align-items:start;">
-            <div data-photo data-pg="ccs-achiever"><img src="CCS Achiever/6600c403-907b-44c6-afca-c49c8d72b999 (1).jpg" alt="CCS Achiever of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <div data-photo data-pg="ccs-achiever"><img src="CCS Achiever/cedb4119-8667-411c-a673-9a1cf05cf04d (1).jpg" alt="CCS Achiever of the Year" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
-            <video controls style="width:100%;height:180px;border-radius:6px;display:block;object-fit:cover;background:#000;" preload="none">
-              <source src="CCS Achiever/3e1ce6b5-93d2-419a-85d8-876f49f6c042.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
+      </article>
     </div>
   </div>
 </section>
