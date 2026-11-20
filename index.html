@@ -289,6 +289,39 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .aw-card-text{font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.6;margin-bottom:8px;flex:1;}
 .aw-card-body .aw-btn{align-self:flex-start;}
 @media(max-width:800px){.aw-feature{grid-template-columns:1fr;}.aw-gallery-main img{aspect-ratio:1/1;}.aw-body{padding:22px 20px;}.aw-pair{grid-template-columns:1fr;}}
+/* Initiatives: outreach arc + two photo-led cards */
+.ci-arc{margin-bottom:24px;padding:20px 24px;background:var(--white);border:1px solid var(--border);border-radius:10px;}
+.ci-arc-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin-bottom:16px;}
+.ci-arc-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);position:relative;}
+.ci-arc-steps::before{content:'';position:absolute;top:6px;left:6px;right:calc(33.33% - 6px);height:2px;background:linear-gradient(90deg,var(--accent),var(--sage));}
+.ci-arc-steps li{position:relative;display:flex;flex-direction:column;gap:3px;padding-right:12px;}
+.ci-arc-dot{width:14px;height:14px;border-radius:50%;background:var(--white);border:2px solid var(--accent);position:relative;z-index:1;margin-bottom:6px;}
+.ci-arc-steps li.is-now .ci-arc-dot{background:var(--sage);border-color:var(--sage);box-shadow:0 0 0 4px var(--sage-dim);}
+.ci-arc-date{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);}
+.ci-arc-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);}
+.ci-arc-note{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);}
+.ci-arc-link{align-self:flex-start;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--sage);text-decoration:none;border-bottom:1px solid transparent;}
+.ci-arc-link:hover{border-bottom-color:var(--sage);}
+.ci-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;}
+.ci-card{overflow:hidden;background:var(--white);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:10px;box-shadow:var(--shadow);}
+.ci-gallery{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);}
+.ci-gallery [data-photo]{border-radius:0;}
+.ci-gallery-main{grid-column:1/-1;}
+.ci-gallery-main img{height:260px!important;}
+.ci-gallery [data-photo]:not(.ci-gallery-main) img{height:120px;}
+.ci-body{padding:20px 22px 22px;}
+.ci-date{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);margin-bottom:6px;}
+.ci-title{font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);line-height:1.3;margin-bottom:10px;}
+.ci-role{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--accent);background:var(--accent-dim);border:1px solid var(--accent);border-radius:4px;padding:4px 10px;margin-bottom:12px;}
+.ci-text{font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.7;margin-bottom:16px;}
+.ci-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.ci-stats > div{background:var(--white);padding:12px 8px;text-align:center;}
+.ci-stat-num{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:var(--accent);line-height:1;}
+.ci-stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;}
+.ci-tags{display:flex;flex-wrap:wrap;gap:6px;}
+.ci-tags span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-3);border:1px solid var(--border-m);border-radius:4px;padding:3px 8px;}
+@media(max-width:800px){.ci-pair{grid-template-columns:1fr;}.ci-gallery-main img{height:220px!important;}}
+@media(max-width:480px){.ci-arc-steps{grid-template-columns:1fr;gap:14px;}.ci-arc-steps::before{top:6px;bottom:6px;left:6px;right:auto;width:2px;height:auto;background:linear-gradient(var(--accent),var(--sage));}.ci-arc-steps li{padding-left:24px;}.ci-arc-dot{position:absolute;left:0;top:0;margin:0;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -1248,52 +1281,53 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Community Initiatives</h2>
     <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
   </div>
-  <div style="display:flex;flex-direction:column;gap:16px;">
 
-    <!-- VeloBuild -->
-    <div class="card-lift" style="padding:24px;background:var(--white);border:1px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);">
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;">
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;display:inline-flex;align-items:center;gap:5px;">
-          <span style="width:5px;height:5px;border-radius:50%;background:var(--sage);display:inline-block;animation:pulse-dot 2s ease-in-out infinite;"></span>
-          JUL 2026 — PRESENT
-        </span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">Nonprofit · Philippines</span>
-      </div>
-      <h4 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:4px;">VeloBuild</h4>
-      <p style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--sage);margin-bottom:10px;letter-spacing:.04em;">Founder &amp; Chief Executive Officer</p>
-      <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:14px;">A nonprofit technology organization dedicated to building and donating software solutions that empower underserved communities across the Philippines. Driven by a network of passionate volunteers — software engineers, designers, project managers, and students — VeloBuild transforms real-world challenges into sustainable digital solutions that improve efficiency, accessibility, and service delivery.</p>
-      <p style="font-family:'Source Serif 4',serif;font-size:13px;color:var(--sage);font-style:italic;border-left:2px solid var(--sage);padding-left:12px;">"Building Technology That Builds Filipino Communities."</p>
-    </div>
+  <!-- Arc: outreach -> nonprofit -->
+  <div class="ci-arc fade-up">
+    <div class="ci-arc-title">From campus outreach to a nonprofit</div>
+    <ol class="ci-arc-steps">
+      <li><span class="ci-arc-dot" aria-hidden="true"></span><span class="ci-arc-date">AUG 2024</span><span class="ci-arc-name">Typhoon Carina relief</span><span class="ci-arc-note">SATA volunteers</span></li>
+      <li><span class="ci-arc-dot" aria-hidden="true"></span><span class="ci-arc-date">OCT 2024</span><span class="ci-arc-name">Tech Forward</span><span class="ci-arc-note">Organized · 150+ students</span></li>
+      <li class="is-now"><span class="ci-arc-dot" aria-hidden="true"></span><span class="ci-arc-date">JUL 2026</span><span class="ci-arc-name">Founded VeloBuild</span><a class="ci-arc-link" href="#velobuild">See VeloBuild →</a></li>
+    </ol>
+  </div>
 
+  <div class="ci-pair fade-up-grid">
     <!-- Tech Forward -->
-    <div class="card-lift" style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;">OCT 30, 2024</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">LPU-Cavite SATA · Tropical Village National High School</span></div>
-      <h4 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;">Tech Forward: Striving for Excellence in Digital Literacy</h4>
-      <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:16px;">Community tech outreach delivering hands-on workshops in programming, web design, and digital arts — reaching 150+ high school students at Tropical Village National HS, General Trias, Cavite.</p>
-      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-bottom:16px;">
-        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">150+</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;">Students</div></div>
-        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">3</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;">Workshop tracks</div></div>
-        <div><div style="font-family:'Sora',sans-serif;font-size:24px;font-weight:800;color:var(--sage);">2</div><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;">SDGs addressed</div></div>
+    <article class="ci-card fade-up card-lift">
+      <div class="ci-gallery">
+        <div data-photo data-pg="tf" class="ci-gallery-main"><img src="TechForward/image copy.png" alt="SATA volunteers with Tropical Village National High School students after the Tech Forward workshops" loading="lazy"></div>
+        <div data-photo data-pg="tf"><img src="TechForward/image.png" alt="SATA team with the Department of Computer Studies Community Outreach banner for Tropical Village National High School" loading="lazy"></div>
+        <div data-photo data-pg="tf"><img src="TechForward/image1.png" alt="SATA officers with faculty at the Tropical Village National High School gate" loading="lazy"></div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-        <div data-photo data-pg="tf"><img src="TechForward/image.png" alt="Tech Forward" loading="lazy"></div>
-        <div data-photo data-pg="tf"><img src="TechForward/image1.png" alt="Tech Forward" loading="lazy"></div>
-        <div data-photo data-pg="tf"><img src="TechForward/image copy.png" alt="Tech Forward" loading="lazy"></div>
+      <div class="ci-body">
+        <div class="ci-date">OCT 30, 2024 · TROPICAL VILLAGE NHS, GENERAL TRIAS</div>
+        <h3 class="ci-title">Tech Forward: Striving for Excellence in Digital Literacy</h3>
+        <span class="ci-role">My role: Organizer, as SATA President</span>
+        <p class="ci-text">A community tech outreach under the Department of Computer Studies, delivering hands-on workshops in programming, web design and digital arts for high school students.</p>
+        <div class="ci-stats">
+          <div><div data-count="150" data-suffix="+" class="ci-stat-num">150+</div><div class="ci-stat-label">Students reached</div></div>
+          <div><div data-count="3" class="ci-stat-num">3</div><div class="ci-stat-label">Workshop tracks</div></div>
+          <div><div class="ci-stat-num">SDG 4</div><div class="ci-stat-label">Quality Education</div></div>
+        </div>
       </div>
-    </div>
+    </article>
 
     <!-- Typhoon Carina -->
-    <div class="card-lift" style="padding:24px;background:var(--white);border:1px solid var(--border);border-radius:10px;box-shadow:var(--shadow);">
-      <div style="display:flex;align-items:baseline;gap:10px;margin-bottom:8px;flex-wrap:wrap;"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:2px 8px;">AUG 12, 2024</span><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);">SATA × COSel · Barangay Bacao 2, General Trias, Cavite</span></div>
-      <h4 style="font-family:'Sora',sans-serif;font-size:18px;font-weight:700;color:var(--ink);margin-bottom:8px;">SATA Joins Relief Efforts for Typhoon Carina Victims</h4>
-      <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-bottom:16px;">Coordinated multi-organization relief operation in partnership with COSel, distributing packages to affected residents of Barangay Bacao 2 and underscoring SATA's commitment to community service beyond the campus.</p>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-        <div data-photo data-pg="carina"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Carina relief" loading="lazy"></div>
-        <div data-photo data-pg="carina"><img src="Carina/ce4fdca6-abd2-4dd1-9aff-bea3c7e877ae.jpg" alt="Carina relief" loading="lazy"></div>
-        <div data-photo data-pg="carina"><img src="Carina/dc9647b1-cdcd-43a3-a277-607c6ece6b29.jpg" alt="Carina relief" loading="lazy"></div>
+    <article class="ci-card fade-up card-lift">
+      <div class="ci-gallery">
+        <div data-photo data-pg="carina" class="ci-gallery-main"><img src="Carina/c3d3f61a-a8f2-4e23-8c23-00998b911f5a.jpg" alt="Volunteers with the Relief Operation Typhoon Carina banner and relief packs at Barangay Bacao, General Trias" loading="lazy"></div>
+        <div data-photo data-pg="carina"><img src="Carina/ce4fdca6-abd2-4dd1-9aff-bea3c7e877ae.jpg" alt="LPU-Cavite relief packs ready for distribution" loading="lazy"></div>
+        <div data-photo data-pg="carina"><img src="Carina/dc9647b1-cdcd-43a3-a277-607c6ece6b29.jpg" alt="Handing a relief pack to a Barangay Bacao resident" loading="lazy"></div>
       </div>
-    </div>
-
+      <div class="ci-body">
+        <div class="ci-date">AUG 12, 2024 · BARANGAY BACAO 2, GENERAL TRIAS</div>
+        <h3 class="ci-title">Relief Operation for Typhoon Carina Victims</h3>
+        <span class="ci-role">My role: SATA President · participating organization</span>
+        <p class="ci-text">SATA joined the relief operation organized by LPU-Cavite Community Outreach as a Service Learning activity, helping distribute relief packs to affected residents of Barangay Bacao 2.</p>
+        <div class="ci-tags"><span>Service Learning</span><span>Disaster relief</span><span>LPU-Cavite Community Outreach</span></div>
+      </div>
+    </article>
   </div>
 </section>
 
