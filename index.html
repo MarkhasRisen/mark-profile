@@ -383,6 +383,58 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .moments-grid [data-photo] img{height:140px;}
 @media(max-width:900px){.contact-grid{gap:32px!important;}.moments-grid{grid-template-columns:repeat(3,1fr);}}
 @media(max-width:480px){.moments-grid{grid-template-columns:repeat(2,1fr);}.moments-grid [data-photo] img{height:120px;}.ct-form-card{padding:22px 18px;}}
+/* MyCCS product brief (VeloBuild) */
+.mc-panel{--mc:#1a5fad;--mc-dim:rgba(26,95,173,.08);margin-top:16px;padding:28px;background:var(--white);border:1px solid var(--border);border-top:3px solid var(--mc);border-radius:10px;box-shadow:var(--shadow);}
+:root[data-theme="dark"] .mc-panel{--mc:#5aa8f0;--mc-dim:rgba(90,168,240,.12);}
+.mc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:22px;}
+.mc-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mc);margin-bottom:6px;}
+.mc-title{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.2;margin-bottom:6px;}
+.mc-meta{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-4);}
+.mc-role{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--mc);background:var(--mc-dim);border:1px solid var(--mc);border-radius:4px;padding:5px 10px;}
+.mc-h{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin:22px 0 10px;}
+.mc-two{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+.mc-two .mc-h{margin-top:0;}
+.mc-two + .mc-h{margin-top:26px;}
+.mc-p{font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.7;}
+.mc-users,.mc-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+.mc-users li,.mc-list li{position:relative;padding-left:16px;font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.55;}
+.mc-users li::before,.mc-list li::before{content:'—';position:absolute;left:0;color:var(--mc);}
+.mc-users strong{color:var(--ink);}
+.mc-apps{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.mc-apps > div,.mc-features > div{display:flex;flex-direction:column;gap:4px;padding:14px 16px;background:var(--bg);border:1px solid var(--border);border-radius:8px;}
+.mc-app-name,.mc-f-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);}
+.mc-app-note,.mc-f-note{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.5;}
+.mc-features{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.mc-features > div{border-top:2px solid var(--mc);}
+.mc-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.mc-metrics > div{background:var(--white);padding:14px 12px;}
+.mc-m-num{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:var(--mc);line-height:1;margin-bottom:6px;}
+.mc-m-label{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-2);line-height:1.45;}
+.mc-road{list-style:none;margin:0 0 26px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);position:relative;}
+.mc-road::before{content:'';position:absolute;top:6px;left:6px;right:calc(25% - 6px);height:2px;background:linear-gradient(90deg,var(--mc),var(--border-m));}
+.mc-road li{position:relative;display:flex;flex-direction:column;gap:3px;padding-right:12px;}
+.mc-r-dot{width:14px;height:14px;border-radius:50%;background:var(--white);border:2px solid var(--border-m);position:relative;z-index:1;margin-bottom:6px;}
+.mc-road li.is-next .mc-r-dot{background:var(--mc);border-color:var(--mc);box-shadow:0 0 0 4px var(--mc-dim);}
+.mc-r-sprint{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--ink-4);text-transform:uppercase;}
+.mc-road li.is-next .mc-r-sprint{color:var(--mc);}
+.mc-r-name{font-family:'Sora',sans-serif;font-size:13px;font-weight:600;color:var(--ink);line-height:1.35;}
+.mc-note{margin-top:22px;padding-top:14px;border-top:1px solid var(--border);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--ink-4);}
+@media(max-width:900px){.mc-features,.mc-metrics{grid-template-columns:1fr 1fr;}}
+@media(max-width:700px){.mc-panel{padding:22px 18px;}.mc-two,.mc-apps{grid-template-columns:1fr;gap:18px;}.mc-road{grid-template-columns:1fr;gap:14px;}.mc-road::before{top:6px;bottom:6px;left:6px;right:auto;width:2px;height:auto;background:linear-gradient(var(--mc),var(--border-m));}.mc-road li{padding-left:24px;}.mc-r-dot{position:absolute;left:0;top:0;margin:0;}}
+@media(max-width:480px){.mc-features,.mc-metrics{grid-template-columns:1fr;}}
+/* Product case studies: problem / role / decision / delivery / outcome rows */
+.cs-intro{font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin:-12px 0 24px;max-width:680px;}
+.cs-rows{margin:20px 0 4px;padding:0;display:flex;flex-direction:column;border-top:1px solid var(--border);}
+.cs-rows > div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);}
+.cs-rows dt{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);padding-top:3px;}
+.cs-rows dd{margin:0;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.65;}
+.cs-rows > .cs-decision{background:var(--accent-dim);border-left:3px solid var(--accent);padding-left:12px;margin-left:-15px;}
+.cs-rows > .cs-decision dt{color:var(--accent);}
+.cs-rows > .cs-decision dd{color:var(--ink);}
+.proj-card .mc-panel{margin-top:16px;padding:20px 0 0;border:none;border-top:1px solid var(--border);border-radius:0;box-shadow:none;background:transparent;}
+.proj-card .mc-head{display:none;}
+.proj-card .mc-panel .mc-h:first-child,.proj-card .mc-two:first-of-type .mc-h{margin-top:0;}
+@media(max-width:700px){.cs-rows > div{grid-template-columns:1fr;gap:4px;}.cs-rows > .cs-decision{margin-left:-12px;padding-left:9px;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -647,9 +699,11 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   <div style="max-width:1100px;margin:0 auto;padding:64px 32px;">
     <div style="display:flex;align-items:baseline;gap:14px;margin-bottom:32px;">
       <span class="section-num" data-num="2" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:var(--accent);">02</span>
-      <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Featured Projects</h2>
+      <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">Product Case Studies</h2>
       <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.08em;">4 CASES</span>
     </div>
+    <p class="cs-intro">Each case follows the same path: the problem, my role, the key decisions, how it was delivered, and the outcome.</p>
     <div style="display:flex;flex-direction:column;gap:20px;">
 
       <!-- ReColor -->
@@ -662,6 +716,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           </div>
           <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--accent);text-align:right;padding:6px 12px;border:1px solid var(--accent);border-radius:4px;flex-shrink:0;">BEST CS THESIS<br>BEST RESEARCH</div>
         </div>
+        <dl class="cs-rows">
+          <div><dt>Problem</dt><dd>About 350 million people live with color vision deficiency, including an estimated 5.17% of Filipino males, yet existing mobile tools are mostly single-function apps that do not combine screening, correction and awareness.</dd></div>
+          <div><dt>My role</dt><dd>Project lead: led end-to-end delivery from scoping and clinical validation to Google Play, managing scope, dependencies and timeline across developer, clinical and end-user workstreams.</dd></div>
+          <div><dt>Delivery</dt><dd>A React Native app with four modular image-processing services, validated by 30 end users, 10 IT experts and 3 clinical specialists from the Philippine Eye Research Institute (PERI).</dd></div>
+          <div><dt>Outcome</dt><dd>+6.91 delta-E color discrimination gain, 100% color identification accuracy and a 3.92/4 clinical expert rating. Won Best CS Thesis and Best Research for Social Sciences &amp; Humanities.</dd></div>
+        </dl>
         <!-- Poster -->
         <div style="margin-top:20px;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
           <img src="RECOLOR - FINAL POSTER.jpg" alt="ReColor Research Poster" style="width:100%;height:auto;display:block;">
@@ -745,6 +805,13 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:var(--sage);text-align:right;padding:6px 12px;border:1px solid var(--sage);border-radius:4px;">PRODUCTION<br>100+ USERS</div>
           </div>
         </div>
+        <dl class="cs-rows">
+          <div><dt>Problem</dt><dd>Tropical Village National High School needed faster academic record processing for 100+ students and staff, under a fixed school accreditation deadline.</dd></div>
+          <div><dt>My role</dt><dd>Lead Project Manager of a 4-developer team.</dd></div>
+          <div class="cs-decision"><dt>Key decision</dt><dd>Ran a hybrid Agile-Waterfall plan: fixed milestones protected the accreditation deadline, while sprints inside them absorbed feedback from 20+ stakeholders.</dd></div>
+          <div><dt>Delivery</dt><dd>Turned stakeholder requirements into a prioritized roadmap and backlog; ran sprint planning and reviews; iterated the UI in Figma from user feedback; kept stakeholders aligned with weekly status updates, risk tracking and decision logs.</dd></div>
+          <div><dt>Outcome</dt><dd>Adopted by 100+ students and staff, 35% faster academic record processing, zero deadline slippage.</dd></div>
+        </dl>
         <button class="expand-toggle" data-target="ql-expand" aria-expanded="false">
           View documentation
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
@@ -774,6 +841,110 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
       </div>
 
+      <!-- MyCCS -->
+      <div id="myccs" class="proj-card fade-up card-lift" data-skills="agile jira" data-skill-label="MyCCS product case study · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">PRODUCT OWNER · VELOBUILD · PRD v1.0 · NOV 2026</div>
+            <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">MyCCS — Centralized College Platform</h3>
+            <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-top:8px;max-width:600px;">One hub for CCS students, org officers and faculty: a mobile app plus a web admin portal for org pages, events with offline QR attendance, evaluation forms and certification key distribution.</p>
+          </div>
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:#d97706;text-align:right;padding:6px 12px;border:1px dashed rgba(245,158,11,.6);border-radius:4px;flex-shrink:0;">IN DELIVERY<br>SPRINT 1 NEXT</div>
+        </div>
+        <dl class="cs-rows">
+          <div><dt>Problem</dt><dd>College of Computing Studies information is scattered across social media posts, paper attendance sheets, ad-hoc Google Forms and spreadsheets used to hand out certification exam keys.</dd></div>
+          <div><dt>My role</dt><dd>Product Owner and PRD co-author, as CEO of VeloBuild, the nonprofit building it.</dd></div>
+          <div class="cs-decision"><dt>Key decisions</dt><dd>Made event attendance offline-first because campus venues have no signal. Switched to verified institutional-email sign-up when university single sign-on clearance was not available. Cut likes, comments, chat and complex form branching from the MVP to protect the 4-sprint plan.</dd></div>
+          <div><dt>Delivery</dt><dd>PRD v1.0 with success metrics, a 4-sprint roadmap, spec-driven development, Jira-ticketed branches with CI/CD gates, a bug log and a shortcut ledger.</dd></div>
+          <div><dt>Outcome</dt><dd>In delivery, measured against MVP targets: 80% of orgs live within 2 weeks, 100% offline-scan sync, a 500-student key CSV processed in under 10 s, and zero plaintext student data exposed.</dd></div>
+        </dl>
+        <button class="expand-toggle" data-target="myccs-brief" aria-expanded="false" aria-controls="myccs-brief">
+          View full product brief
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+            <!-- MyCCS product brief (opened from the MyCCS card). Highlights only: the full PRD, architecture and security design stay private. -->
+            <div class="expand-body collapsed" id="myccs-brief" style="max-height:4000px;">
+              <article class="mc-panel" data-skills="agile jira" data-skill-label="MyCCS product brief · VeloBuild">
+                <header class="mc-head">
+                  <div>
+                    <div class="mc-eyebrow">Product brief · MyCCS</div>
+                    <h3 class="mc-title">One hub for CCS students, orgs and faculty</h3>
+                    <div class="mc-meta">PRD v1.0 · Nov 2026 · Under review · Milestone 1 next</div>
+                  </div>
+                  <span class="mc-role">My role: Product Owner · PRD co-author · VeloBuild CEO</span>
+                </header>
+
+                <div class="mc-two">
+                  <section>
+                    <h4 class="mc-h">Problem</h4>
+                    <p class="mc-p">College of Computing Studies information is scattered across social media announcements, paper attendance sheets, ad-hoc Google Forms, and spreadsheets used to hand out certification exam keys.</p>
+                  </section>
+                  <section>
+                    <h4 class="mc-h">Users · 3 roles</h4>
+                    <ul class="mc-users">
+                      <li><strong>Students</strong> join orgs, register for events, show a personal QR ticket, receive certification keys</li>
+                      <li><strong>Org officers</strong> run org pages, events, attendance scanning and forms</li>
+                      <li><strong>Faculty admins</strong> govern orgs, announcements and certification key batches</li>
+                    </ul>
+                  </section>
+                </div>
+
+                <h4 class="mc-h">The product</h4>
+                <div class="mc-apps">
+                  <div><span class="mc-app-name">Mobile app</span><span class="mc-app-note">for students and org officers</span></div>
+                  <div><span class="mc-app-name">Web admin portal</span><span class="mc-app-note">for faculty, deployed separately</span></div>
+                </div>
+
+                <h4 class="mc-h">MVP features</h4>
+                <div class="mc-features">
+                  <div><span class="mc-f-name">Org hub</span><span class="mc-f-note">Main orgs and sub-orgs with their own pages, posts and membership applications</span></div>
+                  <div><span class="mc-f-name">Offline QR attendance</span><span class="mc-f-note">Officers scan with zero connectivity; check-in, check-out and late status sync when back online</span></div>
+                  <div><span class="mc-f-name">Forms &amp; evaluations</span><span class="mc-f-note">Conditional membership and post-event forms, with metrics for event hosts</span></div>
+                  <div><span class="mc-f-name">Certification keys</span><span class="mc-f-note">Faculty upload one CSV; registered students get the key in-app with a push alert</span></div>
+                </div>
+
+                <h4 class="mc-h">Success metrics · MVP</h4>
+                <div class="mc-metrics">
+                  <div><div class="mc-m-num">80%</div><div class="mc-m-label">of orgs publish pages within 2 weeks of launch</div></div>
+                  <div><div class="mc-m-num">100%</div><div class="mc-m-label">of offline scans sync with no data loss (&lt;200 ms feedback)</div></div>
+                  <div><div class="mc-m-num">&lt;10s</div><div class="mc-m-label">to process a 500-student key CSV</div></div>
+                  <div><div class="mc-m-num">0</div><div class="mc-m-label">plaintext student data exposed (RA 10173)</div></div>
+                </div>
+
+                <h4 class="mc-h">Roadmap · 4 sprints</h4>
+                <ol class="mc-road">
+                  <li class="is-next"><span class="mc-r-dot" aria-hidden="true"></span><span class="mc-r-sprint">Sprint 1 · Next</span><span class="mc-r-name">Foundation &amp; security</span></li>
+                  <li><span class="mc-r-dot" aria-hidden="true"></span><span class="mc-r-sprint">Sprint 2</span><span class="mc-r-name">Org hub &amp; key distribution</span></li>
+                  <li><span class="mc-r-dot" aria-hidden="true"></span><span class="mc-r-sprint">Sprint 3</span><span class="mc-r-name">Events, offline attendance &amp; forms</span></li>
+                  <li><span class="mc-r-dot" aria-hidden="true"></span><span class="mc-r-sprint">Sprint 4</span><span class="mc-r-name">Hardening, QA &amp; release</span></li>
+                </ol>
+
+                <div class="mc-two">
+                  <section>
+                    <h4 class="mc-h">Deliberately out of scope</h4>
+                    <ul class="mc-list">
+                      <li>Likes, comments and student chat</li>
+                      <li>Complex AND/OR form branching and file uploads</li>
+                      <li>Email notifications (Phase 2)</li>
+                      <li>Multi-college or multi-campus expansion</li>
+                    </ul>
+                  </section>
+                  <section>
+                    <h4 class="mc-h">How it's run</h4>
+                    <ul class="mc-list">
+                      <li>Spec-driven development: each feature ships against a written spec</li>
+                      <li>Jira-ticketed branches and commits with CI/CD quality gates</li>
+                      <li>A bug log (7 fixed so far) so root causes are fixed once</li>
+                      <li>A shortcut ledger that keeps every MVP shortcut visible with an upgrade trigger</li>
+                    </ul>
+                  </section>
+                </div>
+
+                <p class="mc-note">Highlights only. The full PRD, architecture and security design are private.</p>
+              </article>
+            </div>
+      </div>
+
       <!-- Optum ERP -->
       <div class="proj-card fade-up card-lift" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="ERP Merchandise System · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
@@ -783,6 +954,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
             <p style="font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.7;margin-top:8px;max-width:600px;">Developed and automated a SharePoint ERP platform under the Executive Administration Division — bridging HR tech, web development, and executive-level project coordination. Contributed to a 35% process efficiency improvement and 100% inventory data accuracy.</p>
           </div>
         </div>
+        <dl class="cs-rows">
+          <div><dt>Problem</dt><dd>Merchandise and departmental workflows in the Executive Administration Division relied on manual data entry.</dd></div>
+          <div><dt>My role</dt><dd>ERP Project Coordinator Intern, partnering with Executive Administration leadership.</dd></div>
+          <div><dt>Delivery</dt><dd>Ran requirement-gathering sessions with developers, operations and executive leadership; co-developed a SharePoint ERP Merchandise System; worked in Scrum with Jira; wrote executive-ready status reports on project health, blockers and next steps.</dd></div>
+          <div><dt>Outcome</dt><dd>35% process-efficiency improvement, 30% less manual data entry, 100% data accuracy, deployed without production disruption.</dd></div>
+        </dl>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button class="expand-toggle" data-target="optum-photos" aria-expanded="false">
             View internship &amp; ERP Store
@@ -944,14 +1121,18 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
                 <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">LPU-Cavite</span>
                 <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;padding:2px 6px;border:1px solid var(--border);border-radius:3px;color:var(--ink-4);">Proprietary</span>
               </div>
-              <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:7px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:5px;align-self:flex-start;">
+              <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;align-self:flex-start;">
+                <a href="#myccs" class="expand-toggle" style="margin:0;font-size:10px;text-decoration:none;">See product case study →</a>
+                <span style="display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Mono',monospace;font-size:10px;padding:7px 14px;background:var(--border);color:var(--ink-3);border:1px solid var(--border-m);border-radius:5px;">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
                 Proprietary · Private
               </span>
+              </div>
             </div>
           </div>
 
         </div>
+
       </div>
     </div>
 
