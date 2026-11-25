@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mark Risen Caparas — Portfolio</title>
-<meta name="description" content="Mark Risen Caparas — Computer Science graduate (LPU-Cavite) and project lead. Shipped a Best CS Thesis app to Google Play, led a 4-developer SIS team, automated ERP workflows at Optum, and worked banking fraud operations at Concentrix. Available for full-time roles.">
+<meta name="description" content="Mark Risen Caparas — Product Owner and project lead, Computer Science graduate (LPU-Cavite). Shipped a Best CS Thesis app to Google Play, led a 4-developer SIS team, automated ERP workflows at Optum, and worked banking fraud operations at Concentrix. Available for full-time roles.">
 <meta name="author" content="Mark Risen Caparas">
 <meta property="og:site_name" content="Mark Risen Caparas">
 <meta property="article:author" content="Mark Risen Caparas">
 <meta property="article:published_time" content="2026-06-23T09:00:00+08:00">
 <meta property="og:title" content="Mark Risen Caparas — CS Engineer & Portfolio">
-<meta property="og:description" content="Computer Science graduate and project lead. Best CS Thesis awardee, ERP intern at Optum, fraud operations at Concentrix, CCS Student Leader of the Year.">
+<meta property="og:description" content="Product Owner and project lead, Computer Science graduate. Best CS Thesis awardee, ERP intern at Optum, fraud operations at Concentrix, CCS Student Leader of the Year.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://markhasrisen.github.io/mark-profile/">
 <meta property="og:image" content="https://markhasrisen.github.io/mark-profile/og-image.jpg">
@@ -19,7 +19,7 @@
 <meta property="og:image:alt" content="Mark Risen Caparas — CS Engineer portfolio">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mark Risen Caparas — Portfolio">
-<meta name="twitter:description" content="CS graduate and project lead, LPU-Cavite. Product delivery · ERP · Fraud &amp; Risk Ops · Leadership. Available now.">
+<meta name="twitter:description" content="Product Owner &amp; project lead, LPU-Cavite CS graduate. Product delivery · ERP · Fraud &amp; Risk Ops · Leadership. Available now.">
 <meta name="twitter:image" content="https://markhasrisen.github.io/mark-profile/og-image.jpg">
 <link rel="icon" type="image/png" href="risen.png">
 <link rel="apple-touch-icon" href="risen.png">
@@ -435,6 +435,39 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .proj-card .mc-head{display:none;}
 .proj-card .mc-panel .mc-h:first-child,.proj-card .mc-two:first-of-type .mc-h{margin-top:0;}
 @media(max-width:700px){.cs-rows > div{grid-template-columns:1fr;gap:4px;}.cs-rows > .cs-decision{margin-left:-12px;padding-left:9px;}}
+/* Impact strip (replaces the old stats bar) */
+.impact-strip{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.impact-inner{max-width:1100px;margin:0 auto;padding:20px 32px 24px;}
+.impact-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-4);margin-bottom:12px;}
+.impact-grid{display:grid;grid-template-columns:repeat(6,1fr);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.impact-tile{display:flex;flex-direction:column;gap:4px;padding:16px 16px 14px;text-decoration:none;border-right:1px solid var(--border);transition:background .2s;}
+.impact-tile:last-child{border-right:none;}
+.impact-tile:hover,.impact-tile:focus-visible{background:var(--accent-dim);}
+.impact-num{font-family:'Sora',sans-serif;font-size:30px;font-weight:800;line-height:1;color:var(--ink);letter-spacing:-.02em;}
+.impact-num small{font-size:.55em;font-weight:700;color:var(--ink-3);}
+.impact-label{font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.35;}
+.impact-src{margin-top:auto;padding-top:4px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--accent);}
+.hero-link:hover,.hero-link:focus-visible{color:var(--accent)!important;}
+@media(max-width:1000px){.impact-grid{grid-template-columns:repeat(3,1fr);}.impact-tile:nth-child(3n){border-right:none;}.impact-tile:nth-child(-n+3){border-bottom:1px solid var(--border);}}
+@media(max-width:560px){.impact-grid{grid-template-columns:1fr 1fr;}.impact-tile{border-right:1px solid var(--border)!important;border-bottom:1px solid var(--border);}.impact-tile:nth-child(2n){border-right:none!important;}.impact-tile:nth-last-child(-n+2){border-bottom:none;}.impact-inner{padding:18px 16px 20px;}.impact-num{font-size:26px;}}
+@media(max-width:800px){.about-grid{grid-template-columns:1fr!important;gap:28px!important;}}
+/* Also built: Data & AI (Sentinel) */
+.ab-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-4);margin:40px 0 12px;}
+.ab-card{padding:26px 28px;background:var(--bg);border:1px solid var(--border);border-top:3px solid var(--ink-3);border-radius:10px;}
+.ab-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+.ab-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-3);margin-bottom:6px;}
+.ab-title{font-family:'Sora',sans-serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.02em;}
+.ab-sub{font-family:'Source Serif 4',serif;font-size:15px;color:var(--ink-2);line-height:1.65;margin-top:6px;max-width:620px;}
+.ab-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;padding:4px 10px;border:1px solid var(--border-m);border-radius:4px;color:var(--ink-3);flex-shrink:0;}
+.ab-chart{margin:4px 0 14px;padding:14px 16px;background:var(--white);border:1px solid var(--border);border-radius:8px;display:flex;flex-direction:column;gap:10px;}
+.ab-chart-cap{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);}
+.ab-chart-cap span{color:var(--ink-4);text-transform:none;letter-spacing:.02em;}
+.ab-bar{display:grid;grid-template-columns:230px 1fr 52px;align-items:center;gap:12px;}
+.ab-bar-label{font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);}
+.ab-bar-track{display:block;height:10px;background:var(--border);border-radius:0 4px 4px 0;}
+.ab-bar-fill{display:block;height:100%;min-width:2px;background:var(--accent);border-radius:0 4px 4px 0;}
+.ab-bar-val{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);text-align:right;}
+@media(max-width:700px){.ab-card{padding:22px 18px;}.ab-bar{grid-template-columns:1fr 52px;row-gap:4px;}.ab-bar-label{grid-column:1/-1;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -557,13 +590,14 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 12px;font-weight:500;">CLSSYB</span>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.06em;color:var(--sage);background:var(--sage-dim);border:1px solid var(--sage);border-radius:4px;padding:4px 12px;font-weight:500;">● AVAILABLE NOW · FULL-TIME</span>
       </div>
-      <p style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--ink-2);line-height:1.7;margin-top:22px;max-width:500px;">Computer Science graduate and project lead who turns stakeholder needs into shipped products: a Google Play app that won Best CS Thesis, a student information system used by 100+ people, and ERP automation at Optum, backed by banking fraud operations experience.</p>
+      <p style="font-family:'Source Serif 4',serif;font-size:18px;color:var(--ink-2);line-height:1.7;margin-top:22px;max-width:500px;"><strong style="color:var(--ink);font-weight:600;">Product Owner and project lead</strong> with a Computer Science degree. I turn stakeholder needs into shipped products: a Google Play app that won Best CS Thesis, a student information system used by 100+ people, and ERP automation at Optum, backed by banking fraud operations experience.</p>
       <div class="hero-cta" style="display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;">
         <a href="Mark_Risen_Caparas_Resume_v6_PlainATS.pdf" download style="display:inline-flex;align-items:center;gap:8px;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;background:var(--btn-dl-bg);color:var(--btn-dl-color);border-radius:6px;text-decoration:none;">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
           Download CV
         </a>
-        <a href="#contact" style="display:inline-flex;align-items:center;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;background:transparent;color:var(--ink);border:1px solid var(--border-m);border-radius:6px;text-decoration:none;">Get in Touch</a>
+        <a href="#projects" style="display:inline-flex;align-items:center;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:12px 24px;background:transparent;color:var(--ink);border:1px solid var(--border-m);border-radius:6px;text-decoration:none;">View case studies →</a>
+        <a href="#contact" class="hero-link" style="display:inline-flex;align-items:center;font-family:'Sora',sans-serif;font-size:13px;font-weight:600;padding:12px 8px;color:var(--ink-2);text-decoration:none;">Get in touch</a>
       </div>
     </div>
     <div class="v2-hero-photo" style="border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.1);position:relative;">
@@ -581,24 +615,17 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   </div>
 </header>
 
-<!-- STATS BAR -->
-<div style="background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="v2-stats fade-up-grid" style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);">
-    <div class="fade-up" style="padding:28px 32px;border-right:1px solid var(--border);text-align:center;">
-      <div data-count="5" style="font-family:'Sora',sans-serif;font-size:34px;font-weight:800;color:var(--ink);line-height:1;">5</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;">Awards</div>
-    </div>
-    <div class="fade-up" style="padding:28px 32px;border-right:1px solid var(--border);text-align:center;">
-      <div data-count="2" style="font-family:'Sora',sans-serif;font-size:34px;font-weight:800;color:var(--ink);line-height:1;">2</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;">Certifications</div>
-    </div>
-    <div class="fade-up" style="padding:28px 32px;border-right:1px solid var(--border);text-align:center;">
-      <div data-count="10" data-suffix="+" style="font-family:'Sora',sans-serif;font-size:34px;font-weight:800;color:var(--ink);line-height:1;">10+</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;">Leadership Roles</div>
-    </div>
-    <div class="fade-up" style="padding:28px 32px;text-align:center;">
-      <div style="font-family:'Sora',sans-serif;font-size:34px;font-weight:800;color:var(--sage);line-height:1;">Open</div>
-      <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;">For Work</div>
+<!-- IMPACT STRIP (product outcomes; each tile links to its case study) -->
+<div class="impact-strip">
+  <div class="impact-inner">
+    <div class="impact-title">Impact at a glance</div>
+    <div class="impact-grid fade-up-grid">
+      <a class="impact-tile fade-up" href="#projects"><span class="impact-num"><span data-count="4">4</span></span><span class="impact-label">Products shipped or in delivery</span><span class="impact-src">All 4 case studies</span></a>
+      <a class="impact-tile fade-up" href="#quadlearning"><span class="impact-num"><span data-count="100" data-suffix="+">100+</span></span><span class="impact-label">Active users</span><span class="impact-src">QuadLearning</span></a>
+      <a class="impact-tile fade-up" href="#quadlearning"><span class="impact-num"><span data-count="35" data-suffix="%">35%</span></span><span class="impact-label">Faster record processing</span><span class="impact-src">QuadLearning</span></a>
+      <a class="impact-tile fade-up" href="#optum-erp"><span class="impact-num"><span data-count="35" data-suffix="%">35%</span></span><span class="impact-label">Process efficiency gain</span><span class="impact-src">Optum ERP</span></a>
+      <a class="impact-tile fade-up" href="#recolor"><span class="impact-num">3.92<small>/4</small></span><span class="impact-label">Clinical expert rating</span><span class="impact-src">ReColor</span></a>
+      <a class="impact-tile fade-up" href="#quadlearning"><span class="impact-num"><span data-count="0">0</span></span><span class="impact-label">Deadline slippage</span><span class="impact-src">QuadLearning</span></a>
     </div>
   </div>
 </div>
@@ -631,7 +658,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <h2 style="font-family:'Sora',sans-serif;font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em;">About</h2>
     <div class="sec-rule" aria-hidden="true" style="height:1px;flex:1;background:var(--border);"></div>
   </div>
-  <div style="display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:start;">
+  <div class="about-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:40px;align-items:start;">
     <div>
       <p style="font-family:'Source Serif 4',serif;font-size:17px;color:var(--ink-2);line-height:1.75;margin-bottom:16px;">Computer Science graduate with a passion for project management, leadership, and tech-driven innovation. Experienced in financial fraud and risk operations at Concentrix, ERP system development, UI/UX design, and recruitment automation at Optum Philippines, and in leading transformative initiatives as President of LPU-Cavite SATA (now the CCS Student Government). Skilled in stakeholder engagement, strategic planning, and process automation, with a vision to harness AI and technology to drive organizational growth.</p>
       <div style="display:flex;flex-direction:column;gap:5px;margin-top:20px;">
@@ -793,7 +820,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       </div>
 
       <!-- QuadLearning -->
-      <div class="proj-card fade-up card-lift" data-skills="figma agile stakeholder sql" data-skill-label="QuadLearning SIS · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div id="quadlearning" class="proj-card fade-up card-lift" data-skills="figma agile stakeholder sql" data-skill-label="QuadLearning SIS · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">LEAD PM · 4-DEV TEAM</div>
@@ -946,7 +973,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       </div>
 
       <!-- Optum ERP -->
-      <div class="proj-card fade-up card-lift" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="ERP Merchandise System · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div id="optum-erp" class="proj-card fade-up card-lift" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="ERP Merchandise System · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px;">INTERNSHIP · OPTUM PHILIPPINES · JUL–AUG 2025</div>
@@ -1005,6 +1032,46 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
       </div>
     </div>
+
+    <!-- Also built: Data & AI (Sentinel). Numbers come from the trained model file (kept out of git); it uses only region + year. -->
+    <div class="ab-label">Also built · Data &amp; AI</div>
+    <article id="sentinel" class="ab-card fade-up card-lift">
+      <div class="ab-head">
+        <div>
+          <div class="ab-eyebrow">PROJECT LEAD · TEAM OF 4 · DATA SCIENCE COURSE PROJECT · DEC 2025</div>
+          <h3 class="ab-title">Sentinel: Malaria Hotspot Model</h3>
+          <p class="ab-sub">A baseline model of regional malaria cases in the Philippines, built on 10 years of Department of Health regional data.</p>
+        </div>
+        <span class="ab-tag">XGBoost · Python</span>
+      </div>
+      <dl class="cs-rows">
+        <div><dt>Problem</dt><dd>Malaria cases nearly doubled from 3,245 in 2022 to 6,248 in 2023, and surveillance mostly reacts to past case counts instead of pointing health teams to where risk is concentrated.</dd></div>
+        <div><dt>My role</dt><dd>Project lead of a 4-person team.</dd></div>
+        <div class="cs-decision"><dt>Key decision</dt><dd>Chose XGBoost after comparing it with Random Forest, Naive Bayes and a linear model, because it handles non-linear patterns and missing data best.</dd></div>
+        <div><dt>Finding</dt><dd>
+          <figure class="ab-chart" aria-labelledby="ab-chart-cap">
+            <figcaption id="ab-chart-cap" class="ab-chart-cap">What the model learned from <span>· share of total split gain across 100 trees</span></figcaption>
+            <div class="ab-bar" title="Region 4B (MIMAROPA, incl. Palawan): 94.8% of the model's learning">
+              <span class="ab-bar-label">Region 4B (MIMAROPA, incl. Palawan)</span>
+              <span class="ab-bar-track"><span class="ab-bar-fill" style="width:94.8%"></span></span>
+              <span class="ab-bar-val">94.8%</span>
+            </div>
+            <div class="ab-bar" title="Year: 5.1% of the model's learning">
+              <span class="ab-bar-label">Year</span>
+              <span class="ab-bar-track"><span class="ab-bar-fill" style="width:5.1%"></span></span>
+              <span class="ab-bar-val">5.1%</span>
+            </div>
+            <div class="ab-bar" title="15 other regions, combined: 0.1% of the model's learning">
+              <span class="ab-bar-label">15 other regions, combined</span>
+              <span class="ab-bar-track"><span class="ab-bar-fill" style="width:0.4%"></span></span>
+              <span class="ab-bar-val">0.1%</span>
+            </div>
+          </figure>
+          One region carries almost the entire signal: Region 4B, which includes Palawan, so outbreak resources belong there first.
+        </dd></div>
+        <div><dt>What we learned</dt><dd>With only region and year as inputs, the model describes past outbreaks but cannot forecast: it returns the same values for every year after its training data. Next step: add lagged rainfall and temperature data and validate on held-out years.</dd></div>
+      </dl>
+    </article>
   </div>
 </section>
 
@@ -1748,7 +1815,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
     <div class="foot-grid">
       <div class="foot-brand">
         <div class="foot-logo">MRC<span>.</span></div>
-        <p>Mark Risen Caparas, a Computer Science graduate and project lead who ships products, leads teams, and brings banking fraud operations experience.</p>
+        <p>Mark Risen Caparas, a Product Owner and project lead with a Computer Science degree who ships products, leads teams, and brings banking fraud operations experience.</p>
         <span class="foot-status"><span class="foot-status-dot" aria-hidden="true"></span>Available now · Cavite, PH</span>
       </div>
       <nav class="foot-col" aria-label="Footer: sections">
@@ -2228,11 +2295,11 @@ function initTypewriter() {
   const el = document.getElementById('hero-typewriter');
   if (!el) return;
   const roles = [
-    'CS Engineer · AI Developer',
-    'Student Leader · Community Builder',
-    'Creative Director · Visual Storyteller',
-    'ERP Developer · Process Optimizer',
-    'Fraud Operations · Digital Risk'
+    'Product Owner · Project Lead',
+    'Agile Delivery · Stakeholder Alignment',
+    'Shipped: Google Play app · SIS · ERP',
+    'Fraud & Risk Operations',
+    'Student Leader · Creative Director'
   ];
   if (REDUCED_MOTION) { el.textContent = roles[0]; return; }
   let ri = 0, ci = 0, deleting = false, paused = false;

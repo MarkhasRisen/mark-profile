@@ -7,3 +7,7 @@ Thumbs.db
 
 # Local archives
 *.zip
+
+# Local model/data files: never publish (pickles can run code when loaded)
+*.pkl
+*.joblib
