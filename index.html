@@ -240,6 +240,12 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .lead-path li.is-now .lead-path-role{color:var(--ink);font-weight:700;}
 .lead-path-note{display:block;font-family:'Source Serif 4',serif;font-size:12px;font-weight:400;color:var(--ink-3);margin-top:3px;}
 .lead-role{padding:16px 18px;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;}
+.lead-role--photo{display:grid;grid-template-columns:260px 1fr;padding:0;overflow:hidden;}
+.v2-lead-grid > .lead-role:not(.lead-role--photo){display:flex;flex-direction:column;justify-content:center;}
+.lead-role--photo [data-photo]{border-radius:0;}
+.lead-role--photo .lead-role-photo{height:170px;object-position:center 45%;}
+.lead-role--photo .lead-role-body{padding:16px 20px;align-self:center;}
+@media(max-width:700px){.lead-role--photo{grid-template-columns:1fr;}.lead-role--photo .lead-role-photo{height:200px;}}
 .lead-role-date{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;color:var(--ink-4);margin-bottom:4px;}
 .lead-role-title{font-family:'Sora',sans-serif;font-size:15px;font-weight:600;color:var(--ink);}
 .lead-role-org{font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);}
@@ -249,6 +255,9 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .lead-gallery-main{grid-column:1/-1;}
 .lead-gallery-main img{height:auto!important;aspect-ratio:1/1;}
 .lead-gallery [data-photo]:not(.lead-gallery-main) img{height:auto;aspect-ratio:4/3;}
+.lead-gallery--fill{grid-template-rows:1fr auto;align-content:stretch;}
+.lead-gallery--fill .lead-gallery-main img{height:100%!important;min-height:280px;aspect-ratio:auto;}
+@media(max-width:800px){.lead-gallery--fill .lead-gallery-main img{height:auto!important;min-height:0;aspect-ratio:4/3;}}
 .lead-also{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;color:var(--ink-2);background:var(--accent-dim);border:1px solid var(--border-m);border-radius:4px;padding:4px 10px;line-height:1.5;}
 .lead-bullet{display:flex;gap:10px;font-family:'Source Serif 4',serif;font-size:14.5px;color:var(--ink-2);line-height:1.6;}
 .lead-bullet > span:first-child{color:var(--accent);flex-shrink:0;}
@@ -746,8 +755,9 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         <dl class="cs-rows">
           <div><dt>Problem</dt><dd>About 350 million people live with color vision deficiency, including an estimated 5.17% of Filipino males, yet existing mobile tools are mostly single-function apps that do not combine screening, correction and awareness.</dd></div>
           <div><dt>My role</dt><dd>Project lead: led end-to-end delivery from scoping and clinical validation to Google Play, managing scope, dependencies and timeline across developer, clinical and end-user workstreams.</dd></div>
+          <div class="cs-decision"><dt>Key decision</dt><dd>Set hue rotation as the baseline and let the metrics decide: our proposed daltonization algorithm had to outperform it on measured color discrimination before becoming the core method. It did, with a +6.91 delta-E gain.</dd></div>
           <div><dt>Delivery</dt><dd>A React Native app with four modular image-processing services, validated by 30 end users, 10 IT experts and 3 clinical specialists from the Philippine Eye Research Institute (PERI).</dd></div>
-          <div><dt>Outcome</dt><dd>+6.91 delta-E color discrimination gain, 100% color identification accuracy and a 3.92/4 clinical expert rating. Won Best CS Thesis and Best Research for Social Sciences &amp; Humanities.</dd></div>
+          <div><dt>Outcome</dt><dd>Daltonization confirmed as the core method, 100% color identification accuracy and a 3.92/4 clinical expert rating. Won Best CS Thesis and Best Research for Social Sciences &amp; Humanities.</dd></div>
         </dl>
         <!-- Poster -->
         <div style="margin-top:20px;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
@@ -778,8 +788,8 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div style="margin-top:14px;padding:20px;background:var(--white);border:1px solid var(--border);border-radius:8px;">
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:12px;">ABSTRACT</div>
             <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">Color vision deficiency (CVD) affects approximately 350 million individuals worldwide, including an estimated 5.17% of Filipino males, predominantly with the deutan subtype. Despite its prevalence, existing mobile assistive tools are often limited to single-function applications that do not integrate screening, correction, and awareness. This study presents <strong style="color:var(--ink);">ReColor</strong>, an Android-based mobile vision assistive application designed to address this gap through a unified set of image processing techniques.</p>
-            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">The system integrates four core components: LMS-based daltonization for color enhancement, CIELAB &Delta;E-based color identification, GPU-accelerated CVD simulation, and HSV-based hue rotation as an alternative enhancement method. A digitized Ishihara screening module is also incorporated to support preliminary detection. Additionally, a U-Net convolutional neural network was developed and evaluated as a research extension, but was not deployed in the final system due to computational constraints.</p>
-            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">A mixed-methods evaluation was conducted with 30 general end users. Results indicate that daltonization and hue rotation provide complementary performance across different CVD types, while the color identification module achieved an accuracy of <strong style="color:var(--ink);">100%</strong>. GPU-based simulation demonstrated high fidelity, with a mean &Delta;E of 0.025 compared to a double-precision CPU reference. System testing achieved a <strong style="color:var(--ink);">100% pass rate</strong> across defined test cases, and user evaluation yielded a grand mean of <strong style="color:var(--ink);">3.60 (Highly Acceptable)</strong> with strong internal consistency (Cronbach&rsquo;s &alpha; = 0.9348).</p>
+            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">The system integrates four core components: digitized Ishihara screening for preliminary detection, LMS-based adaptive daltonization for color enhancement, CIELAB &Delta;E-based color identification, and GPU-accelerated CVD simulation. HSV-based hue rotation was implemented as a baseline against which the proposed daltonization method was evaluated. Additionally, a U-Net convolutional neural network was developed and evaluated as a research extension, but was not deployed in the final system due to computational constraints.</p>
+            <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:12px;">A mixed-methods evaluation was conducted with 30 general end users. Results show that daltonization outperformed the hue rotation baseline in color discrimination, while the color identification module achieved an accuracy of <strong style="color:var(--ink);">100%</strong>. GPU-based simulation demonstrated high fidelity, with a mean &Delta;E of 0.025 compared to a double-precision CPU reference. System testing achieved a <strong style="color:var(--ink);">100% pass rate</strong> across defined test cases, and user evaluation yielded a grand mean of <strong style="color:var(--ink);">3.60 (Highly Acceptable)</strong> with strong internal consistency (Cronbach&rsquo;s &alpha; = 0.9348).</p>
             <p style="font-family:'Source Serif 4',serif;font-size:14px;color:var(--ink-2);line-height:1.75;margin-bottom:14px;">The study was conducted under a Memorandum of Understanding with the <strong style="color:var(--ink);">Philippine Eye Research Institute (PERI)</strong>, ensuring institutional support and alignment with national vision health initiatives under Republic Act No. 11358. By integrating screening, assistive enhancement, and awareness features into a single mobile platform, ReColor provides a practical, accessible, and scalable solution for supporting individuals with color vision deficiency and advancing inclusive technology in the Philippine context.</p>
             <div style="display:flex;gap:5px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--border);">
               <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:3px 8px;background:var(--accent-dim);border-radius:3px;color:var(--accent);">color vision deficiency</span>
@@ -1460,7 +1470,12 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
   </article>
 
   <!-- Featured: SATA presidency -->
-  <article class="lead-feature lead-feature--text fade-up card-lift" data-skills="stakeholder" data-skill-label="SATA presidency · Leadership" style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);margin-bottom:36px;">
+  <article class="lead-feature fade-up card-lift" data-skills="stakeholder" data-skill-label="SATA presidency · Leadership" style="background:var(--white);border:1px solid var(--border);border-top:3px solid var(--sage);border-radius:10px;box-shadow:var(--shadow);margin-bottom:36px;">
+    <div class="lead-gallery lead-gallery--fill">
+      <div data-photo data-pg="sata" class="lead-gallery-main"><img src="leadership/sata-officers-recognition.jpg" alt="SATA officers with their Certificate of Recognition in front of LPU-Cavite" loading="lazy" style="object-position:center 62%;"></div>
+      <div data-photo data-pg="sata"><img src="leadership/sata-outreach-tvnhs.jpg" alt="SATA team with the Department of Computer Studies community outreach banner for Tropical Village National High School, October 30, 2024" loading="lazy"></div>
+      <div data-photo data-pg="sata"><img src="leadership/sata-strategic-planning.jpg" alt="SATA members at a strategic planning presentation" loading="lazy"></div>
+    </div>
     <div style="padding:26px 28px;">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">Organization leadership · JUN 2024 — JUN 2025</div>
       <h3 style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-.01em;margin-bottom:4px;">President</h3>
@@ -1491,8 +1506,11 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
   <!-- Other roles -->
   <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-4);text-transform:uppercase;margin-bottom:12px;">Other roles · 2025–26</div>
-  <div class="v2-lead-grid fade-up-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-    <div class="fade-up card-lift lead-role"><div class="lead-role-date">SEP 2025 — JAN 2026</div><div class="lead-role-title">Head of Technical Assistance</div><div class="lead-role-org">LIBRO</div></div>
+  <div class="v2-lead-grid fade-up-grid" style="display:grid;grid-template-columns:2fr 1fr;gap:12px;">
+    <div class="fade-up card-lift lead-role lead-role--photo">
+      <div data-photo data-pg="libro"><img class="lead-role-photo" src="leadership/libro-booth.jpg" alt="LIBRO officers and members at the organization's book recommendation booth for CCS students" loading="lazy"></div>
+      <div class="lead-role-body"><div class="lead-role-date">SEP 2025 — JAN 2026</div><div class="lead-role-title">Head of Technical Assistance</div><div class="lead-role-org">LIBRO</div></div>
+    </div>
     <div class="fade-up card-lift lead-role"><div class="lead-role-date">JUL 2025 — JUN 2026</div><div class="lead-role-title">Special Advisor</div><div class="lead-role-org">College of IT and Computer Science</div></div>
   </div>
 
