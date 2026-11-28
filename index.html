@@ -512,24 +512,38 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .cs-tile:hover .cs-tile-title span{translate:3px 0;}
 .cs-tile-metric{margin-top:auto;padding-top:6px;font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.45;}
 .cs-tile-metric strong{font-family:'Sora',sans-serif;color:var(--accent);font-weight:700;}
-/* MyCCS has no product photo yet, so its art is a typographic panel, not a fake screenshot */
-.cs-mc-art{--mc:#1a5fad;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.16),transparent 45%),linear-gradient(140deg,#1a5fad,#0e3a6e);}
-.cs-mc-word{font-family:'Sora',sans-serif;font-size:34px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1;}
-.cs-mc-word b{font-weight:800;color:#9cc8f5;}
-.cs-mc-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;max-width:300px;}
-.cs-mc-chips i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:#fff;padding:3px 8px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.08);}
 .cs-cover{position:relative;margin:-28px -28px 22px;height:240px;border-radius:9px 9px 0 0!important;overflow:hidden;border-bottom:1px solid var(--border);background:var(--white);}
 .cs-cover[data-photo] img{height:100%;}
 .cs-cover-cap{position:absolute;left:12px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:4px 10px;border-radius:999px;background:rgba(20,20,22,.72);color:#fff;backdrop-filter:blur(4px);pointer-events:none;}
 .cs-cover--poster{background:#fbfbfb;}
 .cs-cover--poster[data-photo] img{object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
-.cs-tile-media--mc .cs-mc-art{padding-top:34px;}
-.cs-cover--mc .cs-mc-word{font-size:46px;}
-.cs-cover--mc .cs-mc-chips{max-width:460px;}
-.cs-cover--mc .cs-mc-chips i{font-size:11px;padding:4px 10px;}
 @media(max-width:1000px){.cs-index{grid-template-columns:1fr 1fr;}}
-@media(max-width:700px){.cs-cover{height:190px;}.cs-cover--mc .cs-mc-word{font-size:36px;}}
-@media(max-width:480px){.cs-index{grid-template-columns:1fr;gap:10px;}.cs-tile{display:grid;grid-template-columns:120px 1fr;}.cs-tile-media{height:auto;min-height:120px;}.cs-mc-word{font-size:24px;}.cs-mc-chips{display:none;}.cs-tile-media--mc .cs-mc-art{padding-top:16px;}.cs-tile-media--phones > img{height:120px;}.cs-tile-media--phones > img:nth-child(1),.cs-tile-media--phones > img:nth-child(3){display:none;}.cs-tile-media--phones > img:nth-child(2){transform:translateY(22px);}.cs-tile-status{top:6px;left:6px;font-size:10px;padding:3px 7px;}}
+@media(max-width:700px){.cs-cover{height:190px;}}
+@media(max-width:480px){.cs-index{grid-template-columns:1fr;gap:10px;}.cs-tile{display:grid;grid-template-columns:120px 1fr;}.cs-tile-media{height:auto;min-height:120px;}.cs-tile-media--phones > img{height:120px;}.cs-tile-media--phones > img:nth-child(1),.cs-tile-media--phones > img:nth-child(3){display:none;}.cs-tile-media--phones > img:nth-child(2){transform:translateY(22px);}.cs-tile-status{top:6px;left:6px;font-size:10px;padding:3px 7px;}}
+/* MyCCS design-draft screens (tile, cover, screens by persona) */
+.cs-tile-media--mcphones{background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.18),transparent 45%),linear-gradient(140deg,#1a5fad,#0e3a6e);}
+.cs-tile-media--mcphones > img{border-color:#0b1220;}
+.cs-cover--mcscreens{background:radial-gradient(circle at 85% 10%,rgba(255,255,255,.18),transparent 45%),linear-gradient(140deg,#1a5fad,#0e3a6e);}
+.cs-mc-phones{position:absolute;inset:0;display:flex;justify-content:center;align-items:flex-start;gap:16px;padding-top:24px;}
+.cs-mc-phones img{height:290px;width:auto;aspect-ratio:529/1148;flex-shrink:0;border-radius:14px;border:3px solid #0b1220;box-shadow:0 14px 30px rgba(0,0,0,.35);}
+.cs-mc-phones img:nth-child(1),.cs-mc-phones img:nth-child(5){margin-top:30px;}
+.cs-mc-phones img:nth-child(2),.cs-mc-phones img:nth-child(4){margin-top:14px;}
+.mc-screens{margin:22px 0 6px;}
+.mc-screens-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.mc-screens-title{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);}
+.mc-screens-note{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--ink-4);}
+.mc-persona-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px 26px;}
+.mc-persona-name{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--ink);}
+.mc-persona-name span{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:400;letter-spacing:.04em;color:var(--ink-3);}
+.mc-persona-journey{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.03em;color:#1a5fad;margin:3px 0 10px;}
+:root[data-theme="dark"] .mc-persona-journey{color:#7fb6f0;}
+.mc-persona-shots{display:grid;grid-template-columns:repeat(var(--n),1fr);gap:8px;}
+.mc-persona-shots [data-photo]{box-shadow:0 0 0 1px var(--border-m);border-radius:8px;background:var(--white);}
+.mc-persona-shots [data-photo] img{height:auto;aspect-ratio:529/1148;object-fit:cover;object-position:top;}
+.mc-persona--desk .mc-persona-shots [data-photo] img{aspect-ratio:1400/954;}
+@media(max-width:1000px){.mc-persona-grid{grid-template-columns:1fr;}.mc-persona-shots{grid-template-columns:repeat(var(--n),minmax(0,150px));}.mc-persona--desk .mc-persona-shots{grid-template-columns:minmax(0,560px);}}
+@media(max-width:700px){.cs-mc-phones{gap:10px;padding-top:18px;}.cs-mc-phones img{height:230px;border-radius:11px;}.cs-mc-phones img:nth-child(1),.cs-mc-phones img:nth-child(5){display:none;}}
+@media(max-width:480px){.mc-persona-shots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding:1px 1px 8px;}.mc-persona-shots [data-photo]{flex:0 0 118px;scroll-snap-align:start;}.mc-persona--desk .mc-persona-shots [data-photo]{flex-basis:100%;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -813,7 +827,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </span>
       </a>
       <a class="cs-tile fade-up card-lift" href="#myccs">
-        <span class="cs-tile-media cs-tile-media--mc"><span class="cs-mc-art"><span class="cs-mc-word">My<b>CCS</b></span><span class="cs-mc-chips"><i>Org pages</i><i>Events</i><i>Offline QR attendance</i><i>Cert keys</i></span></span><span class="cs-tile-status">In delivery</span></span>
+        <span class="cs-tile-media cs-tile-media--phones cs-tile-media--mcphones"><img src="myccs/home-feed.webp" alt="" loading="lazy"><img src="myccs/qr-id.webp" alt="" loading="lazy"><img src="myccs/offline-scanner.webp" alt="" loading="lazy"><span class="cs-tile-status">In delivery</span></span>
         <span class="cs-tile-body">
           <span class="cs-tile-eyebrow">Product Owner · VeloBuild</span>
           <span class="cs-tile-title">MyCCS <span aria-hidden="true">→</span></span>
@@ -1010,7 +1024,10 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
       <!-- MyCCS -->
       <div id="myccs" class="proj-card fade-up card-lift" data-skills="agile jira" data-skill-label="MyCCS product case study · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
-        <div class="cs-cover cs-cover--mc" aria-hidden="true"><span class="cs-mc-art"><span class="cs-mc-word">My<b>CCS</b></span><span class="cs-mc-chips"><i>Org pages</i><i>Events</i><i>Offline QR attendance</i><i>Cert keys</i></span></span></div>
+        <div class="cs-cover cs-cover--mcscreens">
+          <div class="cs-mc-phones" aria-hidden="true"><img src="myccs/home-feed.webp" alt="" loading="lazy"><img src="myccs/event-rules.webp" alt="" loading="lazy"><img src="myccs/qr-id.webp" alt="" loading="lazy"><img src="myccs/offline-scanner.webp" alt="" loading="lazy"><img src="myccs/eval-metrics.webp" alt="" loading="lazy"></div>
+          <span class="cs-cover-cap">Design draft · sample data</span>
+        </div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">PRODUCT OWNER · VELOBUILD · PRD v1.0 · NOV 2026</div>
@@ -1026,6 +1043,48 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div><dt>Delivery</dt><dd>PRD v1.0 with success metrics, a 4-sprint roadmap, spec-driven development, Jira-ticketed branches with CI/CD gates, a bug log and a shortcut ledger.</dd></div>
           <div><dt>Outcome</dt><dd>In delivery, measured against MVP targets: 80% of orgs live within 2 weeks, 100% offline-scan sync, a 500-student key CSV processed in under 10 s, and zero plaintext student data exposed.</dd></div>
         </dl>
+        <!-- MyCCS screens: crops of the team's design draft (sample data). Screens showing security internals are left out on purpose. -->
+        <div class="mc-screens">
+          <div class="mc-screens-head"><span class="mc-screens-title">Screens by persona</span><span class="mc-screens-note">Design draft · Nov 2026 · sample data · tap to enlarge</span></div>
+          <div class="mc-persona-grid">
+          <div class="mc-persona">
+            <div class="mc-persona-name">Student <span>· Mobile app</span></div>
+            <div class="mc-persona-journey">Onboard → Discover → Attend → Certify → Feedback</div>
+            <div class="mc-persona-shots" style="--n:4;">
+              <div data-photo data-pg="myccs"><img src="myccs/org-page.webp" alt="MyCCS design draft · Student: Org page with sub-orgs" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/apply-form.webp" alt="MyCCS design draft · Student: Apply to join (conditional form)" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/my-keys.webp" alt="MyCCS design draft · Student: My Keys: masked certification keys" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/feedback.webp" alt="MyCCS design draft · Student: Post-event evaluation" loading="lazy"></div>
+            </div>
+          </div>
+          <div class="mc-persona">
+            <div class="mc-persona-name">Org Officer <span>· Mobile app</span></div>
+            <div class="mc-persona-journey">Prepare → Run the door → Grow → Learn</div>
+            <div class="mc-persona-shots" style="--n:4;">
+              <div data-photo data-pg="myccs"><img src="myccs/officer-manage.webp" alt="MyCCS design draft · Org Officer: Manage org, ready for offline scanning" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/create-event.webp" alt="MyCCS design draft · Org Officer: Create event with attendance rules" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/applicants.webp" alt="MyCCS design draft · Org Officer: Review applicants" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/eval-metrics.webp" alt="MyCCS design draft · Org Officer: Evaluation metrics" loading="lazy"></div>
+            </div>
+          </div>
+          <div class="mc-persona mc-persona--desk">
+            <div class="mc-persona-name">Faculty Admin <span>· Web-admin portal</span></div>
+            <div class="mc-persona-journey">Upload → Follow up → Govern</div>
+            <div class="mc-persona-shots" style="--n:1;">
+              <div data-photo data-pg="myccs"><img src="myccs/admin-orgs.webp" alt="MyCCS design draft · Faculty Admin: Organizations and admin promotion" loading="lazy"></div>
+            </div>
+          </div>
+          <div class="mc-persona">
+            <div class="mc-persona-name">Guests <span>· Open events · no app needed</span></div>
+            <div class="mc-persona-journey">Set up → Register → Walk in → Door → Report</div>
+            <div class="mc-persona-shots" style="--n:3;">
+              <div data-photo data-pg="myccs"><img src="myccs/guest-register.webp" alt="MyCCS design draft · Guests: Guest pre-registration" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/guest-pass.webp" alt="MyCCS design draft · Guests: Guest pass email" loading="lazy"></div>
+              <div data-photo data-pg="myccs"><img src="myccs/guest-summary.webp" alt="MyCCS design draft · Guests: Members vs guests attendance summary" loading="lazy"></div>
+            </div>
+          </div>
+          </div>
+        </div>
         <button class="expand-toggle" data-target="myccs-brief" aria-expanded="false" aria-controls="myccs-brief">
           View full product brief
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
