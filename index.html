@@ -477,6 +477,59 @@ section:has(> .ghost-portrait){isolation:isolate;}
 .ab-bar-fill{display:block;height:100%;min-width:2px;background:var(--accent);border-radius:0 4px 4px 0;}
 .ab-bar-val{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:500;color:var(--ink);text-align:right;}
 @media(max-width:700px){.ab-card{padding:22px 18px;}.ab-bar{grid-template-columns:1fr 52px;row-gap:4px;}.ab-bar-label{grid-column:1/-1;}}
+/* How I work (top of Product Case Studies) */
+.hw{margin:0 0 32px;}
+.hw-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:12px;}
+.hw-label span{color:var(--ink-4);text-transform:none;letter-spacing:.02em;}
+.hw-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+.hw-step{position:relative;display:flex;flex-direction:column;gap:6px;padding:16px 16px 14px;background:var(--bg);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:8px;}
+.hw-step:not(:last-child)::after{content:'›';position:absolute;right:-13px;top:50%;transform:translateY(-50%);font-family:'Sora',sans-serif;font-size:16px;line-height:1;color:var(--ink-4);pointer-events:none;}
+.hw-num{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);}
+.hw-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.hw-text{font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.55;margin:0;}
+.hw-proof{margin-top:auto;padding-top:8px;border-top:1px dashed var(--border-m);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:var(--accent);text-decoration:none;line-height:1.5;}
+.hw-proof span{color:var(--ink-3);}
+.hw-proof:hover,.hw-proof:focus-visible{text-decoration:underline;}
+@media(max-width:900px){.hw-steps{grid-template-columns:1fr;gap:10px;}.hw-step{display:grid;grid-template-columns:28px 110px 1fr;column-gap:12px;row-gap:6px;align-items:baseline;border-top:1px solid var(--border);border-left:3px solid var(--accent);}.hw-step::after{display:none;}.hw-text{grid-column:3;}.hw-proof{grid-column:3;margin-top:0;}}
+@media(max-width:560px){.hw-step{grid-template-columns:28px 1fr;}.hw-text,.hw-proof{grid-column:1/-1;}}
+/* Case index + case covers (Product Case Studies) */
+.cs-index{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:0 0 32px;}
+.cs-tile{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;}
+.cs-tile-media{position:relative;display:block;height:170px;overflow:hidden;background:var(--border);}
+.cs-tile-media > img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+.cs-tile:hover .cs-tile-media > img,.cs-tile:focus-visible .cs-tile-media > img{transform:scale(1.05);}
+.cs-tile-media--phones{display:flex;align-items:flex-end;justify-content:center;background:linear-gradient(160deg,var(--accent-dim),transparent 70%),var(--white);}
+.cs-tile-media--phones > img{width:auto;height:168px;aspect-ratio:591/1280;flex-shrink:0;border-radius:10px;border:3px solid #1d1d1f;box-shadow:0 8px 20px rgba(0,0,0,.18);margin:0 -12px;transform-origin:bottom center;}
+.cs-tile-media--phones > img:nth-child(1){transform:translateY(52px) rotate(-9deg);}
+.cs-tile-media--phones > img:nth-child(2){transform:translateY(26px);position:relative;z-index:1;}
+.cs-tile-media--phones > img:nth-child(3){transform:translateY(52px) rotate(9deg);}
+.cs-tile:hover .cs-tile-media--phones > img:nth-child(2){transform:translateY(16px);}
+.cs-tile-status{position:absolute;top:10px;left:10px;z-index:2;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.06em;padding:4px 9px;border-radius:999px;background:rgba(20,20,22,.72);color:#fff;backdrop-filter:blur(4px);}
+.cs-tile-body{display:flex;flex-direction:column;gap:4px;padding:14px 16px 16px;flex:1;}
+.cs-tile-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+.cs-tile-title{font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.cs-tile-title span{display:inline-block;color:var(--accent);transition:translate .2s;}
+.cs-tile:hover .cs-tile-title span{translate:3px 0;}
+.cs-tile-metric{margin-top:auto;padding-top:6px;font-family:'Source Serif 4',serif;font-size:13.5px;color:var(--ink-2);line-height:1.45;}
+.cs-tile-metric strong{font-family:'Sora',sans-serif;color:var(--accent);font-weight:700;}
+/* MyCCS has no product photo yet, so its art is a typographic panel, not a fake screenshot */
+.cs-mc-art{--mc:#1a5fad;position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px;background:radial-gradient(circle at 80% 15%,rgba(255,255,255,.16),transparent 45%),linear-gradient(140deg,#1a5fad,#0e3a6e);}
+.cs-mc-word{font-family:'Sora',sans-serif;font-size:34px;font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1;}
+.cs-mc-word b{font-weight:800;color:#9cc8f5;}
+.cs-mc-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;max-width:300px;}
+.cs-mc-chips i{font-style:normal;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.04em;color:#fff;padding:3px 8px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(255,255,255,.08);}
+.cs-cover{position:relative;margin:-28px -28px 22px;height:240px;border-radius:9px 9px 0 0!important;overflow:hidden;border-bottom:1px solid var(--border);background:var(--white);}
+.cs-cover[data-photo] img{height:100%;}
+.cs-cover-cap{position:absolute;left:12px;bottom:12px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.05em;padding:4px 10px;border-radius:999px;background:rgba(20,20,22,.72);color:#fff;backdrop-filter:blur(4px);pointer-events:none;}
+.cs-cover--poster{background:#fbfbfb;}
+.cs-cover--poster[data-photo] img{object-fit:contain;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);}
+.cs-tile-media--mc .cs-mc-art{padding-top:34px;}
+.cs-cover--mc .cs-mc-word{font-size:46px;}
+.cs-cover--mc .cs-mc-chips{max-width:460px;}
+.cs-cover--mc .cs-mc-chips i{font-size:11px;padding:4px 10px;}
+@media(max-width:1000px){.cs-index{grid-template-columns:1fr 1fr;}}
+@media(max-width:700px){.cs-cover{height:190px;}.cs-cover--mc .cs-mc-word{font-size:36px;}}
+@media(max-width:480px){.cs-index{grid-template-columns:1fr;gap:10px;}.cs-tile{display:grid;grid-template-columns:120px 1fr;}.cs-tile-media{height:auto;min-height:120px;}.cs-mc-word{font-size:24px;}.cs-mc-chips{display:none;}.cs-tile-media--mc .cs-mc-art{padding-top:16px;}.cs-tile-media--phones > img{height:120px;}.cs-tile-media--phones > img:nth-child(1),.cs-tile-media--phones > img:nth-child(3){display:none;}.cs-tile-media--phones > img:nth-child(2){transform:translateY(22px);}.cs-tile-status{top:6px;left:6px;font-size:10px;padding:3px 7px;}}
 .lead-earlier{margin-top:20px;font-family:'Source Serif 4',serif;font-size:13px;color:var(--ink-3);line-height:1.6;}
 .lead-earlier span{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-4);margin-right:8px;}
 @media(max-width:800px){.lead-feature{grid-template-columns:1fr;}.lead-stats{grid-template-columns:1fr 1fr;}}
@@ -740,10 +793,88 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
       <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--ink-4);letter-spacing:.08em;">4 CASES</span>
     </div>
     <p class="cs-intro">Each case follows the same path: the problem, my role, the key decisions, how it was delivered, and the outcome.</p>
+
+    <!-- Case index: one picture tile per case, linking to its card -->
+    <nav class="cs-index fade-up-grid" aria-label="Case studies">
+      <a class="cs-tile fade-up card-lift" href="#recolor">
+        <span class="cs-tile-media cs-tile-media--phones"><img src="ReColor/photo_2026-06-22_13-46-44.jpg" alt="" loading="lazy"><img src="ReColor/photo_2026-06-22_13-47-21.jpg" alt="" loading="lazy"><img src="ReColor/photo_2026-06-22_13-46-46.jpg" alt="" loading="lazy"><span class="cs-tile-status">Best CS Thesis</span></span>
+        <span class="cs-tile-body">
+          <span class="cs-tile-eyebrow">Project lead · Mobile app</span>
+          <span class="cs-tile-title">ReColor <span aria-hidden="true">→</span></span>
+          <span class="cs-tile-metric"><strong>3.92/4</strong> clinical expert rating</span>
+        </span>
+      </a>
+      <a class="cs-tile fade-up card-lift" href="#quadlearning">
+        <span class="cs-tile-media "><img src="Quadlearning/3b4fd0c5-0b40-4b38-aa1b-d08580f9f9cb.jpg" alt="" loading="lazy" style="object-position:center 40%;"><span class="cs-tile-status">In production</span></span>
+        <span class="cs-tile-body">
+          <span class="cs-tile-eyebrow">Lead PM · School SIS</span>
+          <span class="cs-tile-title">QuadLearning <span aria-hidden="true">→</span></span>
+          <span class="cs-tile-metric"><strong>100+</strong> users, zero deadline slippage</span>
+        </span>
+      </a>
+      <a class="cs-tile fade-up card-lift" href="#myccs">
+        <span class="cs-tile-media cs-tile-media--mc"><span class="cs-mc-art"><span class="cs-mc-word">My<b>CCS</b></span><span class="cs-mc-chips"><i>Org pages</i><i>Events</i><i>Offline QR attendance</i><i>Cert keys</i></span></span><span class="cs-tile-status">In delivery</span></span>
+        <span class="cs-tile-body">
+          <span class="cs-tile-eyebrow">Product Owner · VeloBuild</span>
+          <span class="cs-tile-title">MyCCS <span aria-hidden="true">→</span></span>
+          <span class="cs-tile-metric"><strong>4-sprint</strong> MVP from PRD v1.0</span>
+        </span>
+      </a>
+      <a class="cs-tile fade-up card-lift" href="#optum-erp">
+        <span class="cs-tile-media "><img src="optum/1755231621611.jpg" alt="" loading="lazy" style="object-position:center 55%;"><span class="cs-tile-status">Deployed</span></span>
+        <span class="cs-tile-body">
+          <span class="cs-tile-eyebrow">Coordinator intern · Optum</span>
+          <span class="cs-tile-title">Optum ERP <span aria-hidden="true">→</span></span>
+          <span class="cs-tile-metric"><strong>35%</strong> process-efficiency gain</span>
+        </span>
+      </a>
+    </nav>
+
+    <!-- How I work: every step links to the case study that proves it (only use evidence already shown in a case) -->
+    <div class="hw" aria-labelledby="hw-title">
+      <div id="hw-title" class="hw-label">How I work <span>· five steps, each backed by a case below</span></div>
+      <ol class="hw-steps fade-up-grid">
+        <li class="hw-step fade-up card-lift">
+          <span class="hw-num">01</span>
+          <span class="hw-title">Discover</span>
+          <p class="hw-text">Sit down with users, operators and leadership to gather requirements before anything gets built.</p>
+          <a class="hw-proof" href="#optum-erp">Optum ERP <span>· dev, ops &amp; exec sessions</span></a>
+        </li>
+        <li class="hw-step fade-up card-lift">
+          <span class="hw-num">02</span>
+          <span class="hw-title">Define</span>
+          <p class="hw-text">Write the problem, users and success metrics into a PRD the whole team can build against.</p>
+          <a class="hw-proof" href="#myccs">MyCCS <span>· PRD v1.0 with success metrics</span></a>
+        </li>
+        <li class="hw-step fade-up card-lift">
+          <span class="hw-num">03</span>
+          <span class="hw-title">Prioritize</span>
+          <p class="hw-text">Protect the timeline by cutting scope, not quality: the MVP holds only what users need first.</p>
+          <a class="hw-proof" href="#myccs">MyCCS <span>· likes, comments &amp; chat cut from MVP</span></a>
+        </li>
+        <li class="hw-step fade-up card-lift">
+          <span class="hw-num">04</span>
+          <span class="hw-title">Deliver</span>
+          <p class="hw-text">Fit the method to the constraint: fixed milestones for fixed deadlines, sprints inside them for feedback.</p>
+          <a class="hw-proof" href="#quadlearning">QuadLearning <span>· zero deadline slippage</span></a>
+        </li>
+        <li class="hw-step fade-up card-lift">
+          <span class="hw-num">05</span>
+          <span class="hw-title">Measure</span>
+          <p class="hw-text">Set a baseline and let the metrics decide what ships, not opinions.</p>
+          <a class="hw-proof" href="#recolor">ReColor <span>· +6.91 delta-E over the baseline</span></a>
+        </li>
+      </ol>
+    </div>
+
     <div style="display:flex;flex-direction:column;gap:20px;">
 
       <!-- ReColor -->
       <div id="recolor" class="proj-card fade-up card-lift" data-skills="react-native computer-vision image-processing python firebase" data-skill-label="ReColor — thesis app · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+        <div class="cs-cover cs-cover--poster" data-photo data-pg="recolor-poster" data-full="RECOLOR - FINAL POSTER.jpg">
+          <img src="ReColor/poster-cover.jpg" alt="ReColor research poster (opens the full poster)">
+          <span class="cs-cover-cap">Research poster · tap to view</span>
+        </div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--accent);text-transform:uppercase;margin-bottom:6px;">THESIS PROJECT</div>
@@ -759,10 +890,6 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div><dt>Delivery</dt><dd>A React Native app with four modular image-processing services, validated by 30 end users, 10 IT experts and 3 clinical specialists from the Philippine Eye Research Institute (PERI).</dd></div>
           <div><dt>Outcome</dt><dd>Daltonization confirmed as the core method, 100% color identification accuracy and a 3.92/4 clinical expert rating. Won Best CS Thesis and Best Research for Social Sciences &amp; Humanities.</dd></div>
         </dl>
-        <!-- Poster -->
-        <div style="margin-top:20px;border-radius:8px;overflow:hidden;border:1px solid var(--border);">
-          <img src="RECOLOR - FINAL POSTER.jpg" alt="ReColor Research Poster" style="width:100%;height:auto;display:block;">
-        </div>
         <!-- Abstract -->
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button class="expand-toggle" data-target="recolor-screenshots" aria-expanded="false" style="margin-top:14px;">
@@ -831,6 +958,10 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
       <!-- QuadLearning -->
       <div id="quadlearning" class="proj-card fade-up card-lift" data-skills="figma agile stakeholder sql" data-skill-label="QuadLearning SIS · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+        <div class="cs-cover" data-photo data-pg="ql">
+          <img src="Quadlearning/d0022eea-c4c0-4dd5-b113-56b445a25e06.jpg" alt="QuadLearning team with TVNHS staff" loading="lazy" style="object-position:center 25%;">
+          <span class="cs-cover-cap">Team with TVNHS stakeholders</span>
+        </div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">LEAD PM · 4-DEV TEAM</div>
@@ -858,9 +989,8 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
           <div data-photo data-pg="ql" style="margin-top:14px;border:1px solid var(--border);height:320px;">
             <img src="Quadlearning/00_full_walkthrough.webp" alt="QuadLearning full walkthrough" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px;">
-            <div data-photo data-pg="ql"><img src="Quadlearning/3b4fd0c5-0b40-4b38-aa1b-d08580f9f9cb.jpg" alt="QuadLearning documentation 1" loading="lazy"></div>
-            <div data-photo data-pg="ql"><img src="Quadlearning/d0022eea-c4c0-4dd5-b113-56b445a25e06.jpg" alt="QuadLearning documentation 2" loading="lazy"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;">
+            <div data-photo data-pg="ql"><img src="Quadlearning/3b4fd0c5-0b40-4b38-aa1b-d08580f9f9cb.jpg" alt="QuadLearning team working with TVNHS staff" loading="lazy"></div>
             <div data-photo data-pg="ql"><img src="Quadlearning/500386441_1145573097258820_2631656731928369053_n.png" alt="QuadLearning documentation 3" loading="lazy"></div>
           </div>
         </div>
@@ -880,6 +1010,7 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
       <!-- MyCCS -->
       <div id="myccs" class="proj-card fade-up card-lift" data-skills="agile jira" data-skill-label="MyCCS product case study · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+        <div class="cs-cover cs-cover--mc" aria-hidden="true"><span class="cs-mc-art"><span class="cs-mc-word">My<b>CCS</b></span><span class="cs-mc-chips"><i>Org pages</i><i>Events</i><i>Offline QR attendance</i><i>Cert keys</i></span></span></div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--sage);text-transform:uppercase;margin-bottom:6px;">PRODUCT OWNER · VELOBUILD · PRD v1.0 · NOV 2026</div>
@@ -984,6 +1115,10 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
 
       <!-- Optum ERP -->
       <div id="optum-erp" class="proj-card fade-up card-lift" data-skills="sharepoint jira agile stakeholder power-automate" data-skill-label="ERP Merchandise System · Projects" style="padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+        <div class="cs-cover" data-photo data-pg="optum">
+          <img src="optum/1758283005052.jpg" alt="Optum ERP One-Stop Hub and Rewards Store" loading="lazy" style="object-position:center 60%;">
+          <span class="cs-cover-cap">ERP One-Stop Hub &amp; Rewards Store</span>
+        </div>
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;">
           <div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;color:var(--ink-3);text-transform:uppercase;margin-bottom:6px;">INTERNSHIP · OPTUM PHILIPPINES · JUL–AUG 2025</div>
@@ -1009,7 +1144,6 @@ input::placeholder,textarea::placeholder{color:var(--ink-4)}
         </div>
         <div class="expand-body collapsed" id="optum-photos" style="max-height:560px;">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px;">
-            <div data-photo data-pg="optum"><img src="optum/1758283005052.jpg" alt="Optum ERP One-Stop Hub and Rewards Store" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
             <div data-photo data-pg="optum"><img src="optum/1758283005930.jpg" alt="2025 ERP Rewards Store launch standee" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
             <div data-photo data-pg="optum"><img src="optum/1758283007174.jpg" alt="ERP Rewards Store preview" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
             <div data-photo data-pg="optum"><img src="optum/1758283002715.jpg" alt="Presenting the ERP project at Optum" loading="lazy" style="width:100%;height:180px;object-fit:cover;display:block;"></div>
@@ -2191,7 +2325,7 @@ function initLightbox() {
 
   function bindItems(items) {
     if (!items.length) return;
-    const srcs  = items.map(el => el.querySelector('img').src);
+    const srcs  = items.map(el => el.dataset.full || el.querySelector('img').src);
     const alts  = items.map(el => el.querySelector('img').alt || 'Gallery image');
     items.forEach((item, i) => {
       // make photo tiles reachable and openable from the keyboard
